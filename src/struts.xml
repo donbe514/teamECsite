@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true"/>
+
+	<package name="com.internousdev.ECsite.action" extends="struts-default">
+
+		<!--////////////////共通機能///////////////-->
+		<!-- ホーム画面遷移 -->
+		<action name="HomeAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!--////////////////ヘッダー機能///////////////-->
+		<!-- ログイン・ログイン画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- ログアウト・ログイン画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- マイページ画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- カート画面遷移 -->
+		<action name="CartAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">Cart.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 商品一覧・商品一覧画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 商品検索・商品一覧画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+		<!--////////////////ユーザー登録機能///////////////-->
+		<!-- ユーザー情報入力画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 登録内容確認画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 登録完了画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+		<!--////////////////ログイン認証機能///////////////-->
+		<!-- パスワード再設定画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- パスワード再設定確認画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+		<!--////////////////商品一覧機能///////////////-->
+		<!-- 商品詳細画面推移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- カート追加ボタン機能 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+		<!--////////////////商品情報選択機能///////////////-->
+		<!-- 決済確認画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 宛先情報登録画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 宛先情報登録確認画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 宛先情報登録確認完了ボタン -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+		<!--////////////////決済完了機能///////////////-->
+		<!-- 決済完了画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+		<!--////////////////マイページ機能///////////////-->
+		<!-- 商品購入履歴画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 商品購入履歴削除画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<!-- 商品購入履歴削除完了画面遷移 -->
+		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+
+
+	</package>
+
+</struts>
