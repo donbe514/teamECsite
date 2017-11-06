@@ -6,10 +6,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class RandomForm {
 
-	public int RandomInt(int i){
+	public int RandomNom(int i){
 		int result = 0;
-		SecureRandom sr = new SecureRandom();
-		result = sr.nextInt(i);
+		if(i<10){
+			double db = Math.pow(10, i);
+			SecureRandom sr = new SecureRandom();
+			result = sr.nextInt((int)db);
+		}
 
 		return result;
 	}
