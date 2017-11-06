@@ -10,9 +10,9 @@
 
 		<!--////////////////共通機能///////////////-->
 		<!-- ホーム画面遷移 -->
-		<action name="HomeAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<action name="HomeAction" class="com.internousdev.ECsite.action.HomeAction" method="execute">
+			<result name="success">Home.jsp</result>
+			<result name="error">Home.jsp</result>
 		</action>
 
 		<!--////////////////ヘッダー機能///////////////-->
@@ -35,9 +35,9 @@
 		</action>
 
 		<!-- カート画面遷移 -->
-		<action name="CartAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+		<action name="CartAction" class="com.internousdev.ECsite.action.CartAction" method="execute">
 			<result name="success">Cart.jsp</result>
-			<result name="error">index.jsp</result>
+			<result name="error">Home.jsp</result>
 		</action>
 
 		<!-- 商品一覧・商品一覧画面遷移 -->

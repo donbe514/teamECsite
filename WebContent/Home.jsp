@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<meta http-equiv="refresh" content="0;URL=HomeAction"/>
+<title>ホーム画面</title>
 </head>
 <body>
+
+ホーム画面<br>
+↓テストボタン。アクション名を変更して自身の作成ページへの遷移アクションに切り替えて使用してください。
+<form action="HomeAction">
+<input type="submit" value="test">
+</form>
+
 </body>
 </html>
