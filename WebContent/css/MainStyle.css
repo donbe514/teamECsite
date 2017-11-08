@@ -1,1 +1,25 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
+
+#header{
+    background-color: black;
+    padding: 3px;
+}
+
+#header ul{
+	list-style:none;
+	text-align:left;
+}
+
+#header ul li{
+    display: inline;
+    padding: 0 20px;
+}
+
+#header ul li a{
+	color:white;
+	text-decoration:none;
+}
+
+#header ul li a:hover{
+    border-bottom: dotted 1px #fff;
+}
