@@ -37,6 +37,7 @@ image_file_name varchar(50),/*画像ファイル名*/
 release_date datetime not null,/*発売年月*/
 release_company varchar(50),/*発売会社*/
 status tinyint default 0 not null, /*ステータス*/ /*0:無効 1:有効*/
+stock int not null,/*個数*/
 insert_date datetime not null,/*登録日*/
 update_date datetime/*更新日*/
 );
@@ -45,9 +46,9 @@ update_date datetime/*更新日*/
 create table cart_info(
 id int primary key not null,/*ID*/
 user_id varchar(16) not null,/*ユーザーID*/
-foreign key(user_id) references user_info(user_id), /*user_info.user_idとfk*/
 product_id int not null,/*商品ID*/
 foreign key(product_id) references product_info(product_id), /*product_info.product_idとfk*/
+stock int not null,/*個数*/
 insert_date datetime not null,/*登録日*/
 update_date datetime /*更新日*/
 );
@@ -59,6 +60,7 @@ user_id varchar(16) not null, /*ユーザーID*/
 foreign key(user_id) references user_info(user_id),/*user_info.user_idとfk*/
 product_id int not null,/*商品ID*/
 foreign key(product_id) references product_info(product_id),/*product_info.product_idとfk*/
+item_count int not null,/*購入数*/
 insert_date datetime not null,/*登録日*/
 update_date datetime /*更新日*/
 );
@@ -158,6 +160,7 @@ VALUE(
     '2017/11/06 17/29/11',/*発売年月*/
     '会社A',/*発売会社*/
     0, /*ステータス*/ /*0:無効 1:有効*/
+    50,/*個数*/
     '2017/11/06 17/29/11',/*登録日*/
     '2017/11/06 17/29/11'/*更新日*/
 ),(
@@ -173,6 +176,7 @@ VALUE(
     '2017/11/06 17/29/11',/*発売年月*/
     '会社B',/*発売会社*/
     0, /*ステータス*/ /*0:無効 1:有効*/
+    50,/*個数*/
     '2017/11/06 17/29/11',/*登録日*/
     '2017/11/06 17/29/11'/*更新日*/
 ),(
@@ -188,6 +192,7 @@ VALUE(
     '2017/11/06 17/29/11',/*発売年月*/
     '会社A',/*発売会社*/
     0, /*ステータス*/ /*0:無効 1:有効*/
+    50,/*個数*/
     '2017/11/06 17/29/11',/*登録日*/
     '2017/11/06 17/29/11'/*更新日*/
 ),(
@@ -203,6 +208,7 @@ VALUE(
     '2017/11/06 17/29/11',/*発売年月*/
     '会社C',/*発売会社*/
     0, /*ステータス*/ /*0:無効 1:有効*/
+    50,/*個数*/
     '2017/11/06 17/29/11',/*登録日*/
     '2017/11/06 17/29/11'/*更新日*/
 ),(
@@ -218,6 +224,7 @@ VALUE(
     '2017/11/06 17/29/11',/*発売年月*/
     '会社A',/*発売会社*/
     0, /*ステータス*/ /*0:無効 1:有効*/
+    50,/*個数*/
     '2017/11/06 17/29/11',/*登録日*/
     '2017/11/06 17/29/11'/*更新日*/
 ),(
@@ -233,6 +240,7 @@ VALUE(
     '2017/11/06 17/29/11',/*発売年月*/
     '会社C',/*発売会社*/
     0, /*ステータス*/ /*0:無効 1:有効*/
+    50,/*個数*/
     '2017/11/06 17/29/11',/*登録日*/
     '2017/11/06 17/29/11'/*更新日*/
 );
