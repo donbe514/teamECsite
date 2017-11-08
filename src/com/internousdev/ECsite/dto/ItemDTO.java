@@ -32,21 +32,21 @@ public class ItemDTO {
 
 	private String update_date; // 更新日
 
-	private String stocks; // 在庫（実装予定）
+	private int stock; // 在庫（実装予定）
 
 	/**
 	 * @return stocks
 	 */
-	public String getStocks() {
-		return stocks;
+	public int getStock() {
+		return stock;
 	}
 
 	/**
 	 * @param stocks
 	 *            セットする stocks
 	 */
-	public void setStocks(String stocks) {
-		this.stocks = stocks;
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	/**

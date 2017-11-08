@@ -22,14 +22,13 @@ insert_date datetime not null,/*登録日*/
 update_date datetime/*更新日*/
 );
 
-
 create table product_info(
 id int primary key not null,/*ID*/
 product_id int not null unique,/*商品ID*/
 product_name varchar(100) not null unique,/*商品名*/
 product_name_kana varchar(100) not null unique,/*商品名かな*/ /*unique*/
 product_description varchar(255) not null,/*商品詳細*/ /*unique*/
-category_id set('1','2','3','4') not null,/*カテゴリID*/
+category_id int not null,/*カテゴリID*/
 foreign key(category_id) references m_category(category_id), /*m_category.category_idとfk*/
 price int not null,/*価格*/
 image_file_path varchar(100), /*画像ファイルパス*/
@@ -48,7 +47,7 @@ id int primary key not null,/*ID*/
 user_id varchar(16) not null,/*ユーザーID*/
 product_id int not null,/*商品ID*/
 foreign key(product_id) references product_info(product_id), /*product_info.product_idとfk*/
-stock int not null,/*個数*/
+item_count int not null,/*個数*/
 insert_date datetime not null,/*登録日*/
 update_date datetime /*更新日*/
 );
@@ -81,7 +80,7 @@ update_date datetime/*更新日*/
 
 create table m_category(
 id int primary key not null,/*ID*/
-category_id set('1','2','3','4')  not null unique,/*カテゴリID*/ /*unique*/
+category_id int not null unique,/*カテゴリID*/ /*unique*/
 caregory_name varchar(20) not null unique,/*カテゴリ名*/ /*unique*/
 category_description varchar(100),/*カテゴリ詳細*/
 insert_date datetime not null,/*登録日*/
@@ -153,7 +152,7 @@ VALUE(
     '本1',/*商品名*/
     'ほんいち',/*商品名かな*/ /*unique*/
     'ほんひとつめ',/*商品詳細*/ /*unique*/
-    '1,2',/*カテゴリID*/
+    2,/*カテゴリID*/
     100,/*価格*/
     'book1/path', /*画像ファイルパス*/
     'book1',/*画像ファイル名*/
@@ -169,7 +168,7 @@ VALUE(
     '家電1',/*商品名*/
     'かでんいち',/*商品名かな*/ /*unique*/
     'かでんひとつめ',/*商品詳細*/ /*unique*/
-    '1,3',/*カテゴリID*/
+    3,/*カテゴリID*/
     200,/*価格*/
     'kaden1/path', /*画像ファイルパス*/
     'kaden1',/*画像ファイル名*/
@@ -185,7 +184,7 @@ VALUE(
     'ゲーム1',/*商品名*/
     'げえむいち',/*商品名かな*/ /*unique*/
     'ゲームひとつめ',/*商品詳細*/ /*unique*/
-    '1,4',/*カテゴリID*/
+    4,/*カテゴリID*/
     300,/*価格*/
     'game1/path', /*画像ファイルパス*/
     'game1',/*画像ファイル名*/
@@ -201,7 +200,7 @@ VALUE(
     '本2',/*商品名*/
     'ほんに',/*商品名かな*/ /*unique*/
     '本ふたつめ',/*商品詳細*/ /*unique*/
-    '1,2',/*カテゴリID*/
+    2,/*カテゴリID*/
     400,/*価格*/
     'book2/path', /*画像ファイルパス*/
     'book2',/*画像ファイル名*/
@@ -217,7 +216,7 @@ VALUE(
     '家電2',/*商品名*/
     'かでんに',/*商品名かな*/ /*unique*/
     '家電ふたつめ',/*商品詳細*/ /*unique*/
-    '1,3',/*カテゴリID*/
+    3,/*カテゴリID*/
     500,/*価格*/
     'kaden2/path', /*画像ファイルパス*/
     'kaden2',/*画像ファイル名*/
@@ -233,7 +232,7 @@ VALUE(
     'ゲーム2',/*商品名*/
     'げえむに',/*商品名かな*/ /*unique*/
     'ゲームふたつめ',/*商品詳細*/ /*unique*/
-    '1,4',/*カテゴリID*/
+    4,/*カテゴリID*/
     600,/*価格*/
     'game2/path', /*画像ファイルパス*/
     'game2',/*画像ファイル名*/
