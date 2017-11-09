@@ -17,6 +17,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		RandomForm rf = new RandomForm();
 		session.put("tmpID", rf.RandomStr(16));//16桁の仮IDの発行
 		//System.out.print(session.get("tmpID"));
+		//session.put("user_id","taro");
 
 		return SUCCESS;
 	}
