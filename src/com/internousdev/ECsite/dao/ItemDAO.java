@@ -12,17 +12,48 @@ import com.internousdev.ECsite.util.DBConnector;
 public class ItemDAO {
 
 
-	public ArrayList<ItemDTO> select(int category_id) {
+	public ArrayList<ItemDTO> select(int category_id,String SearchText) {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		String sql;
+		String tmp ="";
 
 		ArrayList<ItemDTO> itemList = new ArrayList<ItemDTO>();
-		sql = "select * from product_info where category_id = ?";
+		sql = "select * from product_info";
+
+
+
+
+		switch(category_id){
+		case 1:
+		case 2:
+		case 3: tmp=(" where category_id = " + category_id);
+			break;
+		default:
+		}
+
+		int i = SearchText.length();
+		String tmptext="";
+		if(i>0){
+			tmptext="'%"+SearchText+"%';";
+		}
+
+
+		if(i>0 & category_id>0){
+			sql=sql + tmp + " AND product_name like " + tmptext;
+		}
+		else if(category_id>0){
+			sql=sql + tmp;
+		}
+		else if(i>0){
+			sql=sql + " where product_name like " +tmptext;
+		}
+System.out.println(sql);
+
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, category_id);
+//			ps.setInt(1, category_id);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {

@@ -9,12 +9,13 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ItemIntroduce extends ActionSupport {
 
 	private ArrayList<ItemDTO> itemList;
-	private int category_id = 0;
+	private int category_id;
 	private String message = "";
+	private String SearchText;
 
 	public String execute() {
 		ItemDAO itemdao = new ItemDAO();
-		itemList = itemdao.select(category_id);
+		itemList = itemdao.select(category_id,SearchText);
 
 		if (itemList.isEmpty()) {
 			message = "『検索結果がありません』";
@@ -67,6 +68,14 @@ public class ItemIntroduce extends ActionSupport {
 	 */
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getSearchText() {
+		return SearchText;
+	}
+
+	public void setSearchText(String searchText) {
+		SearchText = searchText;
 	}
 
 }
