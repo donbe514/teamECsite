@@ -39,17 +39,16 @@
 			<result name="success">Cart.jsp</result>
 		</action>
 
-		<!-- 商品一覧・商品一覧画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
-		</action>
+    <!-- 商品一覧・商品一覧画面遷移 -->
+    <action name="IntroduceAction" class="com.internousdev.ECsite.action.ItemIntroduce" method="execute">
+      <result name="success">ItemIntroduce.jsp</result>
+    </action>
 
-		<!-- 商品検索・商品一覧画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
-		</action>
+    <!-- 商品検索・商品一覧画面遷移 -->
+    <action name="GoDetailAction"
+      class="com.internousdev.ECsite.action.GoItemDetailAction" method="execute">
+      <result name="success">ItemDetail.jsp</result>
+    </action>
 
 
 		<!--////////////////ユーザー登録機能///////////////-->
