@@ -24,7 +24,7 @@
    <s:form action="LoginAction">
    <tr>
    <td><label>ユーザーID</label></td>
-     <td><s:textfield name="user_id"/></td>
+     <td><s:textfield name="user_id" maxlength="8"/></td>
       </tr>
 
       <tr>
