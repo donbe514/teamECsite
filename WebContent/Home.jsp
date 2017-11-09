@@ -21,7 +21,7 @@
       <li>
         <!-- ログイン画面へ遷移（未ログイン状態で表示） -->
         <s:if test="#session.user_id == null">
-          <a href='<s:url action = "LoginAction" />'>ログイン</a>
+          <a href='<s:url action = "LoginPageAction" />'>ログイン</a>
         </s:if>
       </li>
       <li>
