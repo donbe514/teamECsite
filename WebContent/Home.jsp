@@ -50,7 +50,7 @@
       </li>
       <li>
         <!-- 管理画面に遷移 -->
-        <a href='<s:url action = "" />'>管理画面</a>
+        <a href='<s:url action = "ManagementAction" />'>管理画面</a>
       </li>
       <!-- 検索バー -->
       <li>

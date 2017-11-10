@@ -38,16 +38,15 @@
 			<result name="success">Cart.jsp</result>
 		</action>
 
-    <!-- 商品一覧・商品一覧画面遷移 -->
-    <action name="IntroduceAction" class="com.internousdev.ECsite.action.ItemIntroduce" method="execute">
-      <result name="success">ItemIntroduce.jsp</result>
-    </action>
+	    <!-- 商品一覧・商品一覧画面遷移 -->
+	    <action name="IntroduceAction" class="com.internousdev.ECsite.action.ItemIntroduce" method="execute">
+	      <result name="success">ItemIntroduce.jsp</result>
+	    </action>
 
-    <!-- 商品検索・商品一覧画面遷移 -->
-    <action name="GoDetailAction"
-      class="com.internousdev.ECsite.action.GoItemDetailAction" method="execute">
-      <result name="success">ItemDetail.jsp</result>
-    </action>
+	    <!-- 商品検索・商品一覧画面遷移 -->
+	    <action name="GoDetailAction" class="com.internousdev.ECsite.action.GoItemDetailAction" method="execute">
+	      <result name="success">ItemDetail.jsp</result>
+	    </action>
 
 
 		<!--////////////////ユーザー登録機能///////////////-->
@@ -119,29 +118,33 @@
 		</action>
 
 		<!-- 宛先情報登録画面遷移 -->
-		<action name="AddressRegistrationAction" class="com.internousdev.ECsite.action.AddressRegistrationAction" method="execute">
+<!-- 		<action name="AddressRegistrationAction" class="com.internousdev.ECsite.action.AddressRegistrationAction" method="execute">
 			<result name="success">addressRegistration.jsp</result>
 
-		</action>
+		</action> -->
 
 		<!-- 宛先情報登録確認画面遷移 -->
-		<action name="AddressRegistrationConfirmAction" class="com.internousdev.ECsite.action.AddressRegistrationConfirmAction" method="execute">
+<!-- 		<action name="AddressRegistrationConfirmAction" class="com.internousdev.ECsite.action.AddressRegistrationConfirmAction" method="execute">
 			<result name="success">addressRegistrationConfirm.jsp</result>
 			<result name="error">addressRegistration.jsp</result>
-		</action>
+		</action> -->
 
 		<!-- 宛先情報登録確認完了ボタン -->
-		<action name="AddressRegistrationComplateAction" class="com.internousdev.ECsite.action.AddressRegistrationComplateAction" method="execute">
+<!-- 		<action name="AddressRegistrationComplateAction" class="com.internousdev.ECsite.action.AddressRegistrationComplateAction" method="execute">
 			<result name="success">addressRegistrationComplate.jsp</result>
 			<result name="error">Home.jsp</result>
+		</action> -->
+
+
+				<!--////////////////決済完了機能///////////////-->
+		<!-- 決済完了画面遷移 -->
+		<action name="BuyItemConfilmAction" class="com.internousdev.ECsite.action.BuyItemConfilmAction" method="execute">
+			<result name="success">buyItemComplate.jsp</result>
 		</action>
 
-
-		<!--////////////////決済完了機能///////////////-->
-		<!-- 決済完了画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<!-- 決済完了登録完了ボタン -->
+		<action name = "BuyItemComplateAction" class = "com.internousdev.ECsite.action.BuyItemComplateAction" method = "execute">
+			<result name ="success">Home.jsp</result>
 		</action>
 
 
@@ -164,6 +167,25 @@
 			<result name="error">index.jsp</result>
 		</action>
 
+
+
+		<!--////////////////管理者画面機能///////////////-->
+		<!-- 管理画面遷移 -->
+		<action name = "ManagementAction" class = "com.internousdev.ECsite.action.ManagementAction" method = "execute">
+			<result name ="success">Management.jsp</result>
+		</action>
+
+
+		<!-- 管理画面在庫追加確認画面遷移 -->
+		<action name = "ManagementReferenceAction" class = "com.internousdev.ECsite.action.ManagementReferenceAction" method = "execute">
+			<result name ="success">ManagementConfirm.jsp</result>
+			<result name ="error">Management.jsp</result>
+		</action>
+
+		<!-- 管理画面在庫追加登録完了画面 -->
+		<action name = "ManagementConfilmAction" class = "com.internousdev.ECsite.action.ManagementConfilmAction" method = "execute">
+			<result name ="success">ManagementComplate.jsp</result>
+		</action>
 
 
 	</package>
