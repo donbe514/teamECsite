@@ -16,7 +16,6 @@
 <body>
   <h1>商品詳細</h1>
 
-  <s:iterator value="itemList">
     <form action="CartInAction">
     <table>
       <tr>
@@ -73,7 +72,6 @@
       <input type="submit" value="カートに入れる">
   <input type="button" value="前のページ（商品一覧）へ戻る" onclick="history.back()">
    </form>
-  </s:iterator>
 
 
 

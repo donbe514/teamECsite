@@ -25,7 +25,7 @@
 
 			<table>
 
-			<s:form action="">
+			<s:form action="BuyItemConfilmAction">
 			<s:iterator value="addressDTOList">
 
 				<tr>

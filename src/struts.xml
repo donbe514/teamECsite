@@ -18,7 +18,7 @@
 		<!--////////////////ヘッダー機能///////////////-->
 		<!-- ログイン・ログイン画面遷移 -->
 		<action name="LoginPageAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">Home.jsp</result>
+			<result name="success">login.jsp</result>
 		</action>
 
 		<!-- ログアウト・ログイン画面遷移 -->
@@ -72,8 +72,8 @@
 		<!--////////////////ログイン認証機能///////////////-->
 		<!-- ログイン認証 -->
 		<action name="LoginAction" class="com.internousdev.ECsite.action.LoginAction" method="execute">
-			<result name="success">login.jsp</result>
-			<result name="error">Home.jsp</result>
+			<result name="success">Home.jsp</result>
+			<result name="error">login.jsp</result>
 		</action>
 
 		<!-- パスワード再設定画面遷移 -->
@@ -114,7 +114,7 @@
 		<!-- 決済確認画面遷移 -->
 		<action name="AddressAction" class="com.internousdev.ECsite.action.AddressAction" method="execute">
 			<result name="success">address.jsp</result>
-			<result name="error">index.jsp</result>
+			<result name="error">login.jsp</result>
 		</action>
 
 		<!-- 宛先情報登録画面遷移 -->
@@ -139,7 +139,7 @@
 				<!--////////////////決済完了機能///////////////-->
 		<!-- 決済完了画面遷移 -->
 		<action name="BuyItemConfilmAction" class="com.internousdev.ECsite.action.BuyItemConfilmAction" method="execute">
-			<result name="success">buyItemComplate.jsp</result>
+			<result name="success">BuyItemComplate.jsp</result>
 		</action>
 
 		<!-- 決済完了登録完了ボタン -->

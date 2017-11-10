@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.internousdev.ECsite.dto.ItemDTO;
 import com.internousdev.ECsite.util.DBConnector;
@@ -12,21 +11,19 @@ import com.internousdev.ECsite.util.DBConnector;
 public class ItemDetailDAO {
 
 
-	public ArrayList<ItemDTO> detail(int product_id) {
+	public ItemDTO detail(int product_id) {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		String sql;
+		ItemDTO dto = new ItemDTO();
 
-		ArrayList<ItemDTO> itemList = new ArrayList<ItemDTO>();
-		sql = "select * from product_info where product_id = ?";
+		String sql = "select * from product_info where product_id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, product_id);
 			ResultSet rs = ps.executeQuery();
 
-			while (rs.next()) {
-				ItemDTO dto = new ItemDTO();
+			if (rs.next()) {
 				dto.setId(rs.getInt("id"));
 				dto.setProduct_id(rs.getInt("product_id"));
 				dto.setProduct_name(rs.getString("product_name"));
@@ -42,7 +39,6 @@ public class ItemDetailDAO {
 				dto.setInsert_date(rs.getString("insert_date"));
 				dto.setUpdate_date(rs.getString("update_date"));
 				dto.setStock(rs.getInt("stock"));
-				itemList.add(dto);
 			}
 
 			con.close();
@@ -51,6 +47,6 @@ public class ItemDetailDAO {
 			e.printStackTrace();
 		}
 
-		return itemList;
+		return dto;
 	}
 }

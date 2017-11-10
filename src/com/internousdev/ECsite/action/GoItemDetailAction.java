@@ -18,11 +18,25 @@ public class GoItemDetailAction extends ActionSupport {
 	private String release_company;
 	private String release_date;
 	private String image_file_path;
-	private String stock;
+	private int stock;
 
 	public String execute() {
+		ItemDTO itemDTO = new ItemDTO();
 		ItemDetailDAO itemdao = new ItemDetailDAO();
-		itemList = itemdao.detail(product_id);
+		itemDTO = itemdao.detail(product_id);
+
+		if(itemDTO!=null){
+			product_id = itemDTO.getProduct_id();
+			product_name = itemDTO.getProduct_name();
+			product_name_kana = itemDTO.getProduct_name_kana();
+			price = itemDTO.getPrice();
+			product_description = itemDTO.getProduct_description();
+			release_company = itemDTO.getRelease_company();
+			release_date = itemDTO.getRelease_date();
+			image_file_path = itemDTO.getImage_file_path();
+			stock = itemDTO.getStock();
+
+		}
 
 		return SUCCESS;
 	}
@@ -165,7 +179,7 @@ public class GoItemDetailAction extends ActionSupport {
 	/**
 	 * @return stock
 	 */
-	public String getStock() {
+	public int getStock() {
 		return stock;
 	}
 
@@ -173,7 +187,7 @@ public class GoItemDetailAction extends ActionSupport {
 	 * @param stock
 	 *            セットする stock
 	 */
-	public void setStock(String stock) {
+	public void setStock(int stock) {
 		this.stock = stock;
 	}
 

@@ -28,7 +28,7 @@
 	</s:iterator>
 	<s:property value="total_price"/>
 
-	<form action="HomeAction"><!-- 決済ボタン -->
+	<form action="AddressAction">
 		<input type="submit" value="決済">
 	</form>
 

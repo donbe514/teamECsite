@@ -23,7 +23,6 @@ public class AddressAction extends ActionSupport implements SessionAware {
 	public String putEmail;
 
 	public Map<String,Object> session;
-	public String result;
 
 	public AddressDAO addressDAO = new AddressDAO();
 
@@ -33,23 +32,24 @@ public class AddressAction extends ActionSupport implements SessionAware {
 
 	public String execute() throws SQLException{
 	//session.put("user_id", "taro");		//後で消す テスト用
-	String user_id = session.get("user_id").toString();
-		addressDTOList = addressDAO.getAddressInfo(user_id);
+		String result = ERROR;
 
-		result = SUCCESS;
+		String user_id = session.get("user_id").toString();
 
+		if(user_id!=null){//ユーザーログインしていなかったら、ログイン画面に飛ばす用　*駒村
+			addressDTOList = addressDAO.getAddressInfo(user_id);
 
-/*
-		session.get("putFirst_name").toString(),
-		session.get("putFamily_name").toString(),
-		session.get("putFirst_name_kana").toString(),
-		session.get("putFamily_name_kana").toString(),
-		session.get("putUser_address").toString(),
-		session.get("putTel_number").toString(),
-		session.get("putEmail").toString());
-
-*/
-
+			result = SUCCESS;
+		/*
+			session.get("putFirst_name").toString(),
+			session.get("putFamily_name").toString(),
+			session.get("putFirst_name_kana").toString(),
+			session.get("putFamily_name_kana").toString(),
+			session.get("putUser_address").toString(),
+			session.get("putTel_number").toString(),
+			session.get("putEmail").toString());
+		*/
+		}
 
 		return result;
 

@@ -148,7 +148,7 @@ public class CartActionDAO {
 		DBConnector db =new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "SELECT cf.id,cf.user_id,cf.item_count,pi.product_name,pi.product_name_kana,pi.image_file_path,pi.price,pi.release_company,pi.release_date FROM cart_info cf LEFT JOIN product_info pi ON cf.product_id = pi.product_id WHERE cf.user_id = ? ORDER BY cf.insert_date ;";
+		String sql = "SELECT cf.id,cf.user_id,cf.item_count,cf.product_id,pi.product_name,pi.product_name_kana,pi.image_file_path,pi.price,pi.release_company,pi.release_date FROM cart_info cf LEFT JOIN product_info pi ON cf.product_id = pi.product_id WHERE cf.user_id = ? ORDER BY cf.insert_date ;";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -166,6 +166,7 @@ public class CartActionDAO {
 			while(rs.next()){
 				ItemDTO CartDTO = new ItemDTO();
 				CartDTO.setId(rs.getInt("id"));
+				CartDTO.setProduct_id(rs.getInt("product_id"));
 				CartDTO.setStock(rs.getInt("item_count"));
 				CartDTO.setProduct_name(rs.getString("product_name"));
 				CartDTO.setProduct_name_kana(rs.getString("product_name_kana"));
