@@ -12,68 +12,12 @@
 <meta name="keywords" content="" />
 <title>ホーム画面</title>
 <link rel="stylesheet" type="text/css" href="./css/MainStyle.css">
+<frameset rows="120,*" frameborder="0">
+ <frame src="header.jsp" name="header" scrolling="no">
+ <frame src="body.jsp" name="body">
+ <noframes></noframes>
+</frameset>
 </head>
 <body>
-
-  <div id=header>
-
-    <ul>
-      <li>
-        <!-- ログイン画面へ遷移（未ログイン状態で表示） -->
-        <s:if test="#session.user_id == null">
-          <a href='<s:url action = "LoginPageAction" />'>ログイン</a>
-        </s:if>
-      </li>
-      <li>
-        <!-- マイページ画面へ遷移（ログイン状態で表示）  -->
-        <s:if test="#session.user_id != null">
-          <a href='<s:url action = "MyPageAction" />'>マイページ</a>
-        </s:if>
-      </li>
-      <li>
-        <!-- ログイン画面へ遷移（ログイン状態で表示） -->
-        <s:if test="#session.user_id != null">
-          <a href='<s:url action ="LogoutAcction" />'>ログアウト</a>
-        </s:if>
-      </li>
-      <li>
-        <!-- 商品一覧画面へ遷移 -->
-        <a href='<s:url action = "" />'>商品一覧</a>
-      </li>
-      <li>
-        <!-- 商品検索画面へ遷移 -->
-        <a href='<s:url action = "" />'>商品検索</a>
-      </li>
-      <li>
-        <!-- カート画面へ遷移 -->
-        <a href='<s:url action ="CartAction" />'>カート</a>
-      </li>
-      <li>
-        <!-- 管理画面に遷移 -->
-        <a href='<s:url action = "ManagementAction" />'>管理画面</a>
-      </li>
-      <!-- 検索バー -->
-      <li>
-        <form action="IntroduceAction">
-          <select name="category_id">
-            <option value=0 label="全てのカテゴリー">
-            <option value=1 label="本">
-            <option value=2 label="家電・パソコン">
-            <option value=3 label="おもちゃ・ゲーム">
-          </select>
-          <input type="text" name="SearchText" placeholder="キーワードを入力" class="">
-          <input type="submit" value="検索" class="">
-        </form>
-      </li>
-    </ul>
-  </div>
-
-  ホーム画面
-  <br> ↓テストボタン。アクション名を変更して自身の作成ページへの遷移アクションに切り替えて使用してください。
-  <form action=" BuyItemConfilmAction">
-    <input type="submit" value="test">
-  </form>
-
-
 </body>
 </html>

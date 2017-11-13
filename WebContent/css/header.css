@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+/* 基本設定 */
+body {
+		margin:0;/* 領域外スペース */
+		padding:;/* 領域内スペース */
+		line-height:;/* 行の高さ */
+		letter-spacing:;/*文字の間隔*/
+		font-family:/* 文字フォント */
+							"Avenir Next", "century gothic", "Helvetica Neue", Helvetica, Arial,
+							"游ゴシック体",YuGothic, "游ゴシック Medium", "YuGothic M",
+        					"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+		font-size:16px;/* 文字の大きさ */
+		font-weight:500;/* 文字の太さ */
+		color:black;/* 文字色 */
+}
+
+/* ヘッダー基本設定 */
+.header{
+
+}
+
+/* 列 */
+.header ul{
+	list-style:none;/* 箇条書きの点ナシ */
+/* 	text-align:right;右寄せ */
+}
+
+/* 行 */
+.header ul li{
+	float:left;/* 左寄せ */
+	display: inline-block;/* 横並び */
+	width:;/*幅も指定できる*/
+    height:;/*高さも指定できる*/
+    padding:;
+    margin:;
+    vertical-align:;/*縦の表示位置も指定できる*/
+    background:;/*背景*/
+    font-weight:;/*文字*/
+    color:; /*文字色*/
+}
+
+/* ロゴブロック設定 */
+.leftbox{
+    float:left;/* 左寄せ */
+    height:100px;/*高さ */
+    width:15%;/* 幅 */
+    background-color: #0B243B;
+}
+.box_in{
+/* 	max-width:300px;横幅最大で300px
+	max-height:; */
+}
+
+/* 画像設定 */
+ .box_in img{
+	width:150px;
+	height:100px;
+}
+
+/* 検索・メニューブロック設定 */
+.rightbox{
+	float:left;/* 左寄せ */
+    width:85%;/* 幅 */
+	height:100px;/*高さ */
+	background-color: #0B243B;/* 背景色 */
+}
+
+/* 検索ul */
+.introduce{
+/*	position: absolute;絶対距離指定
+	top:15px;上からの距離
+	left:250px;左からの距離
+	 */
+    padding-top:; /* 領域内スペース */
+	margin:8px;/* 領域外スペース */
+}
+
+/* プルダウンメニュー */
+.select{
+	height:25px;/*高さ */
+}
+
+/* キーワード入力欄 */
+.search{
+    width:400px;/* 幅 */
+	height:20px;/*高さ */
+}
+
+input.submit_btn:{
+	padding: 15px 40px;
+    font-size: 1.5em;
+    background-color: #000;
+    color: #fff;
+    border-style: none;
+    clear:both;
+}
+
+/* 検索ボタン+ホバーアクション */
+input.submit_btn:hover{
+	cursor: pointer; /* 指マークにする */
+	opacity:0.5; /* 透過 */
+
+}
+
+/* .submit_btn:after{
+	content:"";要素の直前または直後に、文字列や画像などのコンテンツを挿入する
+	clear: both;
+} */
+
+
+.manuber{
+}
+
+.manu{
+	position: absolute;/* 絶対距離指定 */
+	top:50px;/* 上からの距離 */
+	right:30px;/* 右からの距離 */
+}
+
+/* メニューブロック */
+.manu li a{
+	color:white;/* 文字色 */
+	text-decoration:none; /* 下線ナシ */
+	padding:0.8em; /* 領域内スペース */
+	margin:0.5em; /* 領域外スペース */
+	/* background-color: #0B243B;背景色 */
+}
+
+/* メニュー+ホバーアクション */
+.manu li a:hover{
+    color:#2E9AFE;/* 文字色変化 */
+    background-color:#f0f8ff; /* 背景色変化 */
+}
+
+
+
+/*フッター基本設定  */
+.footer{
+	height: 80xp;/*高さ */
+	line-height:75px;/* 行の高さ */
+	background-color:#0B243B ;/*背景色 */
+	clear:both;/*回り込みを解除  */
+	text-align:center;/* 文字中央寄せ */
+	color:white;/* 文字色 */
+	font-size: 15px;/* 文字の大きさ */
+	margin-top:10px;
+}
