@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+body{
+	width:100%;
+	left:0;
+}
+
+.box1{
+	width:90%;
+	margin:0 auto;
+	text-align:center;
+}
+
+li{
+	height:350px;
+}
+
+a{
+	text-decoration:none;
+}
+
+a:link { color: black;
+}
+
+a:visited { color: black;
+}
