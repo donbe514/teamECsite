@@ -22,10 +22,9 @@
 		</action>
 
 		<!-- ログアウト・ログイン画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+<!-- 		<action name="LogoutAction" class="com.internousdev.ECsite.action.LoginAction" method="logout">
 			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
-		</action>
+		</action> -->
 
 		<!-- マイページ画面遷移 -->
 		<action name="MyPageAction" class="com.internousdev.ECsite.action.MyPageAction" method="execute">
@@ -71,7 +70,7 @@
 
 		<!--////////////////ログイン認証機能///////////////-->
 		<!-- ログイン認証 -->
-		<action name="LoginAction" class="com.internousdev.ECsite.action.LoginAction" method="execute">
+		<action name="LoginAction" class="com.internousdev.ECsite.action.LoginAction" method="login">
 			<result name="success">Home.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
@@ -90,12 +89,6 @@
 
 
 		<!--////////////////商品一覧機能///////////////-->
-		<!-- 商品詳細画面推移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
-		</action>
-
 		<!-- カート追加ボタン機能 -->
 		<action name="CartInAction" class="com.internousdev.ECsite.action.CartAction" method="CartIn">
 			<result name="success">Cart.jsp</result>
@@ -136,14 +129,14 @@
 		</action> -->
 
 
-				<!--////////////////決済完了機能///////////////-->
+		<!--////////////////決済完了機能///////////////-->
 		<!-- 決済完了画面遷移 -->
 		<action name="BuyItemConfilmAction" class="com.internousdev.ECsite.action.BuyItemConfilmAction" method="execute">
 			<result name="success">BuyItemComplate.jsp</result>
 		</action>
 
 		<!-- 決済完了登録完了ボタン -->
-		<action name = "BuyItemComplateAction" class = "com.internousdev.ECsite.action.BuyItemComplateAction" method = "execute">
+		<action name = "BuyItemComplateAction" class = "com.internousdev.ECsite.action.SuccessReturn" method = "execute">
 			<result name ="success">Home.jsp</result>
 		</action>
 
