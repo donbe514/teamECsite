@@ -31,6 +31,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 	public Map<String, Object> session;
 
+	private String errorMessage="";
+
    private LoginDAO loginDAO = new LoginDAO();
 
 	private UserDTO userDTO = new UserDTO();
@@ -38,25 +40,99 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 
 	public String execute() {
+		String result = SUCCESS;
+		int log = 0;
 
-		String result = ERROR;
+		userDTO =loginDAO.userSearch(user_id);
 
-		userDTO = loginDAO.getLoginUserInfo(user_id, password);
 
-		session.put("user_info", userDTO);
-		session.put("user_id", userDTO.getUser_id());
-		String login_id = userDTO.getUser_id();
 
-		if(login_id!=null) {
-			boolean flgresult = loginDAO.loginFlg(user_id, 1);
+		if(userDTO.getUser_id()==null) {
+			setErrorMessage("IDが正しくありません。<br>");
+			log++;
+		}
 
-			if(flgresult){
-				result=SUCCESS;
+		if(!(userDTO.getPassword().equals(password))){
+			setErrorMessage(errorMessage+"入力されたパスワードが異なります。<br>");
+			log++;
+		}
 
-			}
+		if(user_id.equals("")){
+			setErrorMessage(errorMessage+"IDを入力してください。<br>");
+			log++;
+		}
+		if(password.equals("")){
+			setErrorMessage(errorMessage+"パスワードを入力してください。<br>");
+			log++;
+		}
+
+		if(user_id.length() < 1){
+			setErrorMessage(errorMessage+"IDは1文字以上8文字以下で入力してください。<br>");
+			log++;
+		}
+		if(password.length() < 1){
+			setErrorMessage(errorMessage+"パスワードは1文字以上16文字以下で入力してください。<br>");
+			log++;
+		}
+
+		if(user_id.length() >8){
+			setErrorMessage(errorMessage+"IDは1文字以上8文字以下で入力してください。<br>");
+			log++;
+		}
+		if(password.length() > 16){
+			setErrorMessage(errorMessage+"パスワードは1文字以上16文字以下で入力してください。<br>");
+			log++;
+		}
+
+		if (!(user_id.matches("^[a-zA-Z0-9]+$"))) {
+			setErrorMessage(errorMessage+"IDは半角英数字で入力してください。<br>");
+			log++;
+		}
+
+		if (!(password.matches("^[a-zA-Z0-9]+$"))) {
+			setErrorMessage(errorMessage+"パスワード半角英数字で入力してください。<br>");
+			log++;
+		}
+
+		if(log>0){
+			result=ERROR;
+		}else{
+
+              userDTO = loginDAO.getLoginUserInfo(user_id, password);
+              if(user_id.equals(userDTO.getUser_id())){
+            	  if(password.equals(userDTO.getPassword())){
+                      session.put("user_id", userDTO.getUser_id());
+        			String login_id = userDTO.getUser_id();
+        		if(login_id!=null) {
+        				boolean flgresult = loginDAO.loginFlg(user_id, 1);
+
+        				if(flgresult){
+        					result=SUCCESS;
+        					}
+            	  }
+              }
 
 	}
+		}
 	return result;
+	}
+
+
+
+	/**
+	 * @return errorMessage
+	 */
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+
+
+	/**
+	 * @param errorMessage セットする errorMessage
+	 */
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 

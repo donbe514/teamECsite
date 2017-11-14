@@ -10,14 +10,14 @@ import com.internousdev.ECsite.util.DBConnector;
 
 public class LoginDAO {
 
-	private UserDTO userDTO = new UserDTO();
-
 
 	public UserDTO getLoginUserInfo(String user_id, String password){
+		UserDTO userDTO = new UserDTO();
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
 		String sql ="SELECT * FROM user_info where user_id = ? AND password = ?";
+
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -37,6 +37,34 @@ public class LoginDAO {
 		}
 		 return userDTO;
 	}
+
+
+	public UserDTO userSearch (String user_id){
+		UserDTO userDTO = new UserDTO();
+    	DBConnector dbConnector = new DBConnector();
+    	Connection connection = dbConnector.getConnection();
+
+    	String sql = "SELECT * FROM user_info where user_id = ?";
+
+    	try{
+    		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    		preparedStatement.setString(1,user_id);
+
+    		 ResultSet resultSet = preparedStatement.executeQuery();
+    		 if(resultSet.next()) {
+    			 userDTO.setUser_id(resultSet.getString("user_id"));
+    			 userDTO.setPassword(resultSet.getString("password"));
+    		 }
+
+
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	return userDTO;
+    }
+
+
+
 
 	public boolean loginFlg(String user_id ,int loginFlg){
 		DBConnector dbConnector = new DBConnector();
@@ -60,10 +88,4 @@ public class LoginDAO {
 
 		return result;
 	}
-
-
-	public UserDTO getUserDTO(){
-		return userDTO;
-	}
-
 }

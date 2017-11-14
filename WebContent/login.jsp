@@ -23,8 +23,11 @@
    <h2>ログイン</h2>
    <s:form action="LoginAction">
    <tr>
+   <s:if test="errorMessage!=''">
+     <s:property value="errorMessage" escape="false" />
+     </s:if>
    <td><label>ユーザーID</label></td>
-     <td><s:textfield name="user_id" maxlength="8"/></td>
+     <td><s:textfield name="user_id" /></td>
       </tr>
 
       <tr>
