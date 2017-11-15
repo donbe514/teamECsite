@@ -12,6 +12,8 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" href="./css/body.css">
+	<link rel="stylesheet" href="./css/animate.min.css">
+<!-- 	<link rel="stylesheet" type="text/css" href="css/tuesday.min.css" /> -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
@@ -34,19 +36,18 @@
 	</script>
 </head>
 <body>
-<br>
+<div class="logo">
+	<h1 class="animated rubberBand">Komazon!</h1>
+</div>
+<h3>Komazonはどんな物も取り扱う通販サイトです。Komazonに不可能はありません。貴方に幸せをお届けします。</h3>
 <div class="box1">
 	<ul class="slider" >
-		<s:iterator value="itemList">
-			<li><a href=""><img src="./images/Anubarak.jpg" width=100% height=300px>こんにちは</a></li>
+		<s:iterator value="#session.itemList" status="pi">
+			<li><a href="<s:url action='GoDetailAction'><s:param name='product_id' value='#session.itemList[#pi.index].product_id'/></s:url>">
+				<img src="<s:property value='image_file_path'/>" width=100% height=200px />
+				<s:property value="product_name"/></a>
+			</li>
 		</s:iterator>
-		<li><a href=""><img src="./images/buyresult.jpg" width=100% height=300px></a></li>
-		<li><a href=""><img src="./images/coldking.jpg" width=100% height=300px></a></li>
-		<li><a href=""><img src="./images/Create.jpg" width=100% height=300px></a></li>
-		<li><a href=""><img src="./images/create1.jpg" width=100% height=300px></a></li>
-		<li><a href=""><img src="./images/Feugen.jpg" width=100% height=300px></a></li>
-		<li><a href=""><img src="./images/fireboo.jpg" width=100% height=300px></a></li>
-		<li><a href=""><img src="./images/footer.jpg" width=100% height=300px></a></li>
 	</ul>
 </div>
 </body>

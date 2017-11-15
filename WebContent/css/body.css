@@ -12,7 +12,7 @@ body{
 }
 
 li{
-	height:350px;
+	height:250px;
 }
 
 a{
@@ -23,4 +23,15 @@ a:link { color: black;
 }
 
 a:visited { color: black;
+}
+
+.logo{
+	width:90%;
+	margin:0 auto;
+	text-align:center;
+	font-size:40px;
+}
+
+h3{
+	text-align:center;
 }

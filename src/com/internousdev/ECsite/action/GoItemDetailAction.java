@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class GoItemDetailAction extends ActionSupport {
 
 	private ArrayList<ItemDTO> itemList;
+	private ArrayList<ItemDTO> stockList = new ArrayList<ItemDTO>();
 
 	private int product_id;
 	private String product_name;
@@ -19,6 +20,8 @@ public class GoItemDetailAction extends ActionSupport {
 	private String release_date;
 	private String image_file_path;
 	private int stock;
+	private int[] buyitemcount;
+
 
 	public String execute() {
 		ItemDTO itemDTO = new ItemDTO();
@@ -38,8 +41,16 @@ public class GoItemDetailAction extends ActionSupport {
 
 		}
 
+		buyitemcount = new int[stock];
+
+		for(int i=0;i<stock;i++){
+		buyitemcount[i]=i+1;
+		}
+
 		return SUCCESS;
 	}
+
+
 
 	/**
 	 * @return product_name
@@ -189,6 +200,18 @@ public class GoItemDetailAction extends ActionSupport {
 	 */
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+
+
+	public int[] getBuyitemcount() {
+		return buyitemcount;
+	}
+
+
+
+	public void setBuyitemcount(int[] buyitemcount) {
+		this.buyitemcount = buyitemcount;
 	}
 
 }

@@ -62,11 +62,9 @@
 		</table>
 		<s:if test="stock!=0">
 			<select name="item_count">
-				<option value=1 label=1>
-				<option value=2 label=2>
-				<option value=3 label=3>
-				<option value=4 label=4>
-				<option value=5 label=5>
+			<s:iterator value="buyitemcount" status="bi">
+				<option value="<s:property value='#bi.count'/>"><s:property value="#bi.count"/></option>
+			</s:iterator>
 			</select>
 			<input type="hidden" value='<s:property value="product_id" />' name="product_id">
 			<input type="submit" value="カートに入れる">
@@ -76,7 +74,6 @@
 		</s:else>
 		<input type="button" value="前のページ（商品一覧）へ戻る" onclick="history.back()">
 	</form>
-
 
 
 </body>
