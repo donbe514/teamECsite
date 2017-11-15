@@ -26,5 +26,16 @@
       <img src='<s:property value="image_file_path"/>'width="400" height="250"></a>
   </s:iterator>
 
+  <s:iterator value="pages" status="it">
+ 	<a href='<s:url action="IntroduceAction">
+ 			<s:param name="SearchText" value="product_name" />
+ 			<s:param name="category_id" value="category_id" />
+ 			<s:param name="LimitFlag" value="1" />
+ 			<s:param name="page" value="#it.count" />
+ 			</s:url>'>
+ 			<s:property value="#it.count"/>
+ 	</a>
+ </s:iterator>
+
 </body>
 </html>

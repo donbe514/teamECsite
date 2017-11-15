@@ -11,9 +11,9 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport implements SessionAware{
     private int id;
 
-    private String user_id;
+    private String user_id="";
 
-    private String password;
+    private String password="";
 
 	private String family_name_kana;
 
@@ -51,8 +51,10 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			setErrorMessage("IDが正しくありません。<br>");
 			log++;
 		}
-
-		if(!(userDTO.getPassword().equals(password))){
+		if(userDTO.getPassword()==null){
+			setErrorMessage(errorMessage+"入力されたパスワードが異なります。<br>");
+			log++;
+		}else if(!(userDTO.getPassword().equals(password))){
 			setErrorMessage(errorMessage+"入力されたパスワードが異なります。<br>");
 			log++;
 		}
