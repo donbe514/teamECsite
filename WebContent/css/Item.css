@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+#mainbox{
+  width:1600px;
+  margin:0 auto;
+
+}
+
+.itembox{
+  float:left;
+  width:250px;
+  height:300px;
+}
+
+.boxclear{
+  clear:both;
+}
+
+.imageleft{
+  margin-right: auto;
+}
