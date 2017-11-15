@@ -19,7 +19,9 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	public String execute(){
 
 		RandomForm rf = new RandomForm();
-		session.put("tmpID", rf.RandomStr(16));//16桁の仮IDの発行
+		if(session.get("tmpID")==null){
+			session.put("tmpID", rf.RandomStr(16));//16桁の仮IDの発行
+		}
 		ItemDAO itemDAO = new ItemDAO();
 		itemList = itemDAO.select(0, "",1,0);
 		session.put("itemList", itemList);

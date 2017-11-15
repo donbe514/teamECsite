@@ -97,7 +97,7 @@ table {
      <table>
 
    <tr>
-   <td >ユーザーID</td><td><input type= text name="user_id" value=""  /></td>
+   <td >ユーザーID</td><td><input type= text name="user_id" value="<s:property value='save_user'/>"  /></td>
       </tr>
 
       <tr>

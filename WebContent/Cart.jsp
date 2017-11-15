@@ -9,10 +9,11 @@
 </head>
 <body>
 
-<s:if test="message != ''">
+<s:if test="CartEnptyFlag">
 	<s:property value="message"/>
 </s:if>
 <s:else>
+	<s:property value="message"/>
 	<s:iterator value="CartAry">
 		<form action="CartDellAction">
 			<img src='<s:property value="image_file_path"/>'>

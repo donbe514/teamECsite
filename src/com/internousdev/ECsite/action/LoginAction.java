@@ -2,6 +2,11 @@ package com.internousdev.ECsite.action;
 
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.ECsite.dao.LoginDAO;
@@ -37,9 +42,18 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 	private UserDTO userDTO = new UserDTO();
 
+	private String save_user ="";
+
 
 
 	public String execute() {
+
+		// GET HttpServletRequest
+		HttpServletRequest request = ServletActionContext.getRequest();
+
+		// GET HttpServletResponse
+		HttpServletResponse response = ServletActionContext.getResponse();
+
 		String result = SUCCESS;
 		int log = 0;
 
@@ -99,26 +113,62 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		if(log>0){
 			result=ERROR;
 		}else{
-
               userDTO = loginDAO.getLoginUserInfo(user_id, password);
               if(user_id.equals(userDTO.getUser_id())){
             	  if(password.equals(userDTO.getPassword())){
                       session.put("user_id", userDTO.getUser_id());
-        			String login_id = userDTO.getUser_id();
-        		if(login_id!=null) {
+                      session.put("user_name", userDTO.getFamily_name()+" "+userDTO.getFirst_name());
+                      String login_id = userDTO.getUser_id();
+                      if(login_id!=null) {
         				boolean flgresult = loginDAO.loginFlg(user_id, 1);
 
         				if(flgresult){
         					result=SUCCESS;
-        					}
+        				}
+                      }
             	  }
-              }
 
-	}
+              }
 		}
+
+		if(hozon){
+			Cookie cookie = new Cookie("save_user", user_id);
+			cookie.setMaxAge(31536000);
+
+	        //httpsで稼働している環境であればCookieが暗号化されるようSecure属性をつける
+	        if ("https".equals(request.getScheme())) {
+	            cookie.setSecure(true);
+	        }
+	        response.addCookie(cookie);
+
+		}
+		LoginPage();
+
 	return result;
 	}
 
+	public String LoginPage() {
+		// GET HttpServletRequest
+		HttpServletRequest request = ServletActionContext.getRequest();
+
+		Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("save_user".equals(cookie.getName())) {
+                	save_user = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+		return SUCCESS;
+	}
+
+	public String Logout(){
+		session.clear();
+
+		return SUCCESS;
+	}
 
 
 	/**
@@ -350,6 +400,14 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	}
 
 
+
+	public String getSave_user() {
+		return save_user;
+	}
+
+	public void setSave_user(String save_user) {
+		this.save_user = save_user;
+	}
 
 	/**
 	 * sessionを設定します。

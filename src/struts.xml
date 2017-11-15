@@ -17,14 +17,14 @@
 
 		<!--////////////////ヘッダー機能///////////////-->
 		<!-- ログイン・ログイン画面遷移 -->
-		<action name="LoginPageAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+		<action name="LoginPageAction" class="com.internousdev.ECsite.action.LoginAction" method="LoginPage">
 			<result name="success">login.jsp</result>
 		</action>
 
 		<!-- ログアウト・ログイン画面遷移 -->
-<!-- 		<action name="LogoutAction" class="com.internousdev.ECsite.action.LoginAction" method="logout">
+		<action name="LogoutAction" class="com.internousdev.ECsite.action.LoginAction" method="Logout">
 			<result name="success">index.jsp</result>
-		</action> -->
+		</action>
 
 		<!-- マイページ画面遷移 -->
 		<action name="MyPageAction" class="com.internousdev.ECsite.action.MyPageAction" method="execute">
@@ -92,7 +92,7 @@
 		<!-- カート追加ボタン機能 -->
 		<action name="CartInAction" class="com.internousdev.ECsite.action.CartAction" method="CartIn">
 			<result name="success">Cart.jsp</result>
-			<result name="error">Home.jsp</result>
+			<result name="error">Cart.jsp</result>
 		</action>
 
 

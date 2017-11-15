@@ -19,6 +19,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 	private String message = "";
 	public ArrayList<ItemDTO> CartAry = new ArrayList<ItemDTO>();
 	public Map<String,Object> session;
+	private boolean CartEnptyFlag=false;
 
 
 	/**
@@ -48,6 +49,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 			CartAry = CartShowDAO.CartShow(now_user);
 			if(CartAry.isEmpty()){
 				message = "カートに商品がありません";
+				CartEnptyFlag = true;
 			}else{
 				Iterator<ItemDTO> itr = CartAry.iterator();
 				ItemDTO CartListDTO = new ItemDTO();
@@ -148,6 +150,14 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 	public void setCartAry(ArrayList<ItemDTO> cartAry) {
 		CartAry = cartAry;
+	}
+
+	public boolean isCartEnptyFlag() {
+		return CartEnptyFlag;
+	}
+
+	public void setCartEnptyFlag(boolean cartEnptyFlag) {
+		CartEnptyFlag = cartEnptyFlag;
 	}
 
 

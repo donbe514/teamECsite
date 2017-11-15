@@ -80,7 +80,7 @@
         	<li>
       			<!-- ログイン画面へ遷移（ログイン状態で表示） -->
         		<s:if test="#session.user_id != null">
-          			<a href='<s:url action ="LogoutAction" />' target="body">ログアウト🔒</a>
+          			<a href='<s:url action ="LogoutAction" />' target="_parent">ログアウト🔒</a>
         		</s:if>
       		</li>
         	<li>
