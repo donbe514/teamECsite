@@ -14,11 +14,11 @@
 </head>
 <body>
 
-<div class= headermanu>
+<div class= "headermanu">
 	<!-- ロゴ画像ボックス -->
 	<div class="leftbox">
-		<!-- ロゴ画像（仮） -->
-		<img src = "./images/中日.jpg" class = "logo">
+		<!-- ロゴ画像（仮）画像クリックでホームに戻ります -->
+		<a href='<s:url action="HomeAction" />' target="_parent" ><img src = "./images/中日.jpg" class = "logo"></a>
 	</div>
 
 	<!-- メニュー、検索ブロック -->
@@ -26,7 +26,7 @@
 
 		<!-- 検索バー -->
 		<ul class = "introduce">
-		<!-- 検索 -->
+			<!-- 検索 -->
 			<li>
 				<form action = "IntroduceAction" target = "body">
 					<select name = "category_id" class="select">
@@ -40,25 +40,27 @@
 					<input type="submit" value="検索" class="submit_btn">
 				</form>
 			</li>
-		<!-- 広告 -->
+			<!-- 商品広告 -->
 			<li>
-				<a href='<s:url action = "IntroduceAction"><s:param name="category_id" value="2"/></s:url>' target="body" class="poster" ><span class="year">2017年<span class="electric">最新家電</span>📺</span>はこちらをチェック✔</a>
+				<a href='<s:url action = "IntroduceAction"><s:param name="category_id" value="2"/><s:param name="LimitFlag" value="1"/></s:url>' target="body" class="poster" ><span class="year">2017年<span class="electric">最新家電</span>&#x1F4FA;<!-- 📺 --><!-- &#x1F4FB; --></span>はこちらをチェック✔</a>
 			</li>
 		</ul>
 
-		<!-- メニューバー -->
+	<!-- メニューバー -->
 	<div class = "manuber">
 		<!-- ユーザーへの挨拶文 -->
 		<ul>
 			<li>
+				<!-- ログイン前ver -->
 				<s:if test="#session.user_id == null">
 					<a class="greeting"><marquee width="150%" behavior="alternate" scrollamount="1" >ようこそ！ ゲストさん。</marquee></a>
 				</s:if>
 			</li>
 			<li>
+				<!-- ログイン後ver -->
 				<s:if test="#session.user_id != null">
-					<a class="greeting"><marquee width="120%" behavior="alternate" scrollamount="1" >ようこそ！ <s:property value = "#session.first_name" /><s:property value = "#session.family_name" />さん。</marquee></a>
-			</s:if>
+					<a class="greeting"><marquee width="120%" behavior="alternate" scrollamount="1" >ようこそ！ <s:property value = "#session.user_name" />さん。</marquee></a>
+				</s:if>
 			</li>
 		</ul>
 		<!-- メニュー -->
@@ -82,24 +84,22 @@
         		</s:if>
       		</li>
         	<li>
-      			<!-- 商品一覧画面へ遷移(エラー出ます……) -->
-       			<a href='<s:url action = "IntroduceAction"><s:param name="SearchText" value=""/><s:param name="LimitFlag" value="1"/></s:url>' target="body" >商品一覧📚</a>
+      			<!-- 商品一覧画面へ遷移-->
+       			<a href='<s:url action = "IntroduceAction"><s:param name="SearchText" value=""/><s:param name="LimitFlag" value="1"/></s:url>' target="body" >商品一覧&#x1F381;<!-- 📚 --></a>
         	</li>
         	<li>
       			<!-- カート画面へ遷移 -->
-        		<a href='<s:url action ="CartAction" />' target="body" >カート🛒</a>
+        		<a href='<s:url action ="CartAction" />' target="body" >カート&#x1F448;</a>
         	</li>
         	<li>
        			<!-- 管理画面に遷移 -->
-<%--        <s:if test="#session.user_id == taro "> --%>
-        		<a href='<s:url action = "ManagementAction" />' target="body">管理画面🚫</a>
-<%--         </s:if> --%>
+       			<s:if test="#session.user_id == 'taro'">
+        			<a href='<s:url action = "ManagementAction" />' target="body">管理画面🚫</a>
+        		</s:if>
         	</li>
 		</ul>
 	</div>
-
 	</div>
-
 </div>
 <script type="text/javascript" src="./js/script.js"></script>
 </body>

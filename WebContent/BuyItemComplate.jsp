@@ -11,25 +11,34 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title>決済完了</title>
-<link rel="stylesheet" type="text/css" href="./CSS/MainStyle.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" href="./css/animate.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<style type="text/css">
+.thank{
+	font-size:50px;
+	color:#008B8B;
+	font-weight:bold;
+}
+p{
+	text-align:center
+}
+</style>
 </head>
 <body>
-	<div id="header">
-	 	<div id="pr"></div>
-	</div>
-	<div id="main">
-		<div id="top">
-			<p>決済完了</p>
-		</div>
-		<div>
-			<p>決済が完了致しました。</p>
-			<div>
-				<p>Homeへ戻る場合は<a href='<s:url action="BuyItemComplateAction" />'>こちら</a></p>
-			</div>
-		</div>
-	</div>
-	<div id="footer">
-		<div id="pr"></div>
-	</div>
+<div class="header">
+	<h1>❐　決済完了</h1>
+</div>
+<div class="main">
+	<p class="animated rubberBand"><span class="thank">ご購入ありがとうございます！</span></p><br><br>
+	<p>決済が完了致しました。</p><br><br>
+	<p>Homeへ戻る場合は<a href='<s:url action="BuyItemComplateAction" />' target="_parent">こちら</a></p>
+</div>
+<div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>
