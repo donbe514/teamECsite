@@ -35,3 +35,27 @@ a:visited { color: black;
 h3{
 	text-align:center;
 }
+
+/*フッターブロック基本設定  */
+.footer{
+	clear:both;/*回り込みを解除  */
+	margin-top:10px;/* 領域外スペース */
+	line-height:75px;/* 行の高さ */
+	height: 80xp;/*高さ */
+	background-color:#0B243B ;/*背景色 */
+	text-align:center;/* 文字中央寄せ */
+	font-size: 17px;/* 文字の大きさ */
+	color:white;/* 文字色 */
+}
+
+/* フッターリンク設定 */
+.footer a{
+	color:white;/* 文字色 */
+	text-decoration:none; /* 下線ナシ */
+}
+
+/* フッターホバーアクション */
+.footer a:hover{
+    border-bottom: dotted 1px #fff;/* 下線部に白点線表示 */
+    font-weight:bold;/* 文字の太さ */
+}
