@@ -143,21 +143,20 @@
 
 		<!--////////////////マイページ機能///////////////-->
 		<!-- 商品購入履歴画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
+		<action name="HistoryAction" class="com.internousdev.ECsite.action.HistoryAction" method="historyshow">
+			<result name="success">history.jsp</result>
 			<result name="error">index.jsp</result>
 		</action>
 
 		<!-- 商品購入履歴削除画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
+		<action name="HistoryComfirm" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
+			<result name="success">historyscomfirm.jsp</result>
 			<result name="error">index.jsp</result>
 		</action>
 
-		<!-- 商品購入履歴削除完了画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<!-- 商品購入履歴削除機能 -->
+		<action name="historydelete" class="com.internousdev.ECsite.action.HistoryAction" method="delete">
+			<result name="success">history.jsp</result>
 		</action>
 
 
