@@ -13,39 +13,120 @@
    <meta name="keywords" content="" />
    <meta charset="utf-8">
 <title>Login画面</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<style type="text/css">
+body {
+/* 		   margin:0; */
+/* 		   padding:0; */
+/* 		   line-height:1.6; */
+/* 		   letter-spacing:1px; */
+/* 		   font-family:Verdana, Helvetica, sans-serif; */
+/* 		   font-size:18px; */
+/* 		   color:#333; */
+/* 		   background:#fff; */
+		}
+
+table {
+		position:absolute;
+       top:225px;
+       left:550px;
+			}
+
+
+/* .header{ */
+/* 		width: 100%; */
+/* 		height: 80px; */
+/* 		background-color:#030303; */
+/* 		} */
+
+.center{
+        width:95%;
+        height:80px;
+		font-size: 50px;
+		color:#248;
+		text-align:center;
+		font-weight:bold;
+      }
+
+.main {
+		   width: 100%;
+		   height: 500px;
+		   text-align: center;
+
+		   }
+
+
+
+.bt {
+      font-size:18px;
+      font-weight:bold;
+      background-color:#248;
+      color:white;
+       padding: 8px 20px;
+       border-style: none;
+       moz-border-radius: 25px;
+     webkit-border-radius: 25px;
+       border-radius: 25px;
+       position:absolute;
+       top:250px;
+       left:550px;
+
+
+}
+
+
+.link {
+			position:absolute;
+       top:450px;
+       left:550px;
+}
+
+</style>
 </head>
 <body>
-<div id="header">
-</div>
+<div class="header">
+	 <div class="center"><p>ログイン</p></div>
+	</div>
 
-<div id="main">
-  <div id="certer">
-   <h2>ログイン</h2>
-   <s:form action="LoginAction">
-   <tr>
-   <s:if test="errorMessage!=''">
+<div class="main">
+  <form action="LoginAction">
+    <s:if test="errorMessage!=''">
      <s:property value="errorMessage" escape="false" />
      </s:if>
-   <td><label>ユーザーID</label></td>
-     <td><s:textfield name="user_id" /></td>
+
+     <table>
+
+   <tr>
+   <td >ユーザーID</td><td><input type= text name="user_id" value=""  /></td>
       </tr>
 
       <tr>
-      <td><label>パスワード</label></td>
-      <td><s:password name="password"/></td>
-      <s:checkbox name="hozon" key="保存" />
-     <s:submit value="ログイン"/>
+      <td>パスワード</td><td><input type=password name="password" value="" /></td>
+      </tr>
+
+      <tr>
+      <td><label>保存</label></td>
+      <td><input type=checkbox  value="保存" class="hozon" /></td>
+      </tr>
+      </table>
+
+      <input type="submit" value="ログイン" class="bt"  />
 
 
-   </s:form>
-   </div>
+   </form>
+
    <br/>
-
-   <div id="Link">
+	<div class="link">
     <p>新規登録の方は<a href='<s:url action="UserAction" />'>こちら</a></p>
     <p>パスワードを忘れた方は<a href='<s:url action="SaipassAction" />'>こちら</a></p>
    </div>
 
+
+
    </div>
+<div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
+
 </body>
-</html>
