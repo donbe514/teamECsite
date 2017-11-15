@@ -34,9 +34,8 @@ public class AddressAction extends ActionSupport implements SessionAware {
 	//session.put("user_id", "taro");		//後で消す テスト用
 		String result = ERROR;
 
-		String user_id = session.get("user_id").toString();
-
-		if(user_id!=null){//ユーザーログインしていなかったら、ログイン画面に飛ばす用　*駒村
+		if(session.get("user_id")!=null){//ユーザーログインしていなかったら、ログイン画面に飛ばす用　*駒村
+			String user_id = session.get("user_id").toString();
 			addressDTOList = addressDAO.getAddressInfo(user_id);
 
 			result = SUCCESS;
