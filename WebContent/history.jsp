@@ -16,7 +16,7 @@
 <h2>お客様の購入履歴</h2>
 
 <!-- 購入履歴がない場合 -->
-<s:if test="historyList == null">
+<s:if test="HistryFlag">
 	<h3>購入履歴はありません。</h3>
 </s:if>
 

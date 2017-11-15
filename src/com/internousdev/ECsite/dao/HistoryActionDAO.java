@@ -61,7 +61,7 @@ public class HistoryActionDAO {
     //商品履歴削除
     public void  Delete(String user_id) throws SQLException {
 
-    String sql ="DELETE"
+    String sql ="DELETE "
             + "FROM purchase_history_info "
             + "WHERE "
             + "user_id = ? ";
@@ -69,11 +69,13 @@ public class HistoryActionDAO {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,user_id);
 
+        preparedStatement.execute();
+
     } catch(Exception e){
         e.printStackTrace();
     } finally {
         connection.close();
-        
+
     }
     }
 }

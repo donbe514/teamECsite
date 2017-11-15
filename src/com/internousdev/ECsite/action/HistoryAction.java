@@ -16,7 +16,7 @@ public class HistoryAction extends ActionSupport implements SessionAware {
     public Map<String, Object> session;
 
     public ArrayList<ItemDTO> historyList = new ArrayList<ItemDTO>();
-
+    private boolean HistryFlag = false;
 
     public String historyshow() throws SQLException{
 
@@ -28,8 +28,27 @@ public class HistoryAction extends ActionSupport implements SessionAware {
 
 
     historyList = historyAction.getMyPageUserInfo(user_id);
+    if(historyList.isEmpty()){
+    	HistryFlag = true;
+    }
 
     return result;
+    }
+
+
+    public String delete() throws SQLException{
+
+        String result = SUCCESS;
+
+        String user_id = session.get("user_id").toString();
+
+        HistoryActionDAO historyAction = new HistoryActionDAO();
+
+        historyAction.Delete(user_id);
+
+        HistryFlag = true;
+
+        return result;
     }
 
     public void setSession(Map<String, Object> session) {
@@ -44,18 +63,15 @@ public class HistoryAction extends ActionSupport implements SessionAware {
         this.historyList = historyList;
     }
 
-    public String delete() throws SQLException{
 
-        String result = SUCCESS;
+	public boolean isHistryFlag() {
+		return HistryFlag;
+	}
 
-        String user_id = session.get("user_id").toString();
 
-        HistoryActionDAO historyAction = new HistoryActionDAO();
+	public void setHistryFlag(boolean histryFlag) {
+		HistryFlag = histryFlag;
+	}
 
-        historyAction.Delete(user_id);
-
-        historyList = null;
-        return result;
-    }
 
 }
