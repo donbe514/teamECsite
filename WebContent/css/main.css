@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/* 基本設定 */
+body {
+		margin:0;/* 領域外スペース */
+		padding:;/* 領域内スペース */
+		line-height:;/* 行の高さ */
+		letter-spacing:;/*文字の間隔*/
+		font-family:/* 文字フォント */
+							"Avenir Next", "century gothic", "Helvetica Neue", Helvetica, Arial,
+							"游ゴシック体",YuGothic, "游ゴシック Medium", "YuGothic M",
+        					"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+		font-size:16px;/* 文字の大きさ */
+		font-weight:500;/* 文字の太さ */
+		color:black;/* 文字色 */
+}
+
+/* ヘッダーブロック設定 */
+.header{
+	margin-top:20px;
+	padding: 5px 5px 5px 20px;
+	border: ridge 1px #A4A4A4;/* 外枠 */
+	border-radius: 10px;/* 角を丸くする */
+	background-color:#FFFAFA;“
+}
+
+/* 見出しh1 */
+h1{
+	font-family:'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+						Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+}
+
+/* メインブロック設定 */
+.main{
+	clear:both;/*回り込みを解除  */
+	padding: 10px 5px 10px 10px;/* 領域内スペース */
+	margin:0;/* 領域外スペース */
+	border: ridge 1px #A4A4A4;/* 外枠 */
+	border-radius: 10px;/* 角を丸くする */
+	background-color:#F0F8FF;/* 背景色 */
+	/* width:100%; *//* 2カラムver */
+}
+
+/* メイン左ブロック *//* 2カラムver */
+/* .left{
+	float:left;
+	width:85%;
+	height:800px;
+	border: ridge 1px #A4A4A4;
+	border-radius: 10px;
+	background-color:#F0F8FF;
+	padding: 10px 5px 10px 10px;
+	margin:0;
+} */
+
+/* メイン右ブロック *//* 2カラムver */
+/* .right{
+	float:left;
+	background-color:#F8F8FF;
+	width:10%;
+	height:800px;
+	border: ridge 1px #A4A4A4;
+	border-radius: 10px;
+	padding: 10px 5px 10px 10px;
+	margin-bottto::0;
+} */
+
+
+/*フッターブロック基本設定  */
+.footer{
+	clear:both;/*回り込みを解除  */
+	margin-top:10px;/* 領域外スペース */
+	line-height:75px;/* 行の高さ */
+	height: 80xp;/*高さ */
+	background-color:#0B243B ;/*背景色 */
+	text-align:center;/* 文字中央寄せ */
+	font-size: 17px;/* 文字の大きさ */
+	color:white;/* 文字色 */
+}
+
+/* フッターリンク設定 */
+.footer a{
+	color:white;/* 文字色 */
+	text-decoration:none; /* 下線ナシ */
+}
+
+/* フッターホバーアクション */
+.footer a:hover{
+    border-bottom: dotted 1px #fff;/* 下線部に白点線表示 */
+    font-weight:bold;/* 文字の太さ */
+}

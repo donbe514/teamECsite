@@ -6,30 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>入荷確認画面</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-
-<p>追加前在庫数<s:property value ="#session.beforeStock" /></p>
-<p>追加後在庫数<s:property value="#session.stock" /></p>
-
+<div class="header">
+<h1>❐　在庫確認画面</h1>
+</div>
+<div class="main">
+<div class="left">
+<p>追加前在庫数：<b style="font-size:30px;"><s:property value ="#session.beforeStock" /></b></p>
+<p>追加後在庫数：<b style="font-size:30px;"><s:property value="#session.stock" /></b></p>
+<br><br>
 		<s:form action = "ManagementConfilmAction">
 			<tr>
-				<td>商品名</td>
-				<td><s:property value = "product_name" /></td>
+				<td>商品名:</td>
+				<td style="font-size:30px;"><b><s:property value = "product_name" /></b></td>
+			</tr>
 			<tr>
-				<td>在庫追加数</td>
-				<td><span>個数</span><s:property value = "stock" /></td>
+				<td>在庫追加数:　　</td>
+				<td style="font-size:30px;"><b><s:property value = "stock" /></b></td>
 			</tr>
 			<tr>
 				<td><s:submit value = "確定" /></td>
 			</tr>
-			<tr>
-				<td><span>前画面に戻る場合は</span><a href='<s:url action="ManagementAction" />'>こちら</a></td>
-			</tr>
 			</s:form>
-
-
-
-
+			<p style="text-align:center;">前画面に戻る場合は<a href='<s:url action="ManagementAction" />'>こちら</a></p>
+</div>
+<div class="right">
+</div>
+</div>
+<br><br>
+<div class="footer">
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>
