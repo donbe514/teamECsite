@@ -67,7 +67,7 @@ update_date datetime /*更新日*/
 
 create table destination_info(
 id int primary key not null,/*ID*/
-user_id varchar(16) not null unique,/*ユーザーID*/ /*unique*/
+user_id varchar(16) not null,/*ユーザーID*/ /*unique*/
 first_name varchar(16) not null,/*名*/
 family_name varchar(16) not null,/*姓*/
 first_name_kana varchar(16) not null,/*名かな*/

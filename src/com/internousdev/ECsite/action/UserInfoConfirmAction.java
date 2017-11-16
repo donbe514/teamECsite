@@ -1,34 +1,51 @@
 package com.internousdev.ECsite.action;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ECsite.dao.UserIdDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserInfoConfirmAction extends ActionSupport implements SessionAware {
 
-	private String family_name_kana;
 
-	private String family_name;
+	public String family_name_kana;
 
-	private String first_name_kana;
+	public String family_name;
 
-	private String first_name;
+	public String first_name_kana;
 
-	private int sex;
+	public String first_name;
 
-	private String email;
+	public int sex;
+
+	public String email;
+
+	public String user_id;
 
 	public Map<String, Object> session;
 
-	public String errorMessage;
+	public List<String> errorMessage = new ArrayList<>();
 
-	public String execute() {
+	public UserIdDAO userIdDAO = new UserIdDAO();
+
+	public String password;
+
+	public String result;
+
+
+
+	public String execute() throws SQLException {
 
 		String result = SUCCESS;
 
-		if(!(family_name_kana.equals("")) && !(family_name.equals("")) && !(first_name_kana.equals("")) && !(first_name.equals(""))  && !(email.equals(""))) {
+		if(!(user_id.equals("")) && !(password.equals("")) && !(family_name_kana.equals("")) && !(family_name.equals("")) && !(first_name_kana.equals("")) && !(first_name.equals(""))  && !(email.equals(""))) {
+			session.put("user_id" , user_id);
+			session.put("password", password);
 			session.put("family_name_kana" , family_name_kana);
 			session.put("family_name" , family_name);
 			session.put("first_name_kana" , first_name_kana);
@@ -36,14 +53,90 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			session.put("sex", sex);
 			session.put("email" , email);
 
-		} else {
-
-			setErrorMessage("未入力の項目があります。");
-		    result = ERROR;
 		}
 
+
+		if((userIdDAO.user_count(user_id)==1)){
+			errorMessage.add("ユーザーIDがすでに登録されています。");
+			result = ERROR;
+		}
+
+		if(user_id.equals("")){
+			errorMessage.add("ユーザーIDを入力してください。");
+			result = ERROR;
+		}
+
+		if(password.equals("")){
+			errorMessage.add("パスワードを入力してください。");
+			result = ERROR;
+		}
+		if(family_name.equals("")){
+			errorMessage.add("姓を入力してください。");
+			result = ERROR;
+		}
+		if(first_name.equals("")){
+			errorMessage.add("名を入力してください。");
+			result = ERROR;
+		}
+		if(family_name_kana.equals("")){
+			errorMessage.add("姓ふりがなを入力してください。");
+			result = ERROR;
+		}
+		if(first_name_kana.equals("")){
+			errorMessage.add("名ふりがなを入力してください。");
+			result = ERROR;
+		}
+
+		if(email.equals("")){
+			errorMessage.add("メールアドレスを入力してください。");
+			result = ERROR;
+		}
+
+
+		if(family_name.length()<1 || family_name.length()>16){
+			errorMessage.add("姓は1文字以上16文字以下で入力してください。");
+			result = ERROR;
+		}
+		if(first_name.length()<1 || first_name.length()>16){
+			errorMessage.add("名は1文字以上16文字以下で入力してください。");
+			result = ERROR;
+		}
+		if(family_name_kana.length()<1 || family_name_kana.length()>16){
+			errorMessage.add("姓ふりがなは1文字以上16文字以下で入力してください。");
+			result = ERROR;
+		}
+		if(first_name_kana.length()<1 || first_name_kana.length()>16){
+			errorMessage.add("名ふりがなは1文字以上16文字以下で入力してください。");
+			result = ERROR;
+		}
+
+		if(email.length()<18 || email.length()>32){
+			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
+			result = ERROR;
+		}
+		if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
+			errorMessage.add("姓ふりがなはひらがなで入力してください。");
+			result = ERROR;
+		}
+		if (!(first_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
+			errorMessage.add("名ふりがなはひらがなで入力してください。");
+			result = ERROR;
+		}
+
+
+		if (password.matches("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
+			errorMessage.add("パスワードは半角英数字、半角記号で入力してください。");
+			result = ERROR;
+		}
+
+
+
 		return result;
+
 	}
+
+
+
 	/**
 	 * family_name_kanaを取得します。
 	 * @return family_name_kana
@@ -156,20 +249,40 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 	    this.session = session;
 	}
 
+	public String getUser_id() {
+		return user_id;
+	}
 	/**
-	 * errorMessageを取得します。
-	 * @return errorMessage
+	 * @param user_id セットする user_id
 	 */
-	public String getErrorMessage() {
-	    return errorMessage;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	/**
+	 * @return userIdDAO
+	 */
+	public UserIdDAO getUserIdDAO() {
+		return userIdDAO;
+	}
+	/**
+	 * @param userIdDAO セットする userIdDAO
+	 */
+	public void setUserIdDAO(UserIdDAO userIdDAO) {
+		this.userIdDAO = userIdDAO;
 	}
 
 	/**
-	 * errorMessageを設定します。
-	 * @param errorMessage errorMessage
+	 * @return password
 	 */
-	public void setErrorMessage(String errorMessage) {
-	    this.errorMessage = errorMessage;
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password セットする password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

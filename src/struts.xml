@@ -50,21 +50,21 @@
 
 		<!--////////////////ユーザー登録機能///////////////-->
 		<!-- ユーザー情報入力画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
+		<action name="UserAction" class="com.internousdev.ECsite.action.UserAction" method="execute">
+			<result name="success">userinfo.jsp</result>
 			<result name="error">index.jsp</result>
 		</action>
 
 		<!-- 登録内容確認画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<action name="UserInfoConfirmAction" class="com.internousdev.ECsite.action.UserInfoConfirmAction" method="execute">
+			<result name="success">user_info_confirm.jsp</result>
+			<result name="error">userinfo.jsp</result>
 		</action>
 
 		<!-- 登録完了画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<action name="UserInfoComplateAction" class="com.internousdev.ECsite.action.UserInfoComplateAction" method="execute">
+			<result name="success">user_info_complate.jsp</result>
+
 		</action>
 
 
@@ -111,22 +111,22 @@
 		</action>
 
 		<!-- 宛先情報登録画面遷移 -->
-<!-- 		<action name="AddressRegistrationAction" class="com.internousdev.ECsite.action.AddressRegistrationAction" method="execute">
+		<action name="AddressRegistrationAction" class="com.internousdev.ECsite.action.AddressRegistrationAction" method="execute">
 			<result name="success">addressRegistration.jsp</result>
 
-		</action> -->
+		</action>
 
 		<!-- 宛先情報登録確認画面遷移 -->
-<!-- 		<action name="AddressRegistrationConfirmAction" class="com.internousdev.ECsite.action.AddressRegistrationConfirmAction" method="execute">
+		<action name="AddressRegistrationConfirmAction" class="com.internousdev.ECsite.action.AddressRegistrationConfirmAction" method="execute">
 			<result name="success">addressRegistrationConfirm.jsp</result>
 			<result name="error">addressRegistration.jsp</result>
-		</action> -->
+		</action>
 
 		<!-- 宛先情報登録確認完了ボタン -->
-<!-- 		<action name="AddressRegistrationComplateAction" class="com.internousdev.ECsite.action.AddressRegistrationComplateAction" method="execute">
+		<action name="AddressRegistrationComplateAction" class="com.internousdev.ECsite.action.AddressRegistrationComplateAction" method="execute">
 			<result name="success">addressRegistrationComplate.jsp</result>
 			<result name="error">Home.jsp</result>
-		</action> -->
+		</action>
 
 
 		<!--////////////////決済完了機能///////////////-->

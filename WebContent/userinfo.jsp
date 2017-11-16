@@ -19,21 +19,38 @@
 <div id="header">
   </div>
 <div id="main">
-  <s:if test="errorMassage !=''">
-     <s:property value="errorMassage" escape="false" />
-  </s:if>
+
       <form action="UserInfoConfirmAction">
   <table>
-       <tr>
+				<tr>
+					<td>
+						<div class="EM">
+							<s:if test="errorMessage != null">
+								<s:iterator value="errorMessage" status="count">
+									<s:property value="errorMessage[#count.index]" /><br>
+								</s:iterator>
+							</s:if>
+						</div>
+
+					</td>
+				</tr>
+  <tr>
          <td>
-           <label>セイ</label>
+           <label>ユーザーID</label>
          </td>
          <td>
-            <input type="text" name="family_name_kana" value=""  maxlength="16"/>
+            <input type="text" name="user_id" value=""  maxlength="16"/>
          </td>
       </tr>
-
-      <tr>
+       <tr>
+         <td>
+           <label>パスワード</label>
+         </td>
+         <td>
+            <input type="text" name="password" value=""  maxlength="16"/>
+         </td>
+      </tr>
+           <tr>
            <td>
                  <label>姓</label>
            </td>
@@ -41,16 +58,7 @@
                  <input type="text" name="family_name" value="" maxlength="16" />
             </td>
        </tr>
-
-       <tr>
-         <td>
-            <label>メイ</label>
-         </td>
-         <td>
-              <input type="text" name="first_name_kana" value=""  maxlength="16"/>
-         </td>
-       </tr>
-       <tr>
+            <tr>
            <td>
                  <label>名</label>
            </td>
@@ -58,6 +66,26 @@
                   <input type="text" name="first_name" value=""  maxlength="16"/>
            </td>
        </tr>
+
+       <tr>
+         <td>
+           <label>せい</label>
+         </td>
+         <td>
+            <input type="text" name="family_name_kana" value=""  maxlength="16"/>
+         </td>
+      </tr>
+
+
+       <tr>
+         <td>
+            <label>めい</label>
+         </td>
+         <td>
+              <input type="text" name="first_name_kana" value=""  maxlength="16"/>
+         </td>
+       </tr>
+
 
        <tr>
            <td>

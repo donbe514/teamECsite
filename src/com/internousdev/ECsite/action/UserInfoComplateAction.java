@@ -10,28 +10,36 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserInfoComplateAction extends ActionSupport implements SessionAware {
 
-	private String family_name_kana;
+	public String family_name_kana;
 
-	private String family_name;
+	public String family_name;
 
-	private String first_name_kana;
+	public String first_name_kana;
 
-	private String first_name;
+	public String first_name;
 
-	private String sex;
+	public int sex;
 
-	private String email;
+	public String email;
+
+	public String user_id;
+
+	public String password;
 
 	public Map<String,Object> session;
 
-	private UserInfoComplateDAO userInfoComplateDAO = new UserInfoComplateDAO();
+	public UserInfoComplateDAO userInfoComplateDAO = new UserInfoComplateDAO();
+
+
 
 	public String execute() throws SQLException {
 
-		userInfoComplateDAO.createUser(session.get("family_name_kana").toString(),
+		userInfoComplateDAO.createUser(session.get("user_id").toString(),
+			session.get("password").toString(),
+			session.get("first_name").toString(),
 			session.get("family_name").toString(),
 			session.get("first_name_kana").toString(),
-			session.get("first_name").toString(),
+			session.get("family_name_kana").toString(),
 			Integer.parseInt(session.get("sex").toString()),
 			session.get("email").toString());
 
@@ -104,20 +112,20 @@ public class UserInfoComplateAction extends ActionSupport implements SessionAwar
 	    this.first_name = first_name;
 	}
 
+
+
 	/**
-	 * sexを取得します。
 	 * @return sex
 	 */
-	public String getSex() {
-	    return sex;
+	public int getSex() {
+		return sex;
 	}
 
 	/**
-	 * sexを設定します。
-	 * @param sex sex
+	 * @param sex セットする sex
 	 */
-	public void setSex(String sex) {
-	    this.sex = sex;
+	public void setSex(int sex) {
+		this.sex = sex;
 	}
 
 	/**
@@ -150,6 +158,38 @@ public class UserInfoComplateAction extends ActionSupport implements SessionAwar
 	 */
 	public void setSession(Map<String,Object> session) {
 	    this.session = session;
-	}}
+	}
+
+	/**
+	 * @return user_id
+	 */
+	public String getUser_id() {
+		return user_id;
+	}
+
+	/**
+	 * @param user_id セットする user_id
+	 */
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	/**
+	 * @return password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password セットする password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+}
 
 

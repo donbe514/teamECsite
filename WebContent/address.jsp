@@ -16,77 +16,135 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<title>address</title>
 
+
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+
 	<style type="text/css">
+
+ 			table {
+ 			border:1px; solid black;
+			width:700px;
+			height;500px;
+			text-align:left;
+			margin:0 auto;
+			font-size:15px;
+		}
+
+		.td1 {
+			width:200px;
+			height;500px;
+			text-align:left;
+			margin:0 auto;
+			font-size:15px;
+		}
+		.td2 {
+			width:500px;
+			height;500px;
+			text-align:left;
+			margin:0 auto;
+			font-size:15px;
+		}
+			.center{
+			text-align:center;
+			}
+
+			.check{
+			position:relative;
+			right:450px;
+			top:100px;
+			text-align:center;
+			}
+
+			.buybutton {
+			font-size:15px;
+			padding: 10px 12px;
+			margin-bottom:15px;
+			width:140px;
+			cursor: pointer;
+		}
 
 	</style>
 
 </head>
 <body>
+<div class="header">
+	<h1>❐　宛先情報選択画面</h1>
+</div>
 
-			<table>
 
-			<s:form action="BuyItemConfilmAction">
+			<form action="BuyItemConfilmAction">
 			<s:iterator value="addressDTOList">
 
-				<tr>
-					<td>姓</td>
+<div class="main">
 
-					<td>
+			<div class="check">
+				<input type="radio" name="address" value='<s:property value="id" />' checked="checked">
+			</div>
+<table>
+
+
+				<tr>
+					<td class=td1>姓</td>
+
+					<td class=td2>
 						<s:property value="putFamily_name" />
 
 					</td>
 				</tr>
 				<tr>
-					<td>名</td>
-					<td>
+					<td class=td1>名</td>
+					<td class=td2>
 						<s:property value="putFirst_name" />
 
 					</td>
 				</tr>
 				<tr>
-					<td>姓ふりがな</td>
-					<td>
+					<td class=td1>姓ふりがな</td>
+					<td class=td2>
 						<s:property value="putFamily_name_kana" />
 
 					</td>
-					<td>名ふりがな</td>
-					<td>
+				</tr>
+				<tr>
+					<td class=td1>名ふりがな</td>
+					<td class=td2>
 						<s:property value="putFirst_name_kana" />
 
 					</td>
 				</tr>
 
-
 				<tr>
-					<td>電話番号</td>
-					<td>
+					<td class=td1>電話番号</td>
+					<td class=td2>
 						<s:property value="putTel_number" />
 
 					</td>
 				</tr>
 				<tr>
-					<td>メールアドレス</td>
-					<td>
+				<td class=td1>住所</td>
+				<td class=td2><s:property value="putUser_address" /></td>
+
+				</tr>
+				<tr>
+					<td class=td1>メールアドレス</td>
+					<td class=td2>
 						<s:property value="putEmail" />
 
 					</td>
 				</tr>
-				<tr>
-					<td>宛先情報選択</td>
-					<td>
-						<div class="check">
-						<input type="radio" name="address" value='<s:property value="id" />' checked="checked"><s:property value="putUser_address" />
-
-						</div>
-
-					</td>
-				</tr>
+</table>
+</div>
 				</s:iterator>
-				<s:submit value="確認" />
+				<br>
+		<div class="center"><button class="buybutton" type="submit">決済する</button></div>
 
-			</s:form>
 
-		</table>
+
+			</form>
+
+
+		<div class="center">
+		<p>宛先情報登録は<a href='<s:url action="AddressRegistrationAction" />'>こちら</a></p></div>
 
 
 </body>

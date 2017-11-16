@@ -23,24 +23,34 @@
      <table>
          <s:form action="UserInfoComplateAction">
              <tr id="land">
-                 <td>セイ</td>
-                 <td><s:property value="family_name_kana" escape="false" /></td>
+                 <td>ユーザーID</td>
+                 <td><s:property value="user_id" escape="false" /></td>
              </tr>
+             <tr id="land">
+                 <td>パスワード</td>
+                 <td><s:property value="password" escape="false" /></td>
+             </tr>
+
 
              <tr id="land">
                  <td>姓</td>
                  <td><s:property value="family_name" escape="false" /></td>
              </tr>
-
-            <tr id="land">
-               <td>メイ</td>
-               <td><s:property value="first_name_kana" escape="false" /></td>
-             </tr>
-
             <tr id="land">
                <td>名前</td>
                <td><s:property value="first_name" escape="false" /></td>
             </tr>
+
+
+             <tr id="land">
+                 <td>せい</td>
+                 <td><s:property value="family_name_kana" escape="false" /></td>
+             </tr>
+            <tr id="land">
+               <td>めい</td>
+               <td><s:property value="first_name_kana" escape="false" /></td>
+             </tr>
+
 
             <tr id="land">
               <td>性別</td>
