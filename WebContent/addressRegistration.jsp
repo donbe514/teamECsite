@@ -14,20 +14,58 @@
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
 	<title>addressRegistration</title>
-	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+
 	<style type="text/css">
 
 
+ 			table {
+ 			border:1px; solid black;
+			width:700px;
+			height;500px;
+			text-align:left;
+			margin:0 auto;
+			font-size:15px;
+		}
+		.td1 {
 
+		}
+		.EM {
+			color:red;
+			font-size:13px;
+		}
+
+
+			.center{
+			text-align:center;
+			}
+
+			.check{
+			position:relative;
+			right:450px;
+			top:100px;
+			text-align:center;
+			}
+
+			.buybutton {
+			font-size:15px;
+			padding: 10px 12px;
+			margin-bottom:15px;
+			width:140px;
+			cursor: pointer;
+		}
 
 	</style>
 </head>
 <body>
-
+<div class="header">
+	<h1>❐　宛先登録画面</h1>
+</div>
+<div class="main">
 			<table>
 			<s:form action="AddressRegistrationConfirmAction">
 				<tr>
-					<td>
+					<td class="td1">
 						<div class="EM">
 							<s:if test="errorMessage != null">
 								<s:iterator value="errorMessage" status="count">
@@ -39,71 +77,70 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label>姓:</label>
+					<td class="td1">
+						<label>名前</label>
 					</td>
-					<td>
+					<td class="td1">
+						<label>姓</label>
+					</td>
+					<td class="td1">
 						<input type="text" name="putFamily_name" maxlength="16" minlength="1" value="" />
 					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>名:</label>
+
+					<td class="td1">
+						<label>名</label>
 					</td>
-					<td>
+					<td class="td1">
 						<input type="text" name="putFirst_name" maxlength="16" minlength="1" value="" />
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label>姓ふりがな:</label>
+					<td class="td1">
+						<label>ふりがな</label>
 					</td>
-					<td>
+					<td class="td1">
+						<label>姓</label>
+					</td>
+					<td class="td1">
 						<input type="text" name="putFamily_name_kana" maxlength="16" minlength="1" value="" />
 					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>名ふりがな:</label>
+
+					<td class="td1">
+						<label>名</label>
 					</td>
-					<td>
+					<td class="td1">
 						<input type="text" name="putFirst_name_kana" maxlength="16" minlength="1" value="" />
 					</td>
 				</tr>
-				<!-- <td>
-					<div class="check">
-						<input type="radio" name="sex" value="0" checked="checked">男性
-						<input type="radio" name="sex" value="1">女性
-					</div>
 
-				</td> -->
 				<tr>
-					<td>
-						<label>住所:</label>
+					<td colspan="2">
+						<label>住所</label>
 					</td>
-					<td>
+					<td class="td1">
 						<input type="text" name="putUser_address" maxlength="50" minlength="15" value="" />
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label>電話番号:</label>
+					<td colspan="2">
+						<label>電話番号</label>
 					</td>
-					<td>
+					<td class="td1">
 						<input type="text" name="putTel_number" maxlength="13" minlength="11" value="" />
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label>メールアドレス:</label>
+					<td colspan="2">
+						<label>メールアドレス</label>
 					</td>
-					<td>
+					<td class="td1">
 						<input type="text" name="putEmail" maxlength="32" minlength="18" value="" />
 					</td>
 				</tr>
+
 				<s:submit value="確認"/>
 			</s:form>
 			</table>
-
+</div>
 </body>
 </html>
