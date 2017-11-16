@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+.outer{
+  text-align:center;
+}
+
+.inner{
+ display:inline-block;
+ text-aling:left;
+}
+
+.mainarea{
+  padding:8px 16px;
+  margin:0 auto;
+  color:#2c2c2f;
+  background:#cde4ff;
+  border-top:solid 5px #5989cf;
+  border-bottom:solid 5px #5989cf;
+}
+
+.pcolor{
+  background:#ffff00;
+  margin:0 auto;
+}
+
+.itemlist {
+display: flex;
+flex-wrap: wrap;
+max-width: 950px;
+margin: 0 auto;
+list-style-type:none;
+}
+
+.itemlist dl, .itemlist dd { margin: 0; }
+.itemlist dl { text-align: right; }
+.itemlist dt, .itemlist .txt { text-align:left; }
+.itemlist dt { font-size: 14px; font-weight:700; }
+.itemlist dd { margin-top: 14px; font-size: .20px; }
+.itemlist .price { display: inline-block; padding: .1em .5em; background: #eee; }

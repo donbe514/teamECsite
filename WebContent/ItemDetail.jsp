@@ -10,19 +10,24 @@
 <script type="text/javascript" src="jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="sliders.js"></script>
 <title>ItemDetail</title>
+<link rel="stylesheet" type="text/css" href="./css/Itemdetail.css">
 </head>
 
 
 <body>
+  <div class="outer">
+    <div class="inner">
   <h1>商品詳細</h1>
+      <form action="CartInAction">
 
-	<form action="CartInAction">
 		<table>
 			<tr>
 			<th></th>
+            <td><img alt="商品画像"
+              src="<s:property value="image_file_path" />" width="400"
+              height="250"></td>
 			<td>
-			<img alt="商品画像" src="<s:property value="image_file_path" />" width="400" height="250"></td>
-			<td>
+              <div class="textbox">
 			<table border="1">
 			 	<tr>
 					<th>商品名</th>
@@ -37,30 +42,29 @@
 					<td><s:property value="price" /></td>
 				</tr>
 				<tr>
-					<th>商品説明欄</th>
-					<td><s:property value="product_description" /></td>
-				</tr>
-				<tr>
 				<tr>
 					<th>販売会社名</th>
 					<td><s:property value="release_company" /></td>
 				</tr>
 				<tr>
-					<th>発売念月日</th>
+                    <th>発売年月日</th>
 					<td><s:property value="release_date" /></td>
 				</tr>
 				<tr>
-					<th>商品補足説明</th>
-					<td><s:property value="" /></td>
+                    <th>商品説明欄</th>
+                    <td><s:property value="product_description" /></td>
 				</tr>
 				<tr>
 					<th>在庫数</th>
-					<td><s:property value="stock" /></td>
+                    <td><s:if test="stock<1">0</s:if><s:else><s:property value="stock" /></s:else></td>
 				</tr>
 
 			</table>
+              </div>
 		</table>
-		<s:if test="stock!=0">
+
+        <br>
+        <s:if test="stock>0">
 			<select name="item_count">
 			<s:iterator value="buyitemcount" status="bi">
 				<option value="<s:property value='#bi.count'/>"><s:property value="#bi.count"/></option>
@@ -74,7 +78,7 @@
 		</s:else>
 		<input type="button" value="前のページ（商品一覧）へ戻る" onclick="history.back()">
 	</form>
-
-
+    </div>
+  </div>
 </body>
 </html>
