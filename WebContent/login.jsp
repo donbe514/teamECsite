@@ -8,6 +8,7 @@
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta http-equiv="Content-Style-Type" content="text/css" />
    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <meta http-equiv="imagetoolbar" content="no" />
    <meta name="description" content="" />
    <meta name="keywords" content="" />
@@ -82,8 +83,23 @@ table {
 }
 
 </style>
+<script type="text/javascript">
+<!--
+function open_new() {
+	var form = document.forms.mainForm;
+	var user = form.LoginFlag.value;
+	if(user.length>0){parent.top.location.href="Home.jsp";}
+}
+// -->
+</script>
+
 </head>
-<body>
+<body onLoad="open_new()">
+<form name="mainForm">
+<input type="hidden" name="LoginFlag" value="<s:property value="#session.user_id"/>">
+</form>
+
+<script type="text/javascript" src="./js/MainScript.js"></script>
 <div class="header">
 	 <div class="center"><p>ログイン</p></div>
 	</div>

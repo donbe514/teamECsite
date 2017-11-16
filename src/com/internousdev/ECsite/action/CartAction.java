@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.ECsite.dao.CartActionDAO;
+import com.internousdev.ECsite.dao.ItemDetailDAO;
 import com.internousdev.ECsite.dto.ItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -68,15 +69,38 @@ public class CartAction extends ActionSupport implements SessionAware{
 	 * @return
 	 */
 	public String CartIn(){
-		String now_user = user_check();
-
+		String now_user = user_check();//ユーザーIDの取得
 		String ret = ERROR;
-		CartActionDAO CADAO = new CartActionDAO();
+
+		CartActionDAO CADAO = new CartActionDAO();//基本カートアクションのインスタンス化
+		ItemDetailDAO IDDAO = new ItemDetailDAO();//商品単品検索DAO
+		ItemDTO StockDTO = new ItemDTO();//商品ストック情報格納用
+		StockDTO = IDDAO.detail(product_id);//商品ストック情報格納
+
+		ArrayList<ItemDTO> CartList = new ArrayList<ItemDTO>();
+		ItemDTO CartListDTO = new ItemDTO();
+		int tmpcount=item_count;
 
 		if(now_user.length()>0){
-			if(CADAO.CartIn(now_user, product_id,item_count)){
-				ret = CartShow();
+			CartList = CADAO.CartShow(now_user);//now_userに紐付くカート情報取得
+			Iterator<ItemDTO> itr = CartList.iterator();
+			while(itr.hasNext()){
+				CartListDTO = (ItemDTO)itr.next();
+				if(product_id==CartListDTO.getProduct_id()){
+					tmpcount = tmpcount +CartListDTO.getStock();
 
+				}
+			}
+
+			if(tmpcount>0){
+				if(tmpcount <= StockDTO.getStock()){
+					if(CADAO.CartIn(now_user, product_id,tmpcount)){
+						ret = CartShow();
+
+					}
+				}else{
+					message="在庫が足りませんでした。";
+				}
 			}
 		}
 
