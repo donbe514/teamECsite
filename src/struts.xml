@@ -76,15 +76,14 @@
 		</action>
 
 		<!-- パスワード再設定画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<action name="SaipassAction" class="com.internousdev.ECsite.action.SaipassAction" method="execute">
+			<result name="success">saipass.jsp</result>
 		</action>
 
 		<!-- パスワード再設定確認画面遷移 -->
-		<action name="TestAction" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
-			<result name="success">index.jsp</result>
-			<result name="error">index.jsp</result>
+		<action name="SaipassComplateAction" class="com.internousdev.ECsite.action.SaipassComplateAction" method="execute">
+			<result name="success">saipass_complate.jsp</result>
+			<result name="error">saipass.jsp</result>
 		</action>
 
 

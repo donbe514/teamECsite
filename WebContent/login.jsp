@@ -26,61 +26,95 @@ body {
 /* 		   color:#333; */
 /* 		   background:#fff; */
 		}
-
-table {
-		position:absolute;
-       top:225px;
-       left:550px;
+.er{
+        color:#e2041b;
+}
+.t1{
+		width:400px;
+		height:150px;
+		margin:30px auto;
+		border:2px solid #248;
+		padding:0px 20px;
 			}
 
 
-/* .header{ */
-/* 		width: 100%; */
-/* 		height: 80px; */
-/* 		background-color:#030303; */
-/* 		} */
 
 .center{
-        width:95%;
-        height:80px;
-		font-size: 50px;
+        width:100%;
+        height:50px;
+		font-size: 40px;
 		color:#248;
 		text-align:center;
 		font-weight:bold;
+		margin-top:-30px;
       }
 
 .main {
 		   width: 100%;
-		   height: 500px;
+		   height: 600px;
 		   text-align: center;
 
 		   }
+.f{
+   		    font-size:18px;
+   		    font-weight:bold;
+   		    color:#248;
+}
+
+.c{ width:250px;
+   height:25px;
+   background-color:#f5f5f5;
+
+}
+.s{
+   width:25px;
+   height:25px;
+}
 
 
+.t2 {
+    float:left;
+	width:50%;
+	height:40px;
+	text-align:right;
+
+}
+.btn{
+    float:left;
+    width:20%;
+	height:40px;
+	margin:0px auto 0px;
+
+	}
 
 .bt {
-      font-size:18px;
+    width: 105px;
+	height: 103px;
+	background:white;
+	border: 1px solid #248;
+	border-radius: 88px;
+	moz-border-radius: 88px;
+	webkit-border-radius: 88px;
+	color:#999999;
+	padding: 37px 30px 35px;
+    text-align: center;
       font-weight:bold;
-      background-color:#248;
-      color:white;
-       padding: 8px 20px;
-       border-style: none;
-       moz-border-radius: 25px;
-     webkit-border-radius: 25px;
-       border-radius: 25px;
-       position:absolute;
-       top:250px;
-       left:550px;
+	font-size: 120%;
+	transition: background-color 0.5s ease-in;
+	webkit-transition: background-color 0.5s ease-in;
+	font-style: italic;
 
 
 }
 
-
-.link {
-			position:absolute;
-       top:450px;
-       left:550px;
+.bt:hover{
+			background: #248;
+	        color: #FFF;
+	        border: 3px solid #66ccff;
+	        font-style: italic;
 }
+
+
 
 </style>
 <script type="text/javascript">
@@ -101,41 +135,48 @@ function open_new() {
 
 <script type="text/javascript" src="./js/MainScript.js"></script>
 <div class="header">
-	 <div class="center"><p>ログイン</p></div>
+	 <div class="center"><p>Login</p></div>
 	</div>
 
 <div class="main">
   <form action="LoginAction">
+    <div class="er">
     <s:if test="errorMessage!=''">
      <s:property value="errorMessage" escape="false" />
      </s:if>
-
-     <table>
+     </div>
+     <table class="t1">
 
    <tr>
-   <td >ユーザーID</td><td><input type= text name="user_id" value="<s:property value='save_user'/>"  /></td>
+   <td ><label class="f">ログインID</label></td><td><input type= text name="user_id" value="" class="c"  /></td>
+      </tr>
+
+   <tr>
+      <td><label class="f">パスワード</label></td><td><input type=password name="password" value=""  class="c" /></td>
       </tr>
 
       <tr>
-      <td>パスワード</td><td><input type=password name="password" value="" /></td>
-      </tr>
-
-      <tr>
-      <td><label>保存</label></td>
-      <td><input type=checkbox  value="保存" class="hozon" /></td>
+      <td><label class="f">保存</label></td>
+      <td><input type=checkbox  value="保存" class="s"  /></td>
       </tr>
       </table>
 
-      <input type="submit" value="ログイン" class="bt"  />
+       <table class="t2">
+   <tr>
+   <td><p>新規登録は<a href='<s:url action="UserAction" />'>こちら</a></p></td>
+   </tr>
+      <tr>
+   <td><p>パスワードの再発効は<a href='<s:url action="SaipassAction" />'>こちら</a></p></td>
+      </tr>
+      </table>
 
-
+<div class="btn">
+ <input type="submit" value="login" class="bt"  />
+</div>
    </form>
 
-   <br/>
-	<div class="link">
-    <p>新規登録の方は<a href='<s:url action="UserAction" />'>こちら</a></p>
-    <p>パスワードを忘れた方は<a href='<s:url action="SaipassAction" />'>こちら</a></p>
-   </div>
+
+
 
 
 

@@ -13,56 +13,121 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
-<title>Saipass</title>
+<title>Saipass画面</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+    <style type ="text/css">
+.er{
+       width:100%;
+       height:20%;
+       color:#e2041b;
+}
+    .t1{
+    		width:500px;
+    		height:200px;
+			margin:80px auto;
+			border:2px solid #248;
+		}
+
+	.t2{
+    		width:600px;
+			margin:80px auto;
+		}
+
+		.top{
+		        width:100%;
+		        height:80px;
+				font-size:120%;
+				color:#248;
+				text-align:center;
+
+
+      }
+
+		.main {
+			   width: 100%;
+			   height: 700px;
+			   text-align: center;
+
+
+		   }
+
+        .t{
+	        	font-size:18px;
+	   		    font-weight:bold;
+	   		    color:#001e43;
+   		    }
+        .f{
+	        	width:250px;
+	   			height:25px;
+   			}
+        .r{
+		        font-size:18px;
+		      font-weight:bold;
+		      background-color:#248;
+		      color:white;
+		       padding: 8px 20px;
+		       border-style: none;
+		       moz-border-radius: 25px;
+		     webkit-border-radius: 25px;
+		       border-radius: 25px;
+		       width:120px;
+				margin:0px auto;
+				clear:both;
+        }
+
+        .cansell{
+                 font-size:20px;
+        }
+
+    </style>
 </head>
 <body>
-  <div id="header">
-  </div>
-
-  <div id="main">
-    <div id="top">
-      <p>お客様のIDの入力と更新するパスワードの設定をお願いします。</p>
+  <div class="header">
+  <div class="top">
+      <h3>お客様のIDの入力と更新するパスワードの設定をお願いします。</h3>
      </div>
+</div>
+
+  <div class="main">
+
      <s:if test="errorMessage!=''">
-     <s:property value="errorMessage" escape="false" />
+      <div class="er"><s:property value="errorMessage" escape="false" /></div>
      </s:if>
 
 
-  <table>
-   <s:form action="SaipassComplateAction">
+ <form action="SaipassComplateAction">
+  <table class="t1">
+
     <tr>
-    <td><label>ID</label></td>
-    <td><input type="text" name="user_id" value=""  />
-    </td>
+    <td><label class="t">ログインID</label></td>
+    <td><input type="text" name="user_id" value="" class="f" /></td>
     </tr>
 
 
     <tr>
-       <td>
-          <label>新しいパスワード</label>
-       </td>
-       <td>
-           <input type="password" name="saipassword" value="" />
-       </td>
+       <td><label class="t">新しいパスワード</label></td>
+       <td><input type="password" name="saipassword" value=""  class="f"/></td>
     </tr>
 
     <tr>
-     <td>
-        <label>もう一度入力して下さい</label>
-     </td>
-     <td>
-      <input type="password" name="resaipassword" value=""  />
-     </td>
+     <td><label class="t">もう一度入力して下さい。</label></td>
+     <td><input type="password" name="resaipassword" value=""   class="f"/></td>
    </tr>
+   </table>
 
-   <s:submit value="登録" />
- </s:form>
-</table>
+  <table class="t2">
+  <tr>
+      <td><div class="cansell"><a href='<s:url action="LoginAction" /> '>キャンセル</a></div></td>
+      <td><input type="submit" value="登録"  class="r"/></td>
+  </tr>
+  </table>
+</form>
+</div>
 
-   <div>
-      <span>前のページへ</span><a href='<s:url action="LoginAction" />'>戻る</a>
-   </div>
-  </div>
+
+  <div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>
-

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-
+ <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,20 +12,57 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
-<title>SaipassComplate</title>
+<title>saipass_complate画面</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+    <style type="text/css">
+        .t{
+		        width:100%;
+		        height:80px;
+				color:#248;
+				text-align:center;
+				font-size:40px;
+           }
+
+        .main{
+        	width: 100%;
+		   height: 500px;
+		   text-align: center;
+        }
+
+        .m{
+        	font-size:30px;
+        	text-align:center;
+        	margin-top:150px;
+        	margin-bottom:160px;
+        }
+
+        .under{
+	        font-size:20px;
+	        text-align:center;
+
+
+     }
+    </style>
 </head>
 <body>
-   <div id="header">
-   </div>
+ <div class="header">
+  <div class="t">
+      <h3>It's Complete!</h3>
+      </div>
+     </div>
+	<div class="main">
+	   <div class="m">
+	      <h5>パスワードの再発行を完了致しました。<br>引き続き、お買い物をお楽しみください！</h5>
+	 </div>
 
-   <div id="main">
-      <div id="center">
-        <p>パスワードの再設定を完了いたしました。</p>
+      <div class="under">
+        <a href='<s:url action="LoginPageAction"/>'>ログインへ</a>
       </div>
 
-      <div>
-         <p><a href='<s:url action="LoginAction" />'>ログイン画面へ</a></p>
-      </div>
-    </div>
+  </div>
+  <div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>
