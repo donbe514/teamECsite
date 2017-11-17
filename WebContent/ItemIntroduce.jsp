@@ -10,7 +10,7 @@
 <script type="text/javascript" src="sliders.js"></script>
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <title>ItemIntroduce</title>
-<link rel="stylesheet" type="text/css" href="./css/Item.css">
+<link rel="stylesheet" type="text/css" href="./css/Item2.css">
 </head>
 <body>
 
@@ -37,29 +37,30 @@
               </a>
                 <div class="textbox">
                   <dl>
+                  <!-- 商品名 -->
                     <dt>
                       商品名:
                       <s:property value="product_name" />
                     </dt>
+                    <!-- ふりがな -->
                     <dt>
                       ふりがな:
                       <s:property value="product_name_kana" />
                     </dt>
 
                     <!-- Amazonのカテゴリー表示みたいなの -->
-                    <!--                     <dt> -->
-                    <!--                       カテゴリ： -->
-                    <%--                       <s:if test="category_id==1"> --%>
-                    <!--                     本 -->
-                    <%--                     </s:if> --%>
-                    <%--                       <s:elseif test="category_id==2"> --%>
-                    <!--                     家電・パソコン -->
-                    <%--                     </s:elseif> --%>
-                    <%--                       <s:elseif test="category_id==3"> --%>
-                    <!--                     おもちゃ・ゲーム -->
-                    <%--                     </s:elseif> --%>
-                    <!--                     </dt> -->
-
+                    <dt>
+                      カテゴリ：
+                      <s:if test="category_id==1">
+                                        本
+                                        </s:if>
+                      <s:elseif test="category_id==2">
+                                        家電・パソコン
+                                        </s:elseif>
+                      <s:elseif test="category_id==3">
+                                        おもちゃ・ゲーム
+                                        </s:elseif>
+                    </dt>
                     <dd class="price">
                       \
                       <s:property value="price" />

@@ -16,86 +16,71 @@ public class ItemDAO {
 		Connection con = db.getConnection();
 		String sql;
 		String tmp = "";
-		int n = 0;
+
 		ArrayList<ItemDTO> itemList = new ArrayList<ItemDTO>();
 		sql = "select * from product_info";
 
 		switch (category_id) {
 		case 1:
-
+			tmp = (" category_id = " + category_id);
+			break;
 		case 2:
-
+			tmp = (" category_id = " + category_id);
+			break;
 		case 3:
-			tmp = (" category_id = " + category_id); //全体検索以外のとき、カテゴリーIDのSQL文を入れる。
+			tmp = (" category_id = " + category_id); // 全体検索以外のとき、カテゴリーIDのSQL文を入れる。
 			break;
 		default:
 		}
 
 		int i = SearchText.length();
-		String tmptext = "";
-		if (i > 0) {
-			tmptext = "'%" + SearchText + "%'"; //入れた文字が１文字以上あればtmptextに代入
-		}
 
 		if (i > 0 & category_id > 0) {
 
 			if (SearchText.length() > 0) {
-				SearchText=SearchText.replace("　", " ");
+				SearchText = SearchText.replace("　", " ");
 				String[] SearchList = SearchText.split(" ");
-				int y  = SearchList.length;
-
+				int y = SearchList.length;
 				String[] Sname = new String[y];
 				String[] Skana = new String[y];
 				String namekana = "";
 				tmp = (" category_id = " + category_id);
-			for (int r=0; r<y; r++){
-				Sname[r] = (" product_name like '%" + SearchList[r] + "%' ");
-				if(r == (y-1)){
+				for (int r = 0; r < y; r++) {
+					Sname[r] = (" product_name like '%" + SearchList[r] + "%' ");
 					Skana[r] = (" product_name_kana like '%" + SearchList[r] + "%'");
+					namekana = namekana + (" AND " + "(" + Sname[r] + " or " + Skana[r] + ")");
 				}
-				else{
-					Skana[r] = (" product_name_kana like '%" + SearchList[r] + "%' or ");
-				}
-				namekana = namekana + ( Sname[r] + " or " + Skana[r] );
-				}
-
-			sql = sql + " where" + tmp + " AND " + "(" + namekana + ")" ;
+				sql = sql + " where" + tmp + namekana; // カテゴリID+検索機能のSQL
+				System.out.println(sql);
 			}
-
 		} else if (category_id > 0) {
-			sql = sql + " where " + tmp;
-
+			sql = sql + " where " + tmp; // カテゴリIDだけのSQL
+			System.out.println(sql);
 		} else if (i > 0) {
 			if (SearchText.length() > 0) {
-				SearchText=SearchText.replace("　", " ");
+				SearchText = SearchText.replace("　", " ");
 				String[] SearchList = SearchText.split(" ");
-				int y  = SearchList.length;
-
+				int y = SearchList.length;
 				String[] Sname = new String[y];
 				String[] Skana = new String[y];
 				String namekana = "";
 				tmp = (" category_id = " + category_id);
-			for (int r=0; r<y; r++){
-				Sname[r] = (" product_name like '%" + SearchList[r] + "%' ");
-				if(r == (y-1)){
+				for (int r = 0; r < y; r++) {
+					Sname[r] = (" product_name like '%" + SearchList[r] + "%' ");
 					Skana[r] = (" product_name_kana like '%" + SearchList[r] + "%'");
+					if (r > 0) {
+						namekana = namekana + "AND";
+					}
+					namekana = namekana + ("(" + Sname[r] + " or " + Skana[r] + ")");
 				}
-				else{
-					Skana[r] = (" product_name_kana like '%" + SearchList[r] + "%' or ");
-				}
-				namekana = namekana + ( Sname[r] + " or " + Skana[r] );
-
-				}
-			sql = sql + " where " + namekana ;
+				sql = sql + " where " + namekana; // 検索機能だけのSQL
+				System.out.println(sql);
+			}
 		}
-		}
-
-
-
 		if (LimitFlag != 0) {
-			sql = sql + " limit " + ((page - 1) * 6) + ",6";
+			sql = sql + " limit " + ((page - 1) * 6) + ",6"; // 商品を各ページに６個づつ表示するSQL、以下DTO
+			System.out.println(sql);
 		}
-		System.out.println(sql);
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -131,38 +116,73 @@ public class ItemDAO {
 		return itemList;
 	}
 
-
 	public int SearchCount(int category_id, String SearchText) {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
 		int tmpcount = 0;
 		String tmpsql = "";
-
+		String categorysql = "";
 		String sql = "select count(*) from product_info";
 
 		if (category_id > 0) {
-			tmpsql = " category_id = " + category_id;
+			categorysql = " category_id = " + category_id;
 			tmpcount++;
 		}
 		if (SearchText != null) {
 			if (SearchText.length() > 0) {
 				if (tmpcount > 0) {
-					tmpsql = tmpsql + " AND ";
+
+					SearchText = SearchText.replace("　", " ");
+					String[] SearchList = SearchText.split(" ");
+					int y = SearchList.length;
+
+					String[] Sname = new String[y];
+					String[] Skana = new String[y];
+					String namekana = "";
+
+					for (int r = 0; r < y; r++) {
+						Sname[r] = (" product_name like '%" + SearchList[r] + "%' ");
+						Skana[r] = (" product_name_kana like '%" + SearchList[r] + "%'");
+						if (r > 0) {
+							namekana = namekana + "AND";
+						}
+						namekana = namekana + ("(" + Sname[r] + " or " + Skana[r] + ")");
+					}
+					tmpsql = categorysql + " AND " + namekana;
+					System.out.println(sql);
+
+				} else {
+
+					SearchText = SearchText.replace("　", " ");
+					String[] SearchList = SearchText.split(" ");
+					int y = SearchList.length;
+					String[] Sname = new String[y];
+					String[] Skana = new String[y];
+					String namekana = "";
+					for (int r = 0; r < y; r++) {
+						Sname[r] = (" product_name like '%" + SearchList[r] + "%' ");
+						Skana[r] = (" product_name_kana like '%" + SearchList[r] + "%' ");
+						if (r > 0) {
+							namekana = namekana + "AND";
+						}
+						namekana = namekana + ("(" + Sname[r] + " or " + Skana[r] + ")");
+					}
+					tmpsql = namekana;
+					tmpcount++;
 				}
-
-				tmpsql = tmpsql + " product_name like '%" + SearchText + "%'" + " or product_name_kana like '%"
-						+ SearchText + "%'";
-
-				tmpcount++;
+			} // 文字数をここでチェックして、nullだったとき、カテゴリIDを入れる。
+			else {
+				tmpsql = categorysql;
 			}
+		} // 文字がnullかどうかチェックして、nullだったとき、カテゴリID(無い）を入れる。
+		else {
+			tmpsql = categorysql;
 		}
-
-		if (tmpcount > 0) {
-			sql = sql + " WHERE " + tmpsql;
+		if (tmpsql.length() > 0)
+		{
+			sql = sql + " where " + tmpsql;
 		}
-
-		System.out.println(sql);
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
