@@ -31,7 +31,7 @@ body {
 }
 .t1{
 		width:400px;
-		height:150px;
+		height:200px;
 		margin:30px auto;
 		border:2px solid #248;
 		padding:0px 20px;
@@ -61,16 +61,21 @@ body {
    		    color:#248;
 }
 
-.c{ width:250px;
-   height:25px;
-   background-color:#f5f5f5;
-
+.c{
+			width:250px;
+			height:25px;
+			background-color:#f5f5f5;
+			color:#248;
+			font-size:18px;
 }
+
+.c:hover{
+ 			background-color:#fce3e9;
+		}
 .s{
    width:25px;
    height:25px;
-}
-
+   }
 
 .t2 {
     float:left;
@@ -91,7 +96,7 @@ body {
     width: 105px;
 	height: 103px;
 	background:white;
-	border: 1px solid #248;
+	border: 1px dotted #248;
 	border-radius: 88px;
 	moz-border-radius: 88px;
 	webkit-border-radius: 88px;
@@ -166,7 +171,7 @@ function open_new() {
    <td><p>新規登録は<a href='<s:url action="UserAction" />'>こちら</a></p></td>
    </tr>
       <tr>
-   <td><p>パスワードの再発効は<a href='<s:url action="SaipassAction" />'>こちら</a></p></td>
+   <td><p>パスワードの再発行は<a href='<s:url action="SaipassAction" />'>こちら</a></p></td>
       </tr>
       </table>
 

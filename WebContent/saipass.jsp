@@ -23,8 +23,8 @@
 }
     .t1{
     		width:500px;
-    		height:200px;
-			margin:80px auto;
+    		height:180px;
+			margin:70px auto;
 			border:2px solid #248;
 		}
 
@@ -36,9 +36,10 @@
 		.top{
 		        width:100%;
 		        height:80px;
-				font-size:120%;
+				font-size:150%;
 				color:#248;
 				text-align:center;
+				 font-weight: bold;
 
 
       }
@@ -49,17 +50,26 @@
 			   text-align: center;
 
 
+
 		   }
 
         .t{
 	        	font-size:18px;
 	   		    font-weight:bold;
-	   		    color:#001e43;
+	   		    color:#248;
    		    }
         .f{
+        		background-color:#f5f5f5;
 	        	width:250px;
 	   			height:25px;
+	   			color:#248;
+				font-size:18px;
    			}
+
+   		.f:hover{
+   		         background-color:#fce3e9;
+   				}
+
         .r{
 		        font-size:18px;
 		      font-weight:bold;
@@ -75,6 +85,12 @@
 				clear:both;
         }
 
+        .r:hover{
+                 background-color:#248;
+                 color:white;
+                 font-size:24px;
+        }
+
         .cansell{
                  font-size:20px;
         }
@@ -84,7 +100,7 @@
 <body>
   <div class="header">
   <div class="top">
-      <h3>お客様のIDの入力と更新するパスワードの設定をお願いします。</h3>
+      <p>お客様のIDの入力と更新するパスワードの設定をお願いします。</p>
      </div>
 </div>
 
