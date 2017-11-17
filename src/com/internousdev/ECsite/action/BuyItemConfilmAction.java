@@ -1,6 +1,5 @@
 package com.internousdev.ECsite.action;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -17,88 +16,107 @@ public class BuyItemConfilmAction extends ActionSupport implements SessionAware{
 
 	public Map<String,Object> session;
 
-	public BuyItemComplateDAO buyItemComplateDAO = new BuyItemComplateDAO();
+	private String message = "";
+	public ArrayList<ItemDTO> BuyFalseList = new ArrayList<ItemDTO>();
+	private boolean CartEnptyFlag=false;
 
-	/**
-	 * 商品購入情報登録メソッド
-	 *
-	 * @author internous
-	 */
-	public String execute() throws SQLException{
+	public String BuyItemConplate(){
 		String result = ERROR;
-
 		String user_id = session.get("user_id").toString();
-
-		if(user_id!=null){
-
-			CartActionDAO CADAO = new CartActionDAO();
-			ArrayList<ItemDTO> CartList = new ArrayList<ItemDTO>();
-			CartList = CADAO.CartShow(user_id);//カート情報を取得
-
-			Cart_Histry_Chenge(user_id,CartList);//カートテーブル情報を購入履歴に入れる。
-
-			Stock_Chenge(user_id,CartList);//在庫変更
-
-			buyItemComplateDAO.cart_infoDelete(user_id);// カートテーブル情報削除
-
-			result = SUCCESS;
-
-		}
-		return result;
-	}
-
-	/**
-	 * カート情報を履歴に入れる
-	 * @return
-	 */
-	private void Cart_Histry_Chenge(String user_id,ArrayList<ItemDTO> CartList){
-
-
-		// カートテーブル情報を購入履歴テーブルに格納
-		Iterator<ItemDTO> CartItr = CartList.iterator();
-		ItemDTO CartElmtDTO = new ItemDTO();
-		while(CartItr.hasNext()){
-			CartElmtDTO = (ItemDTO)CartItr.next();
-			buyItemComplateDAO.purchase_history_info(user_id,CartElmtDTO.getProduct_id(),CartElmtDTO.getStock());
-		}
-	}
-
-	/**
-	 * カートに入れていた商品分の在庫を減らす
-	 * @param user_id
-	 * @param CartList
-	 */
-	private void Stock_Chenge(String user_id,ArrayList<ItemDTO> CartList){
-
-		Iterator<ItemDTO> CartItr = CartList.iterator();
-		ItemDTO CartElmtDTO = new ItemDTO();
+		int ErrorCount = 0;
 		ItemDetailDAO IDDAO = new ItemDetailDAO();
-		BuyItemComplateDAO  BIDAO = new BuyItemComplateDAO();
+		CartActionDAO CADAO = new CartActionDAO();
+		BuyItemComplateDAO BIDAO = new BuyItemComplateDAO();
+		ArrayList<ItemDTO> CartAry = new ArrayList<ItemDTO>();
 
-		while(CartItr.hasNext()){
-			ItemDTO StockitemDTO = new ItemDTO();
-			CartElmtDTO = (ItemDTO)CartItr.next();
-			int ChengeStock = 0;
 
-			StockitemDTO = IDDAO.detail(CartElmtDTO.getProduct_id());
+		if(user_id == null){//決済確定時、未ログインならログインページへ
+			result = "login";
+			ErrorCount++;
+		}else{
+			CartAry = CADAO.CartShow(user_id);
+			if(CartAry.isEmpty()){//カート内容がなければカート画面へ
+				result = "cart";
+				message=message+"カートに商品がありません。<br>";
+				CartEnptyFlag=true;
+				ErrorCount++;
+			}
+		}
 
-			if(StockitemDTO.getProduct_id() == CartElmtDTO.getProduct_id()){
-				ChengeStock =StockitemDTO.getStock()-CartElmtDTO.getStock();
+		if(ErrorCount<1){//エラーチェックに引っかからなければ
+			Iterator<ItemDTO> CartItr = CartAry.iterator();
+			int BuySuccsessCount =0;
 
-				BIDAO.stock_chenge(ChengeStock,CartElmtDTO.getProduct_id());
+			while(CartItr.hasNext()){//カート情報の数だけループ
+
+				ItemDTO CartDataDTO = new ItemDTO();//現在のカート情報用
+				ItemDTO StockCheckDTO = new ItemDTO();//商品情報検索用
+
+				CartDataDTO = (ItemDTO)CartItr.next();//現在のカート項目の引き出し
+				StockCheckDTO = IDDAO.detail(CartDataDTO.getProduct_id());
+
+				if(StockCheckDTO.getStock() >= CartDataDTO.getStock()){//在庫 >= カート投入数 なら在庫足りてる
+
+					BIDAO.CartHistoryIn(user_id, CartDataDTO.getProduct_id(), CartDataDTO.getStock());//カート情報を履歴に書き込み
+					BIDAO.StockChenge(StockCheckDTO.getStock()-CartDataDTO.getStock(), CartDataDTO.getProduct_id());//在庫情報の更新
+					BIDAO.CartDataDelete(CartDataDTO.getId(), user_id);//現在のカート項目の削除
+
+					BuySuccsessCount++;//購入成功回数の記録
+
+				}else{
+					BuyFalseList.add(CartDataDTO);//購入失敗リストの追加
+					BIDAO.CartDataDelete(CartDataDTO.getId(), user_id);//現在のカート項目の削除
+				}
+
+			}
+
+			if(BuySuccsessCount<1){//購入成功回数が0以下ならカート画面へ
+
+				result = "cart";
+				message=message+"在庫が足りず、商品が購入できませんでした。商品画面から再度購入しなおしてください。<br>";
+				CartEnptyFlag=true;
+
+			}else{//購入成功回数1回以上あれば決済完了画面へ
+				result = SUCCESS;
 			}
 
 		}
+
+		return result;
 	}
-
-
-
 
 
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public ArrayList<ItemDTO> getBuyFalseList() {
+		return BuyFalseList;
+	}
+
+	public void setBuyFalseList(ArrayList<ItemDTO> buyFalseList) {
+		BuyFalseList = buyFalseList;
+	}
+
+
+	public boolean isCartEnptyFlag() {
+		return CartEnptyFlag;
+	}
+
+
+	public void setCartEnptyFlag(boolean cartEnptyFlag) {
+		CartEnptyFlag = cartEnptyFlag;
+	}
+
 
 
 }

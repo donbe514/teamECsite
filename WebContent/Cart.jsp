@@ -12,7 +12,7 @@
   <div class="outer">
     <div class="inner">
       <s:if test="CartEnptyFlag">
-        <s:property value="message" />
+        <s:property value="message" escape="false"/>
       </s:if>
       <s:else>
         <s:property value="message" />
@@ -45,7 +45,7 @@
                   </dt>
                   <dt>
                     個数:
-                    <s:property value="item_count" />
+                    <s:property value="stock" />
                   </dt>
                   <dt>
                     <input type="checkbox" name="dell_id"

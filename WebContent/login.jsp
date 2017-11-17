@@ -153,7 +153,7 @@ function open_new() {
      <table class="t1">
 
    <tr>
-   <td ><label class="f">ログインID</label></td><td><input type= text name="user_id" value="" class="c"  /></td>
+   <td ><label class="f">ログインID</label></td><td><input type= text name="user_id" value="<s:property value="save_user"/>" class="c"  /></td>
       </tr>
 
    <tr>

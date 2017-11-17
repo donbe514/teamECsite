@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.internousdev.ECsite.dto.ItemDTO;
 import com.internousdev.ECsite.util.DBConnector;
@@ -15,43 +14,12 @@ import com.internousdev.ECsite.util.RandomForm;
 public class CartActionDAO {
 
 	/**
-	 * カート投入用
-	 * @param user_id
-	 * @param product_id
-	 * @return　成功失敗による真偽値
-	 */
-	public boolean CartIn(String user_id,int product_id,int item_count){
-		boolean result = false;
-
-		ArrayList<ItemDTO> CartListDTO = new ArrayList<ItemDTO>();
-
-		CartListDTO = CartSearch(user_id);//カート内サーチ
-		ItemDTO CartInDTO = new ItemDTO();
-
-		Iterator<ItemDTO> itr = CartListDTO.iterator();
-		while (itr.hasNext()) {
-			CartInDTO = (ItemDTO) itr.next();
-			if(CartInDTO.getProduct_id() == product_id){//カート内に現在選択商品が入っていたらUPDATEメソッド
-				int total_count = CartInDTO.getStock() + item_count;
-				result = CartUpdate(user_id,product_id,total_count);
-
-			}
-		}
-
-		if(!(result)){//カート内に現在商品が入っていなかったらINSERTメソッド
-			result = CartInsert(user_id,product_id,item_count);
-		}
-
-		return result;
-	}
-
-	/**
 	 * カートテーブル挿入/カート投入用
 	 * @param user_id
 	 * @param product_id
 	 * @return　成功失敗の真偽値
 	 */
-	private boolean CartInsert(String user_id,int product_id,int item_count){
+	public boolean CartInsert(String user_id,int product_id,int item_count){
 		boolean result = false;
 		DBConnector db =new DBConnector();
 		Connection con = db.getConnection();
@@ -98,7 +66,7 @@ public class CartActionDAO {
 	 * @param product_id
 	 * @return　成功失敗の真偽値
 	 */
-	private boolean CartUpdate(String user_id,int product_id,int item_count){
+	public boolean CartUpdate(String user_id,int product_id,int item_count){
 		boolean result = false;
 		DBConnector db =new DBConnector();
 		Connection con = db.getConnection();
@@ -191,53 +159,6 @@ public class CartActionDAO {
 	}
 
 	/**
-	 * カート内検索/同商品カート投入確認用。
-	 * @param user_id
-	 * @return
-	 */
-	private ArrayList<ItemDTO> CartSearch(String user_id){
-
-		DBConnector db =new DBConnector();
-		Connection con = db.getConnection();
-
-		String sql = "SELECT * FROM cart_info WHERE user_id = ?;";
-		ArrayList<ItemDTO> CartListDTO = new ArrayList<ItemDTO>();
-
-		try{
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, user_id);
-			/*id int primary key not null,ID*/
-			/*user_id varchar(16) not null,ユーザーID*/
-			 /*foreign key(user_id) references user_info(user_id),user_info.user_idとfk*/
-			/*product_id int not null,商品ID*/
-			/*foreign key(product_id) references product_info(product_id), product_info.product_idとfk*/
-			/*insert_date datetime not null,登録日*/
-			/*update_date datetime 更新日*/
-
-			ResultSet rs =  ps.executeQuery();
-
-			while(rs.next()){
-				ItemDTO CartDataDTO = new ItemDTO();
-				CartDataDTO.setProduct_id(rs.getInt("product_id"));
-				CartDataDTO.setStock(rs.getInt("item_count"));
-				CartListDTO.add(CartDataDTO);
-			}
-
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-
-		try{
-			con.close();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-
-		return CartListDTO;
-	}
-
-
-	/**
 	 * カート内指定削除
 	 * @param user_id
 	 * @param id
@@ -313,4 +234,44 @@ public class CartActionDAO {
 		}
 
 	}
+
+	public int CartCount(String user_id){
+		int result = 0;
+
+		DBConnector db =new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql = "SELECT count(*) FROM cart_info WHERE user_id = ?;";
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, user_id);
+			/*id int primary key not null,ID*/
+			/*user_id varchar(16) not null,ユーザーID*/
+			 /*foreign key(user_id) references user_info(user_id),user_info.user_idとfk*/
+			/*product_id int not null,商品ID*/
+			/*foreign key(product_id) references product_info(product_id), product_info.product_idとfk*/
+			/*insert_date datetime not null,登録日*/
+			/*update_date datetime 更新日*/
+
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				result = rs.getInt("count(*)");
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+
+
 }

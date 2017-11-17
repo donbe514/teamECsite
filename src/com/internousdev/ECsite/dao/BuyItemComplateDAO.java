@@ -14,7 +14,7 @@ public class BuyItemComplateDAO {
 	private DateUtil date = new DateUtil();
 
 	// 購入履歴格納メソッド
-	public void purchase_history_info(String user_id, int product_id,int item_count)  {
+	public void CartHistoryIn(String user_id, int product_id,int item_count)  {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -36,32 +36,41 @@ public class BuyItemComplateDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 		// カートテーブル情報削除メソッド
-	public int cart_infoDelete(String user_id) {
+	public void CartDataDelete(int id,String user_id) {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "DELETE FROM cart_info where user_id = ?";
-
-		int result =0;
+		String sql = "DELETE FROM cart_info where id = ? AND user_id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, user_id);
+			ps.setInt(1, id);
+			ps.setString(2, user_id);
 
-			result = ps.executeUpdate();
+			ps.executeUpdate();
 
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return result;
+
+		try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 
-	public void stock_chenge(int ChengeStock,int Product_id){
+	public void StockChenge(int ChengeStock,int Product_id){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 

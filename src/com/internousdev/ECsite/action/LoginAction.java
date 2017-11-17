@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ECsite.dao.CartActionDAO;
 import com.internousdev.ECsite.dao.LoginDAO;
 import com.internousdev.ECsite.dto.UserDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -121,6 +122,9 @@ public class LoginAction extends ActionSupport implements SessionAware{
                       String login_id = userDTO.getUser_id();
                       if(login_id!=null) {
         				boolean flgresult = loginDAO.loginFlg(user_id, 1);
+        				CartActionDAO CADAO = new CartActionDAO();
+        				String tmpID = session.get("tmpID").toString();
+        				CADAO.CartLoginUpdate(tmpID, login_id);
 
         				if(flgresult){
         					result=SUCCESS;
@@ -165,6 +169,10 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	}
 
 	public String Logout(){
+		String now_user = session.get("user_id").toString();
+		LoginDAO loginDAO = new LoginDAO();
+		loginDAO.loginFlg(now_user, 0);
+
 		session.clear();
 
 		return SUCCESS;

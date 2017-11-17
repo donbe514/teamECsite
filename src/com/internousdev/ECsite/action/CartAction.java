@@ -9,12 +9,13 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.ECsite.dao.CartActionDAO;
 import com.internousdev.ECsite.dao.ItemDetailDAO;
 import com.internousdev.ECsite.dto.ItemDTO;
+import com.internousdev.ECsite.util.RandomForm;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CartAction extends ActionSupport implements SessionAware{
 
 	private int product_id;
-	private int item_count;
+	private String item_count;
 	private int total_price = 0;
 	private int dell_id;
 	private String message = "";
@@ -31,9 +32,19 @@ public class CartAction extends ActionSupport implements SessionAware{
 		String now_user = "";
 
 		if(session.get("user_id")!=null){
+
 			now_user = session.get("user_id").toString();
-		}else{
+
+		}else if(session.get("tmpID")!=null){
+
 			now_user = session.get("tmpID").toString();
+
+		}else{
+
+			RandomForm rf = new RandomForm();
+			now_user =rf.RandomStr(16);//16桁の仮IDの発行
+			session.put("tmpID", now_user);
+
 		}
 
 		return now_user;
@@ -44,14 +55,18 @@ public class CartAction extends ActionSupport implements SessionAware{
 	 * @return
 	 */
 	public String CartShow(){
-		String now_user = user_check();
+		String now_user = user_check();//ユーザーIDの取得
 		CartActionDAO CartShowDAO = new CartActionDAO();
-		if(now_user.length()>0){
+
+		if(now_user.length()<1){
+			message=message+"ユーザーデータエラーが発生しました。<br>";
+		}else{
 			CartAry = CartShowDAO.CartShow(now_user);
 			if(CartAry.isEmpty()){
-				message = "カートに商品がありません";
+				message = message+"カートに商品がありません。<br>";
 				CartEnptyFlag = true;
-			}else{
+			}
+			else{
 				Iterator<ItemDTO> itr = CartAry.iterator();
 				ItemDTO CartListDTO = new ItemDTO();
 				while(itr.hasNext()){
@@ -74,35 +89,68 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 		CartActionDAO CADAO = new CartActionDAO();//基本カートアクションのインスタンス化
 		ItemDetailDAO IDDAO = new ItemDetailDAO();//商品単品検索DAO
-		ItemDTO StockDTO = new ItemDTO();//商品ストック情報格納用
-		StockDTO = IDDAO.detail(product_id);//商品ストック情報格納
+		ItemDTO StockDTO = IDDAO.detail(product_id);//商品ストック情報格納
 
 		ArrayList<ItemDTO> CartList = new ArrayList<ItemDTO>();
 		ItemDTO CartListDTO = new ItemDTO();
-		int tmpcount=item_count;
+		int CartInCount = 0;
+		int ErrorCount=0;
 
-		if(now_user.length()>0){
+
+		if(now_user.length()<1){
+			message=message+"ユーザーデータエラーが発生しました。<br>";
+			ErrorCount++;
+		}
+		if(!(item_count.matches("^[0-9]+$"))){
+			message=message+"カート投入数が不正です。<br>";
+			ErrorCount++;
+
+		}else{
+			CartInCount =Integer.parseInt(item_count.toString());
+		}
+
+		if(CartInCount==0){
+			message=message+"投入数が0のため、カートに商品が投入されませんでした。<br>";
+			ErrorCount++;
+		}else if(CartInCount<0){
+			message=message+"カートに負の数値が投入されました。<br>";
+			ErrorCount++;
+		}else if(CartInCount>StockDTO.getStock()){
+			message=message+"在庫を越える数値が投入されました。<br>";
+			ErrorCount++;
+		}
+
+		if(ErrorCount>0){
+			ret = ERROR;
+		}else{//エラーチェックが発生しなかったら
+
 			CartList = CADAO.CartShow(now_user);//now_userに紐付くカート情報取得
+			boolean DapFlag=false;//カート内容重複フラグ
+
+
 			Iterator<ItemDTO> itr = CartList.iterator();
 			while(itr.hasNext()){
 				CartListDTO = (ItemDTO)itr.next();
-				if(product_id==CartListDTO.getProduct_id()){
-					tmpcount = tmpcount +CartListDTO.getStock();
-
+				if(product_id==CartListDTO.getProduct_id()){//カート内容重複確認
+					DapFlag =true;
 				}
 			}
 
-			if(tmpcount>0){
-				if(tmpcount <= StockDTO.getStock()){
-					if(CADAO.CartIn(now_user, product_id,tmpcount)){
-						ret = CartShow();
+			if(DapFlag){
+				//重複していたらアップデート
+				CartInCount = CartInCount +CartListDTO.getStock();
+				CADAO.CartUpdate(now_user, product_id, CartInCount);
 
-					}
-				}else{
-					message="在庫が足りませんでした。";
-				}
+			}else{
+				//重複していないならインサート
+				CADAO.CartInsert(now_user, product_id, CartInCount);
+
 			}
+
+			ret = SUCCESS;
 		}
+
+		CartShow();
 
 		return ret;
 	}
@@ -148,11 +196,11 @@ public class CartAction extends ActionSupport implements SessionAware{
 		this.dell_id = dell_id;
 	}
 
-	public int getItem_count() {
+	public String getItem_count() {
 		return item_count;
 	}
 
-	public void setItem_count(int item_count) {
+	public void setItem_count(String item_count) {
 		this.item_count = item_count;
 	}
 
