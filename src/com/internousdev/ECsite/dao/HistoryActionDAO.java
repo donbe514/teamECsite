@@ -24,7 +24,8 @@ public class HistoryActionDAO {
                 + "pi.image_file_path, "           //画像
                 + "pi.price, "                     //商品値段
                 + "pi.release_company, "           //販売会社
-                + "pi.release_date "               //発売日
+                + "pi.release_date, "               //発売日
+                + "phi.item_count "                 //購入数
                 + "FROM product_info pi "
                 + "LEFT JOIN purchase_history_info phi "
                 + "ON pi.product_id = phi.product_id "
@@ -46,6 +47,8 @@ public class HistoryActionDAO {
                 dto.setPrice(resultSet.getInt("price"));
                 dto.setRelease_company(resultSet.getString("release_company"));
                 dto.setRelease_date(resultSet.getString("release_date"));
+                dto.setStock(resultSet.getInt("item_count"));
+                dto.setTotal_price(dto.getPrice()*dto.getStock());
                 historyDTO.add(dto);
             }
 

@@ -34,6 +34,8 @@ public class ItemDTO {
 
 	private int stock; // 在庫（実装予定）
 
+	private int total_price;//合計金額
+
 	/**
 	 * @return stocks
 	 */
@@ -258,4 +260,12 @@ public class ItemDTO {
 	public int getStatus() {
 		return status;
 	}
+
+    public int getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(int total_price) {
+        this.total_price = total_price;
+    }
 }

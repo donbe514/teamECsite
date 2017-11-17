@@ -36,6 +36,8 @@
 		<th>値段</th>
 		<th>発売会社名</th>
 		<th>商品発売日</th>
+		<th>購入数</th>
+		<th>金額</th>
 	</tr>
 
 	<s:iterator value="historyList">
@@ -46,6 +48,8 @@
 			<td><s:property value="price" /></td>
 			<td><s:property value="release_company" /></td>
 			<td><s:property value="release_date" /></td>
+			<td><s:property value="stock" /></td>
+			<td><s:property value="total_price" /></td>
 		</tr>
 	</s:iterator>
 
