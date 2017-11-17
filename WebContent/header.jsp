@@ -18,7 +18,7 @@
 	<!-- ロゴ画像ボックス -->
 	<div class="leftbox">
 		<!-- ロゴ画像（仮）画像クリックでホームに戻ります -->
-		<a href='<s:url action="HomeAction" />' target="_parent" ><img src = "./images/中日.jpg" class = "logo"></a>
+		<a href='<s:url action="HomeAction" />' target="_parent" ><img src = "./images/komazon.jpg" class = "logo"></a>
 	</div>
 
 	<!-- メニュー、検索ブロック -->

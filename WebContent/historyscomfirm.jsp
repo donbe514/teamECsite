@@ -4,6 +4,10 @@
 <html>
 <head>
 <meta charset="utf-8">
+<style type="text/css">
+body{
+	text-align:center;}
+</style>
 <title>購入履歴の削除確認画面</title>
 </head>
 <body>
