@@ -29,7 +29,7 @@
 		<!-- マイページ画面遷移 -->
 		<action name="MyPageAction" class="com.internousdev.ECsite.action.MyPageAction" method="execute">
 			<result name="success">mypage.jsp</result>
-			<result name="error">Home.jsp</result>
+			<result name="error">body.jsp</result>
 		</action>
 
 		<!-- カート画面遷移 -->
@@ -52,7 +52,7 @@
 		<!-- ユーザー情報入力画面遷移 -->
 		<action name="UserAction" class="com.internousdev.ECsite.action.UserAction" method="execute">
 			<result name="success">userinfo.jsp</result>
-			<result name="error">index.jsp</result>
+			<result name="error">Home.jsp</result>
 		</action>
 
 		<!-- 登録内容確認画面遷移 -->
@@ -147,13 +147,13 @@
 		<!-- 商品購入履歴画面遷移 -->
 		<action name="HistoryAction" class="com.internousdev.ECsite.action.HistoryAction" method="historyshow">
 			<result name="success">history.jsp</result>
-			<result name="error">index.jsp</result>
+			<result name="error">body.jsp</result>
 		</action>
 
 		<!-- 商品購入履歴削除画面遷移 -->
 		<action name="Historyscomfirm" class="com.internousdev.ECsite.action.SuccessReturn" method="execute">
 			<result name="success">historyscomfirm.jsp</result>
-			<result name="error">index.jsp</result>
+			<result name="error">body.jsp</result>
 		</action>
 
 		<!-- 商品購入履歴削除画面遷移 -->

@@ -30,7 +30,7 @@
 
 
       <div class="center">
-      <p>ログインは<a href='<s:url action="LoginAction" />'>こちら</a></p>
+      <p>ログインは<a href='<s:url action="LoginPageAction" />'>こちら</a></p>
 
       </div>
  </div>

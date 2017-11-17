@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.ECsite.dao.UserInfoComplateDAO;
+import com.internousdev.ECsite.dto.UserDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserInfoComplateAction extends ActionSupport implements SessionAware {
@@ -33,19 +34,16 @@ public class UserInfoComplateAction extends ActionSupport implements SessionAwar
 
 
 	public String execute() throws SQLException {
+		UserDTO user = new UserDTO();
+		session.put("user_id", null);
+		user = (UserDTO)session.get("new_userdata");
 
-		userInfoComplateDAO.createUser(session.get("user_id").toString(),
-			session.get("password").toString(),
-			session.get("first_name").toString(),
-			session.get("family_name").toString(),
-			session.get("first_name_kana").toString(),
-			session.get("family_name_kana").toString(),
-			Integer.parseInt(session.get("sex").toString()),
-			session.get("email").toString());
 
-		String result = SUCCESS;
+		userInfoComplateDAO.createUser(user.getUser_id(),user.getPassword(),
+				user.getFirst_name(),user.getFamily_name(),user.getFirst_name_kana(),user.getFamily_name_kana(),
+				user.getSex(),user.getEmail());
 
-		return result ;
+		return SUCCESS ;
 	}
 
 	/**

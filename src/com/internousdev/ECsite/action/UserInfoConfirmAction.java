@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.ECsite.dao.UserIdDAO;
+import com.internousdev.ECsite.dto.UserDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserInfoConfirmAction extends ActionSupport implements SessionAware {
@@ -21,7 +22,7 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 
 	public String first_name;
 
-	public int sex;
+	public String sex;
 
 	public String email;
 
@@ -41,95 +42,108 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 
 	public String execute() throws SQLException {
 
-		String result = SUCCESS;
+		String result = ERROR;
+		int ErrorCount = 0;
+		int intsex = 0;
 
-		if(!(user_id.equals("")) && !(password.equals("")) && !(family_name_kana.equals("")) && !(family_name.equals("")) && !(first_name_kana.equals("")) && !(first_name.equals(""))  && !(email.equals(""))) {
-			session.put("user_id" , user_id);
-			session.put("password", password);
-			session.put("family_name_kana" , family_name_kana);
-			session.put("family_name" , family_name);
-			session.put("first_name_kana" , first_name_kana);
-			session.put("first_name" , first_name);
-			session.put("sex", sex);
-			session.put("email" , email);
+		session.put("user_id", null);
 
-		}
-
-
-		if((userIdDAO.user_count(user_id)==1)){
+		if((userIdDAO.user_count(user_id)>0)){
 			errorMessage.add("ユーザーIDがすでに登録されています。");
-			result = ERROR;
+			ErrorCount++;
+		}
+		if(user_id.length()<1||user_id.length()>8){
+			errorMessage.add("ユーザーIDは1文字以上8文字以内で入力してください。");
+			ErrorCount++;
+		}
+		if(password.length()<1||password.length()>16){
+			errorMessage.add("パスワードは1文字以上16文字以内で入力してください。");
+			ErrorCount++;
 		}
 
 		if(user_id.equals("")){
 			errorMessage.add("ユーザーIDを入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 
 		if(password.equals("")){
 			errorMessage.add("パスワードを入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(family_name.equals("")){
 			errorMessage.add("姓を入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(first_name.equals("")){
 			errorMessage.add("名を入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(family_name_kana.equals("")){
 			errorMessage.add("姓ふりがなを入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(first_name_kana.equals("")){
 			errorMessage.add("名ふりがなを入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
-
 		if(email.equals("")){
 			errorMessage.add("メールアドレスを入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
-
-
 		if(family_name.length()<1 || family_name.length()>16){
 			errorMessage.add("姓は1文字以上16文字以下で入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(first_name.length()<1 || first_name.length()>16){
 			errorMessage.add("名は1文字以上16文字以下で入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(family_name_kana.length()<1 || family_name_kana.length()>16){
 			errorMessage.add("姓ふりがなは1文字以上16文字以下で入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if(first_name_kana.length()<1 || first_name_kana.length()>16){
 			errorMessage.add("名ふりがなは1文字以上16文字以下で入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
-
 		if(email.length()<18 || email.length()>32){
 			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
 			errorMessage.add("姓ふりがなはひらがなで入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
 		if (!(first_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
 			errorMessage.add("名ふりがなはひらがなで入力してください。");
-			result = ERROR;
+			ErrorCount++;
 		}
-
-
 		if (password.matches("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
 			errorMessage.add("パスワードは半角英数字、半角記号で入力してください。");
-			result = ERROR;
+			ErrorCount++;
+		}
+		if (!(sex.matches("^[0-9]+$"))) {
+			errorMessage.add("性別の値が不正です。");
+			ErrorCount++;
+		}else{
+			intsex = Integer.parseInt(sex);
 		}
 
-
+		if(ErrorCount>0) {
+			result = ERROR;
+		}else{
+			UserDTO user = new UserDTO();
+			user.setUser_id(user_id);
+			user.setPassword(password);
+			user.setFamily_name(family_name);
+			user.setFirst_name(first_name);
+			user.setFamily_name_kana(family_name_kana);
+			user.setFirst_name_kana(first_name_kana);
+			user.setSex(intsex);
+			user.setEmail(email);
+			session.put("new_userdata", user);
+			result = SUCCESS;
+		}
 
 		return result;
 
@@ -205,7 +219,7 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 	 * sexを取得します。
 	 * @return sex
 	 */
-	public int getSex() {
+	public String getSex() {
 	    return sex;
 	}
 
@@ -213,7 +227,7 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 	 * sexを設定します。
 	 * @param sex sex
 	 */
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 	    this.sex = sex;
 	}
 
