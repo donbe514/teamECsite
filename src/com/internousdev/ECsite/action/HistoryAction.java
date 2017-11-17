@@ -35,7 +35,7 @@ public class HistoryAction extends ActionSupport implements SessionAware {
     return result;
     }
 
-
+    //全削除
     public String delete() throws SQLException{
 
         String result = SUCCESS;
@@ -50,6 +50,45 @@ public class HistoryAction extends ActionSupport implements SessionAware {
 
         return result;
     }
+
+    //選択削除
+    public String partDelete() throws SQLException{
+
+    	String result;
+
+    	String user_id = session.get("user_id").toString();
+
+    	String del_id = session.get("del_id").toString();
+
+
+    	//１つの文字列をカンマ区切りにして配列化
+		String[] del = del_id.split(",");
+
+		//配列数を変数に代入
+		int delcount = del.length;
+
+
+
+		for(int i=0;i<delcount;i++){
+
+			//配列の中の文字列の先頭にある空白を削除
+			String new_del_id = del[i].trim();
+
+			//文字列を数字に変換
+			int delitem = Integer.parseInt(new_del_id);
+
+
+			HistoryActionDAO historyAction = new HistoryActionDAO();
+			historyAction.partDel(user_id, delitem);
+		}
+
+    	result=historyshow();
+
+    	return result;
+    }
+
+
+
 
     public void setSession(Map<String, Object> session) {
         this.session = session;

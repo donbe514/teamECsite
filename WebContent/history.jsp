@@ -27,6 +27,7 @@
 
 	<h3>ご購入情報は以下になります。</h3>
 	<div class="main">
+	<form action="partDelete">
 	<table border="1" align="center">
 
 	<tr>
@@ -38,6 +39,7 @@
 		<th>商品発売日</th>
 		<th>購入数</th>
 		<th>金額</th>
+		<th>購入履歴削除</th>
 	</tr>
 
 	<s:iterator value="historyList">
@@ -50,14 +52,18 @@
 			<td><s:property value="release_date" /></td>
 			<td><s:property value="stock" /></td>
 			<td><s:property value="total_price" /></td>
+			<td><input type="checkbox" name="del_id" value='<s:property value="id"/>'></td>
+
 		</tr>
 	</s:iterator>
 
 	</table>
+	選択した購入履歴を<input type="submit" value="履歴削除">
+	</form>
 	</div>
 
 	<s:form action="Historyscomfirm">
-		購入履歴を<a href='<s:url action="HistoryComfirm"/>'>削除</a>
+		購入履歴を<input type="submit" value="履歴全削除">
 	</s:form>
 </s:else>
 

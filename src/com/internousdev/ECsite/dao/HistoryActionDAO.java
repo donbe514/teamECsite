@@ -19,6 +19,7 @@ public class HistoryActionDAO {
         ArrayList<ItemDTO> historyDTO = new ArrayList<ItemDTO>();
 
         String sql ="SELECT pi.product_id, "
+        		+ "phi.id, "              //履歴id
                 + "pi.product_name, "              //商品名
                 + "pi.product_name_kana, "         //るび
                 + "pi.image_file_path, "           //画像
@@ -41,6 +42,8 @@ public class HistoryActionDAO {
 
             while(resultSet.next()) {
                 ItemDTO dto = new ItemDTO();
+                dto.setId(resultSet.getInt("id"));
+                dto.setProduct_id(resultSet.getInt("product_id"));
                 dto.setProduct_name(resultSet.getString("product_name"));
                 dto.setProduct_name_kana(resultSet.getString("product_name_kana"));
                 dto.setImage_file_path(resultSet.getString("image_file_path"));
@@ -80,5 +83,29 @@ public class HistoryActionDAO {
         connection.close();
 
     }
+    }
+
+    //商品履歴部分削除
+    public void partDel(String user_id,int del_id) throws SQLException {
+    	String sql ="DELETE "
+                + "FROM purchase_history_info "
+                + "WHERE "
+                + "user_id = ? "
+                + "AND "
+                + "id = ? ";
+
+    	try{
+    		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    		preparedStatement.setString(1,user_id);
+    		preparedStatement.setInt(2,del_id);
+
+    		preparedStatement.execute();
+
+
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}finally{
+    		connection.close();
+    	}
     }
 }
