@@ -14,14 +14,43 @@
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
     <title>UserInnfoConfirm</title>
+    	<link rel="stylesheet" type="text/css" href="./css/main.css">
+    	<style type="text/css">
+
+ 			table {
+ 			border:1px; solid black;
+			width:700px;
+			height;500px;
+			text-align:left;
+			margin:0 auto;
+			font-size:15px;
+		}
+
+			.center{
+			text-align:center;
+			}
+
+
+
+			.button {
+			font-size:15px;
+			padding: 10px 12px;
+			margin-bottom:15px;
+			width:140px;
+			cursor: pointer;
+		}
+
+
+	</style>
 </head>
 <body>
-<div id="header">
+<div class="header">
+	<h1>❐　ユーザー登録確認画面</h1>
 </div>
-<div id="main">
-  <h3>登録内容のご確認をお願いします。</h3>
-     <table>
-         <s:form action="UserInfoComplateAction">
+<div class="main">
+
+         <form action="UserInfoComplateAction">
+         <table>
              <tr id="land">
                  <td>ユーザーID</td>
                  <td><s:property value="user_id" escape="false" /></td>
@@ -63,15 +92,14 @@
                <td><s:property value="email" escape="false" /></td>
             </tr>
 
-            <h4>上記の内容で問題なければOKボタンを押してください。</h4>
+            </table>
+            <div class="center">
+<br>
+<button class="button" type="submit">登録</button></div>
+         </form>
 
-            <tr>
-             <td> <s:submit value="OK" /></td>
-            </tr>
-         </s:form>
-      </table>
      <div id="footer">
-     <span>前画面に戻る場合は</span><a href='<s:url action="LoginAction" />'>こちら</a>
+     <div class="center">前画面に戻る場合は<a href='<s:url action="LoginAction" />'>こちら</a></div>
      </div>
   </div>
 </body>

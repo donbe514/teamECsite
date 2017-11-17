@@ -22,7 +22,7 @@ public class AddressDAO {
 		List<AddressDTO> addressList = new ArrayList<AddressDTO>();
 
 
-		String sql = "SELECT id, user_id, first_name, family_name, first_name_kana, family_name_kana, email, tel_number, user_address FROM destination_info where user_id = ?";
+		String sql = "SELECT id, user_id, first_name, family_name, first_name_kana, family_name_kana, email, tel_number, user_address FROM destination_info where user_id = ? ORDER BY insert_date";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, user_id);

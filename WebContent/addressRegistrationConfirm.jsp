@@ -14,17 +14,40 @@
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
 	<title>addressRegistrationConfirm</title>
-	<link rel="stylesheet" type="text/css" href="/ecsite/CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<style type="text/css">
 
+ 			table {
+ 			border:1px; solid black;
+			width:700px;
+			height;500px;
+			text-align:left;
+			margin:0 auto;
+			font-size:15px;
+		}
 
+			.center{
+			text-align:center;
+			}
+
+
+
+			.button {
+			font-size:15px;
+			padding: 10px 12px;
+			margin-bottom:15px;
+			width:140px;
+			cursor: pointer;
+		}
 
 
 	</style>
 </head>
 <body>
-
-<h3>登録する宛先情報は以下でよろしいですか。</h3>
+<div class="header">
+	<h1>❐　宛先登録確認画面</h1>
+</div>
+<div class="main">
 			<table>
 				<s:form action="AddressRegistrationComplateAction">
 
@@ -62,14 +85,7 @@
 							<s:property value="putFirst_name_kana" />
 						</td>
 					</tr>
-<%-- 					<tr>
-						<td>
-							<label>性別:</label>
-						</td>
-						<td>
-							<s:property value="sex" escape="false" />
-						</td>
-					</tr> --%>
+
 					<tr>
 						<td>
 							<label>住所:</label>
@@ -96,10 +112,11 @@
 					</tr>
 					<tr>
 						<td>
-							<s:submit value="登録" />
+							<div class="center"><button class="button" type="submit">登録</button></div>
 						</td>
 					</tr>
 				</s:form>
 			</table>
+	</div>
 </body>
 </html>

@@ -20,34 +20,24 @@
 
 
  			table {
- 			border:1px; solid black;
 			width:700px;
 			height;500px;
 			text-align:left;
 			margin:0 auto;
 			font-size:15px;
 		}
-		.td1 {
 
-		}
 		.EM {
 			color:red;
 			font-size:13px;
 		}
-
-
 			.center{
 			text-align:center;
 			}
 
-			.check{
-			position:relative;
-			right:450px;
-			top:100px;
-			text-align:center;
-			}
 
-			.buybutton {
+
+			.button {
 			font-size:15px;
 			padding: 10px 12px;
 			margin-bottom:15px;
@@ -62,85 +52,88 @@
 	<h1>❐　宛先登録画面</h1>
 </div>
 <div class="main">
-			<table>
-			<s:form action="AddressRegistrationConfirmAction">
-				<tr>
-					<td class="td1">
-						<div class="EM">
-							<s:if test="errorMessage != null">
-								<s:iterator value="errorMessage" status="count">
-									<s:property value="errorMessage[#count.index]" /><br>
-								</s:iterator>
-							</s:if>
-						</div>
+	<form action="AddressRegistrationConfirmAction">
+		<table>
+			<tr>
+				<td class="td1">
+					<div class="EM">
+						<s:if test="errorMessage != null">
+							<s:iterator value="errorMessage" status="count">
+								<s:property value="errorMessage[#count.index]" /><br>
+							</s:iterator>
+						</s:if>
+					</div>
 
-					</td>
-				</tr>
-				<tr>
-					<td class="td1">
-						<label>名前</label>
-					</td>
-					<td class="td1">
-						<label>姓</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putFamily_name" maxlength="16" minlength="1" value="" />
-					</td>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>名前</label>
+				</td>
+				<td class="td1">
+					<label>姓</label><br>
 
-					<td class="td1">
-						<label>名</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putFirst_name" maxlength="16" minlength="1" value="" />
-					</td>
-				</tr>
-				<tr>
-					<td class="td1">
-						<label>ふりがな</label>
-					</td>
-					<td class="td1">
-						<label>姓</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putFamily_name_kana" maxlength="16" minlength="1" value="" />
-					</td>
+					<input type="text" name="putFamily_name" maxlength="16" minlength="1" value="" />
+				</td>
 
-					<td class="td1">
-						<label>名</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putFirst_name_kana" maxlength="16" minlength="1" value="" />
-					</td>
-				</tr>
+				<td class="td1">
+					<label>名</label><br>
 
-				<tr>
-					<td colspan="2">
-						<label>住所</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putUser_address" maxlength="50" minlength="15" value="" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<label>電話番号</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putTel_number" maxlength="13" minlength="11" value="" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<label>メールアドレス</label>
-					</td>
-					<td class="td1">
-						<input type="text" name="putEmail" maxlength="32" minlength="18" value="" />
-					</td>
-				</tr>
+					<input type="text" name="putFirst_name" maxlength="16" minlength="1" value="" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>ふりがな</label>
+				</td>
+				<td>
+					<label>姓</label><br>
 
-				<s:submit value="確認"/>
-			</s:form>
-			</table>
+					<input type="text" name="putFamily_name_kana" maxlength="16" minlength="1" value="" />
+				</td>
+
+				<td>
+					<label>名</label><br>
+
+					<input type="text" name="putFirst_name_kana" maxlength="16" minlength="1" value="" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label>住所</label>
+				</td>
+				<td>
+					<input type="text" name="putUser_address" maxlength="50" minlength="15" value="" />
+				</td>
+			</tr>
+
+		<tr>
+          <td>
+              <label>電話番号</label>
+         </td>
+          <td>
+
+              <input type ="text" name="putTel_number" value="" maxlength="13" minlength="11"/>
+          <td>
+       </tr>
+
+      <tr>
+          <td>
+              <label>メールアドレス</label>
+         </td>
+          <td>
+
+              <input type ="text" name="putEmail" value="" maxlength="32"/>
+          <td>
+       </tr>
+
+		</table>
+
+		<br>
+
+		<div class="center"><button class="button" type="submit">確認</button></div>
+</form>
 </div>
 </body>
 </html>

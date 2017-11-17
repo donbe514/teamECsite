@@ -13,19 +13,27 @@
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
 <title>UserInfoComplate</title>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<style type="text/css">
+
+			.center{
+			text-align:center;
+			}
+
+	</style>
 </head>
 <body>
-  <div id="header">
-  </div>
+<div class="header">
+	<h1>❐　ユーザー登録完了画面</h1>
+</div>
+<div class="main">
 
-  <div id="main">
-   <div>
-      <h3>ユーザーの登録を完了致しました。</h3>
 
-      <div>
-        <a href='<s:url action="LoginAction" />'>ログインへ</a>
+      <div class="center">
+      <p>ログインは<a href='<s:url action="LoginAction" />'>こちら</a></p>
+
       </div>
-   </div>
-  </div>
+ </div>
+
 </body>
 </html>

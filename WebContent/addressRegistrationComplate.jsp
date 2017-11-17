@@ -14,22 +14,20 @@
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
 	<title>登録完了画面</title>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<style type="text/css">
 
-
-
-		table {
+			.center{
 			text-align:center;
-			margin:0 auto;
-		}
-
+			}
 
 	</style>
 </head>
 <body>
-
-		<div><br>
-			<h3>宛先の登録が完了致しました。</h3>
+<div class="header">
+	<h1>❐　宛先登録完了画面</h1>
+</div>
+<div class="main">
 <div class="center">
 		<p>宛先情報選択は<a href='<s:url action="AddressAction" />'>こちら</a></p></div>
 
