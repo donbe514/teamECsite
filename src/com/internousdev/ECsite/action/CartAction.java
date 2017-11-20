@@ -126,6 +126,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 			CartList = CADAO.CartShow(now_user);//now_userに紐付くカート情報取得
 			boolean DapFlag=false;//カート内容重複フラグ
+			int DapItemCount = 0;
 
 
 			Iterator<ItemDTO> itr = CartList.iterator();
@@ -133,12 +134,13 @@ public class CartAction extends ActionSupport implements SessionAware{
 				CartListDTO = (ItemDTO)itr.next();
 				if(product_id==CartListDTO.getProduct_id()){//カート内容重複確認
 					DapFlag =true;
+					DapItemCount = CartListDTO.getStock();
 				}
 			}
 
 			if(DapFlag){
 				//重複していたらアップデート
-				CartInCount = CartInCount +CartListDTO.getStock();
+				CartInCount = CartInCount +DapItemCount;
 				CADAO.CartUpdate(now_user, product_id, CartInCount);
 
 			}else{
