@@ -73,13 +73,13 @@
 				<td class="td1">
 					<label>姓</label><br>
 
-					<input type="text" name="putFamily_name" maxlength="16" minlength="1" value="" />
+					<input type="text" name="putFamily_name" value="" />
 				</td>
 
 				<td class="td1">
 					<label>名</label><br>
 
-					<input type="text" name="putFirst_name" maxlength="16" minlength="1" value="" />
+					<input type="text" name="putFirst_name" value="" />
 				</td>
 			</tr>
 			<tr>
@@ -89,13 +89,13 @@
 				<td>
 					<label>姓</label><br>
 
-					<input type="text" name="putFamily_name_kana" maxlength="16" minlength="1" value="" />
+					<input type="text" name="putFamily_name_kana" value="" />
 				</td>
 
 				<td>
 					<label>名</label><br>
 
-					<input type="text" name="putFirst_name_kana" maxlength="16" minlength="1" value="" />
+					<input type="text" name="putFirst_name_kana" value="" />
 				</td>
 			</tr>
 			<tr><td><br></td></tr>
@@ -104,7 +104,7 @@
 					<label>住所</label>
 				</td>
 				<td>
-					<input type="text" name="putUser_address" maxlength="50" minlength="15" value="" />
+					<input type="text" name="putUser_address" value="" />
 				</td>
 			</tr>
 		<tr><td><br></td></tr>
@@ -114,7 +114,7 @@
          </td>
           <td>
 
-              <input type ="text" name="putTel_number" value="" maxlength="13" minlength="11"/>
+              <input type ="text" name="putTel_number" value=""/>
           <td>
        </tr>
 	<tr><td><br></td></tr>
@@ -124,7 +124,7 @@
          </td>
           <td>
 
-              <input type ="text" name="putEmail" value="" maxlength="32"/>
+              <input type ="text" name="putEmail" value="" />
           <td>
        </tr>
 

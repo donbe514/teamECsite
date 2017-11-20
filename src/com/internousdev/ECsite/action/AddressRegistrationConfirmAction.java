@@ -37,8 +37,35 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			session.put("putEmail", putEmail);
 		}
 
-		if(this.checkNull().equals(ERROR)) {
-			return result;
+		System.out.println("email:"+putEmail);
+
+		if(putFamily_name.equals("")){
+			errorMessage.add("姓を入力してください。");
+			result = ERROR;
+		}
+		if(putFirst_name.equals("")){
+			errorMessage.add("名を入力してください。");
+			result = ERROR;
+		}
+		if(putFamily_name_kana.equals("")){
+			errorMessage.add("姓ふりがなを入力してください。");
+			result = ERROR;
+		}
+		if(putFirst_name_kana.equals("")){
+			errorMessage.add("名ふりがなを入力してください。");
+			result = ERROR;
+		}
+		if(putUser_address.equals("")){
+			errorMessage.add("住所を入力してください。");
+			result = ERROR;
+		}
+		if(putTel_number.equals("")){
+			errorMessage.add("電話番号を入力してください。");
+			result = ERROR;
+		}
+		if(putEmail.equals("")){
+			errorMessage.add("メールアドレスを入力してください。");
+			result = ERROR;
 		}
 
 
@@ -84,8 +111,8 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 
 		}
 //		if (!putEmail.matches("^[a-zA-Z0-9 -/:-@\[-\`\{-\~]+$")) {
-		if (putEmail.matches("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
-			errorMessage.add("メールアドレスは半角英数字、半角記号で入力してください。");
+		if (!putEmail.matches("^[a-zA-Z0-9#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+(\\.[a-zA-Z0-9!#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+)*+(.*)@[a-zA-Z0-9][a-zA-Z0-9\\-]*(\\.[a-zA-Z0-9\\-]+)+$")) {
+			errorMessage.add("正しいメールアドレスの形式で入力してください。");
 			result = ERROR;
 		}
 
@@ -102,42 +129,7 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 
 	}
 
-	public String checkNull() {
-		String result = SUCCESS;
 
-		if(putFamily_name.equals("")){
-			errorMessage.add("姓を入力してください。");
-			result = ERROR;
-		}
-		if(putFirst_name.equals("")){
-			errorMessage.add("名を入力してください。");
-			result = ERROR;
-		}
-		if(putFamily_name_kana.equals("")){
-			errorMessage.add("姓ふりがなを入力してください。");
-			result = ERROR;
-		}
-		if(putFirst_name_kana.equals("")){
-			errorMessage.add("名ふりがなを入力してください。");
-			result = ERROR;
-		}
-		if(putUser_address.equals("")){
-			errorMessage.add("住所を入力してください。");
-			result = ERROR;
-		}
-		if(putTel_number.equals("")){
-			errorMessage.add("電話番号を入力してください。");
-			result = ERROR;
-		}
-		if(putEmail.equals("")){
-			errorMessage.add("メールアドレスを入力してください。");
-			result = ERROR;
-		}
-
-		this.result = result;
-
-		return this.result;
-	}
 
 	/**
 	 * @return putFamily_name
