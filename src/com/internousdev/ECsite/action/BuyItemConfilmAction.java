@@ -22,7 +22,7 @@ public class BuyItemConfilmAction extends ActionSupport implements SessionAware{
 
 	public String BuyItemConplate(){
 		String result = ERROR;
-		String user_id = session.get("user_id").toString();
+		String user_id = "";
 		int ErrorCount = 0;
 		ItemDetailDAO IDDAO = new ItemDetailDAO();
 		CartActionDAO CADAO = new CartActionDAO();
@@ -30,10 +30,11 @@ public class BuyItemConfilmAction extends ActionSupport implements SessionAware{
 		ArrayList<ItemDTO> CartAry = new ArrayList<ItemDTO>();
 
 
-		if(user_id == null){//決済確定時、未ログインならログインページへ
+		if(session.get("user_id") == null){//決済確定時、未ログインならログインページへ
 			result = "login";
 			ErrorCount++;
 		}else{
+		    user_id = session.get("user_id").toString();
 			CartAry = CADAO.CartShow(user_id);
 			if(CartAry.isEmpty()){//カート内容がなければカート画面へ
 				result = "cart";

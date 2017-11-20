@@ -36,7 +36,7 @@
 			}
 
 
-
+/*
 			.button {
 			font-size:15px;
 			padding: 10px 12px;
@@ -44,7 +44,7 @@
 			width:140px;
 			cursor: pointer;
 		}
-
+ */
 	</style>
 </head>
 <body>
@@ -98,7 +98,7 @@
 					<input type="text" name="putFirst_name_kana" maxlength="16" minlength="1" value="" />
 				</td>
 			</tr>
-
+			<tr><td><br></td></tr>
 			<tr>
 				<td>
 					<label>住所</label>
@@ -107,7 +107,7 @@
 					<input type="text" name="putUser_address" maxlength="50" minlength="15" value="" />
 				</td>
 			</tr>
-
+		<tr><td><br></td></tr>
 		<tr>
           <td>
               <label>電話番号</label>
@@ -117,7 +117,7 @@
               <input type ="text" name="putTel_number" value="" maxlength="13" minlength="11"/>
           <td>
        </tr>
-
+	<tr><td><br></td></tr>
       <tr>
           <td>
               <label>メールアドレス</label>
@@ -132,8 +132,12 @@
 
 		<br>
 
-		<div class="center"><button class="button" type="submit">確認</button></div>
+		<div class="center"><button class="submit_bt" type="submit">確認</button></div>
 </form>
+</div>
+<div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
 </div>
 </body>
 </html>

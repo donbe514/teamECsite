@@ -27,13 +27,17 @@
 	<h1>❐　ユーザー登録完了画面</h1>
 </div>
 <div class="main">
-
-
+<br><br>
+<p style="text-align:center; font-size:30px;  font-weight:bold;">ユーザー登録が完了しました。</p>
+<br><br>
       <div class="center">
       <p>ログインは<a href='<s:url action="LoginPageAction" />'>こちら</a></p>
 
       </div>
  </div>
-
+<div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

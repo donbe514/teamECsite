@@ -37,7 +37,7 @@
 					</select>
 					<input type="hidden" name="LimitFlag" value= "1">
 					<input type = "text" name = "SearchText"  placeholder ="キーワードを入力" class= "search">
-					<input type="submit" value="検索" class="submit_btn">
+					<input type="submit" value="検索" >
 				</form>
 			</li>
 			<!-- 商品広告 -->

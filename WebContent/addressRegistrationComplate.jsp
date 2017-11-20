@@ -29,11 +29,14 @@
 </div>
 <div class="main">
 <div class="center">
+		<h1>宛先登録が完了しました。</h1>
+		<br><br>
 		<p>宛先情報選択は<a href='<s:url action="AddressAction" />'>こちら</a></p></div>
-
-
 		</div>
 
-
+<div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

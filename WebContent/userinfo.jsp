@@ -32,6 +32,7 @@
 		.EM {
 			color:red;
 			font-size:13px;
+			width:120%;
 		}
 
 
@@ -41,20 +42,20 @@
 
 
 
-			.button {
+/* 			.button {
 			font-size:15px;
 			padding: 10px 12px;
 			margin-bottom:15px;
 			width:140px;
 			cursor: pointer;
-		}
+		} */
 
 	</style>
 
 
 </head>
 <body>
-<div class="header">
+<div class="header" style="text-align:center;">
 	<h1>❐　ユーザー登録画面</h1>
 </div>
 <div class="main">
@@ -70,7 +71,7 @@
 								</s:iterator>
 							</s:if>
 						</div>
-
+						<br>
 					</td>
 				</tr>
 <!-- </table>
@@ -80,10 +81,10 @@
            <label>ユーザーID</label>
          </td>
          <td>
-
             <input type="text" name="user_id" value=""  maxlength="16"/>
          </td>
       </tr>
+      <tr><td><br></td></tr>
 <!--  </table>
  <table> -->
        <tr>
@@ -95,6 +96,7 @@
             <input type="text" name="password" value=""  maxlength="16"/>
          </td>
       </tr>
+      <tr><td><br></td></tr>
 <!-- </table>
 <table> -->
  			<tr>
@@ -103,13 +105,11 @@
 				</td>
 				<td>
 					<label>姓</label><br>
-
 					<input type="text" name="family_name" maxlength="16" minlength="1" value="" />
 				</td>
 
 				<td>
 					<label>名</label><br>
-
 					<input type="text" name="first_name" maxlength="16" minlength="1" value="" />
 				</td>
 			</tr>
@@ -131,18 +131,18 @@
 					<input type="text" name="first_name_kana" maxlength="16" minlength="1" value="" />
 				</td>
 			</tr>
+			<tr><td><br></td></tr>
 <!-- </table>
 <table> -->
        <tr>
            <td>
                <label>性別</label>
-
            <td>
                 &nbsp;<input type="radio" name="sex" value=0 checked="checked">男
                 <input type="radio" name="sex" value=1>女
            </td>
-
        </tr>
+       <tr><td><br></td></tr>
 <!-- </table>
 <table> -->
       <tr>
@@ -150,17 +150,20 @@
               <label>メールアドレス</label>
          </td>
           <td>
-
               <input type ="text" name="email" value="" maxlength="32"/>
           <td>
        </tr>
   </table>
-    <br>
-   <div class="center"><button class="button" type="submit">確認</button></div>
+    <br><br>
+   <div class="center"><button class="submit_bt" type="submit">確認</button></div><!-- submitボタンCSS統一  -->
 	</form>
    <%-- <div>
       <span>ログイン画面へ</span><a href='<s:url action="LoginAction" />'>戻る</a>
    </div> --%>
+</div>
+<div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
 </div>
 </body>
 </html>

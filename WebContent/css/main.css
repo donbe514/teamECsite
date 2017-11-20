@@ -25,9 +25,10 @@ body {
 }
 
 /* 見出しh1 */
-h1{
+.header h1{
 	font-family:'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
 						Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+	text-align:center;/* 文字中央寄せ */
 }
 
 /* メインブロック設定 */
@@ -62,7 +63,7 @@ h1{
 	border: ridge 1px #A4A4A4;
 	border-radius: 10px;
 	padding: 10px 5px 10px 10px;
-	margin-bottto::0;
+	margin-bottom:0;
 } */
 
 
@@ -88,4 +89,31 @@ h1{
 .footer a:hover{
     border-bottom: dotted 1px #fff;/* 下線部に白点線表示 */
     font-weight:bold;/* 文字の太さ */
+}
+
+/* 送信ボタン */
+.submit_bt{
+	font-size:18px;
+/* 	font-weight:bold; */
+	background-color:#248;
+	color:white;
+	padding: 8px 20px;
+	border-style: none;
+	border-radius: 25px;
+	width:120px;
+	margin:0px auto;
+	clear:both;
+	font-family:'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+						Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+	cursor: pointer;/* マウスカーソル指マーク */
+	/* 影設定 影の横幅、縦長、ぼかし、広がり、色 */
+	box-shadow: 2px 2px 3px 1px #666;
+	-moz-box-shadow: 2px 2px 3px 1px #666;
+	-webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+
+/* 送信ボタンのホバーアクション */
+.submit_bt:hover{
+    background-color:#87CEEB;
+    color:#F0F8FF;
 }

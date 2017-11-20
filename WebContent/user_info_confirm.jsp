@@ -32,25 +32,25 @@
 
 
 
-			.button {
+/* 			.button {
 			font-size:15px;
 			padding: 10px 12px;
 			margin-bottom:15px;
 			width:140px;
 			cursor: pointer;
-		}
+		} */
 
 
 	</style>
 </head>
 <body>
-<div class="header">
+<div class="header" style="text-align:center;">
 	<h1>❐　ユーザー登録確認画面</h1>
 </div>
-<div class="main">
+<div class="main" style="text-align:center;">
 
          <form action="UserInfoComplateAction">
-         <table>
+         <table style="text-align:center;">
              <tr id="land">
                  <td>ユーザーID</td>
                  <td><s:property value="user_id" escape="false" /></td>
@@ -95,12 +95,16 @@
             </table>
             <div class="center">
 <br>
-<button class="button" type="submit">登録</button></div>
+<button class="submit_bt" type="submit">登録</button></div>
          </form>
-
+<br><br>
      <div id="footer">
      <div class="center">前画面に戻る場合は<a href='<s:url action="LoginAction" />'>こちら</a></div>
      </div>
   </div>
+  <div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

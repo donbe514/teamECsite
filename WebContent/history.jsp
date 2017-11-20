@@ -8,28 +8,29 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="./css/history.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
 <title>商品購入履歴画面</title>
 </head>
 
 <body>
 
 <div class="text">
-<h2>お客様の購入履歴</h2>
-
+<div class="header">
+<h2>❒　お客様の購入履歴</h2>
+</div>
 <!-- 購入履歴がない場合 -->
 <s:if test="HistryFlag">
-	<h3>購入履歴はありません。</h3>
+	<h3>購入履歴はありません。</h3><!-- フォント、場所が気になる -->
 </s:if>
 
 <!-- 購入履歴がある場合 -->
 
 <s:else>
+	<div class="main">
 
 	<h3>ご購入情報は以下になります。</h3>
-	<div class="main">
 	<form action="partDelete">
 	<table border="1" align="center">
-
 	<tr>
 		<th>商品名</th>
 		<th>ふりがな</th>
@@ -58,15 +59,20 @@
 	</s:iterator>
 
 	</table>
-	選択した購入履歴を<input type="submit" value="履歴削除">
+	<br><br>
+	選択した購入履歴を　<input type="submit" value="削除" class="submit_bt">
 	</form>
-	</div>
-
+	<br><br>
 	<s:form action="Historyscomfirm">
-		購入履歴を<input type="submit" value="履歴全削除">
+		購入履歴を　<input type="submit" value="全削除" class="submit_bt">
 	</s:form>
+	</div>
 </s:else>
-
+<br><br>
+</div>
+<div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
 </div>
 </body>
 </html>

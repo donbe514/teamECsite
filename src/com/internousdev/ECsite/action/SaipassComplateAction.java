@@ -61,32 +61,32 @@ public class SaipassComplateAction extends ActionSupport implements SessionAware
 		}
 
 		if(saipassword.length() > 16 ){
-			setErrorMessage(errorMessage+"新しいパスワードは1文字以上16文字以下で入力してください。<br>");
+			setErrorMessage(errorMessage+"新しいパスワードは「1文字以上16文字以下」で入力してください。<br>");
 	        count++;
 		}
 
 		if(resaipassword.length() > 16){
-			setErrorMessage(errorMessage+"確認用のパスワードは1文字以上16文字以下で入力してください。<br>");
+			setErrorMessage(errorMessage+"確認用のパスワードは「1文字以上16文字以下」で入力してください。<br>");
 			count++;
 		}
 
 		if(saipassword.length() < 1){
-			setErrorMessage(errorMessage+"新しいパスワードは1文字以上16文字以下で入力してください。<br>");
+			setErrorMessage(errorMessage+"新しいパスワードは「1文字以上16文字以下」で入力してください。<br>");
 			count++;
 		}
 
 		if(resaipassword.length() <1){
-			setErrorMessage(errorMessage+"確認用のパスワードは1文字以上16文字以下で入力してください<br>");
+			setErrorMessage(errorMessage+"確認用のパスワードは「1文字以上16文字以下」で入力してください<br>");
 			count++;
 		}
 
 		if (!(saipassword.matches("^[a-zA-Z0-9]+$"))) {
-			setErrorMessage(errorMessage+"パスワード半角英数字で入力してください。<br>");
+			setErrorMessage(errorMessage+"パスワードは「半角英数字」で入力してください。<br>");
 		    count++;
 		}
 
 		if (!(resaipassword.matches("^[a-zA-Z0-9]+$"))) {
-			setErrorMessage(errorMessage+"パスワード半角英数字で入力してください。<br>");
+			setErrorMessage(errorMessage+"パスワードは「半角英数字」で入力してください。<br>");
 		    count++;
 		}
 

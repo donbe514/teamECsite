@@ -5,18 +5,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Cart</title>
 <link rel="stylesheet" type="text/css" href="./css/cart.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
+<div class="header">
+<h1>❒　ショッピングカート</h1>
+</div>
+<div class="main">
   <div class="outer">
     <div class="inner">
       <s:if test="CartEnptyFlag">
-        <s:property value="message" escape="false"/>
+        <p style="color:red; font-size:30px; font-weight:bold;"><s:property value="message" escape="false" /></p>
+<%-- <br><br>
+	<s:iterator value="BuyFalseList">
+	<div style="text-align:center;"><span style = "color:red;"><s:property value="product_name" /></span>の在庫が不足しておりました。</div>
+	<p style="text-align:center;">申し訳ございません。</p>
+	</s:iterator> --%>
       </s:if>
       <s:else>
         <s:property value="message" />
-        <h1>ショッピングカート</h1>
         <ul class="itemlist">
           <s:iterator value="CartAry">
             <form action="CartDellAction">
@@ -28,8 +37,8 @@
               <div class="mainarea">
                 <dl>
                   <dt>
-                    値段:\
-                    <s:property value="price" />
+                    値段:
+                    <s:property value="price" />円
                   </dt>
                   <dt>
                     ふりがな:
@@ -50,7 +59,7 @@
                   <dt>
                     <input type="checkbox" name="dell_id"
                       value='<s:property value="id"/>'>
-                      <input type="submit" value="カート削除">
+                      <input type="submit" value="カート削除" class="submit_bt" style=" width:100px; margin-left:20px; padding: 5px 15px; font-size:12px; ">
                   </dt>
                 </dl>
               </div>
@@ -59,15 +68,20 @@
         </ul>
         <div class="pcolor">
           <h1>
-            合計金額：\
-            <s:property value="total_price" />
+            合計金額：
+            <s:property value="total_price" />円
           </h1>
         </div>
         <form action="AddressAction">
-          <input type="submit" value="決済">
+          <input type="submit" value="決済" class="submit_bt" style="width:150px; padding: 10px 25px;" >
         </form>
       </s:else>
     </div>
   </div>
+  </div>
+  <div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

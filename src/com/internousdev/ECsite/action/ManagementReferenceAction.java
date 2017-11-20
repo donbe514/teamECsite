@@ -15,7 +15,7 @@ public class ManagementReferenceAction extends ActionSupport implements SessionA
 	public Map<String,Object> session;
 	public String result;
 	public String product_name;//商品名
-	public int stock;//（追加後）商品在庫数
+	public int stock;// 商品在庫追加数
 	public int beforeStock;//追加前商品在庫数（現在値）
 
 	public String execute() {

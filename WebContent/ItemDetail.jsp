@@ -11,13 +11,17 @@
 <script type="text/javascript" src="sliders.js"></script>
 <title>ItemDetail</title>
 <link rel="stylesheet" type="text/css" href="./css/Item.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 
 
 <body>
+<div class="header">
+      <h1>❒　商品詳細</h1>
+</div>
+<div class="main">
   <div class="outer">
     <div class="inner">
-      <h1>商品詳細</h1>
       <form action="CartInAction">
         <div id="mainbox">
           <div class="itembox">
@@ -67,10 +71,8 @@
                   <dl>
                   <dt>
                   <dd class="price">
-                    \:
-                    <s:property value="price" />
+                    <s:property value="price" />円
                   </dd>
-                 </dt>
                  </dl>
                 </div>
 
@@ -83,21 +85,26 @@
           </select>
           <input type="hidden" value='<s:property value="product_id" />'
             name="product_id">
-          <input type="submit" value="カートに入れる">
+          <input type="submit" value="カートに入れる" class="submit">
         </s:if>
         <s:else>
-      売り切れです。
+      <p style="color:red">売り切れです。</p>
     </s:else>
         <input type="button" value="前のページ（商品一覧）へ戻る"
-          onclick="history.back()">
-        <div class="boxclear"></div>
-      </form></li>
-
-            </ul>
+          onclick="history.back()" class="submit">
+        <div class="boxclear">
+        </div>
+        </li>
+        </ul>
+        </div>
+        </div>
+      </form>
           </div>
         </div>
-
-    </div>
-  </div>
+        </div>
+<div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

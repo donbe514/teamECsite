@@ -13,7 +13,7 @@
    <meta name="description" content="" />
    <meta name="keywords" content="" />
    <meta charset="utf-8">
-<title>Login画面</title>
+<title>❒　Login画面</title>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <style type="text/css">
 body {

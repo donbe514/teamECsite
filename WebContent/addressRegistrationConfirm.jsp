@@ -19,8 +19,8 @@
 
  			table {
  			border:1px; solid black;
-			width:700px;
-			height;500px;
+			/* width:700px; */
+			heigh:500px;
 			text-align:left;
 			margin:0 auto;
 			font-size:15px;
@@ -31,14 +31,13 @@
 			}
 
 
-
-			.button {
+/* 			.button {
 			font-size:15px;
 			padding: 10px 12px;
 			margin-bottom:15px;
 			width:140px;
 			cursor: pointer;
-		}
+		} */
 
 
 	</style>
@@ -48,11 +47,9 @@
 	<h1>❐　宛先登録確認画面</h1>
 </div>
 <div class="main">
-			<table>
+			<!-- <table> -->
 				<s:form action="AddressRegistrationComplateAction">
-
-
-
+				<table>
 					<tr>
 						<td>
 							<label>姓:</label>
@@ -110,13 +107,20 @@
 							<s:property value="putEmail" />
 						</td>
 					</tr>
+<!-- 					<tr><td><br></td></tr>
 					<tr>
 						<td>
-							<div class="center"><button class="button" type="submit">登録</button></div>
+							<div class="center"><button class="submit_bt" type="submit">登録</button></div>
 						</td>
-					</tr>
+					</tr> -->
+				</table>
+				<br><br>
+				<div class="center"><button class="submit_bt" type="submit">登録</button></div>
 				</s:form>
-			</table>
 	</div>
+	<div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

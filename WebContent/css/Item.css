@@ -3,13 +3,13 @@
 #mainbox{
   width:1100px;
   margin:0 auto;
-
 }
 
 .itembox{
-  float:left;
-  width:350px;
-  height:380px;
+	display: inline-block;
+ /*  float:left; */
+  /* width:350px; */
+  /* height:380px; */
 }
 
 .boxclear{
@@ -53,4 +53,28 @@ list-style-type:none;
   background:#cde4ff;
   border-top:solid 5px #5989cf;
   border-bottom:solid 5px #5989cf;
+}
+
+/* 送信ボタン */
+.submit{
+	padding: 5px 15px;
+	background-color:#248;
+	color:#F5FFFA;
+	border-style: none;
+	border-radius: 25px;
+	margin:0px auto;
+	clear:both;
+	font-family:'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+						Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+	cursor: pointer;/* マウスカーソル指マーク */
+	/* 影設定 影の横幅、縦長、ぼかし、広がり、色 */
+	box-shadow: 2px 2px 3px 1px #666;
+	-moz-box-shadow: 2px 2px 3px 1px #666;
+	-webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+
+/* 送信ボタンのホバーアクション */
+.submit:hover{
+    background-color:#87CEEB;
+    color:#F0F8FF;
 }

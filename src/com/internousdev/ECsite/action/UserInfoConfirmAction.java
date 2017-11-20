@@ -53,11 +53,11 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			ErrorCount++;
 		}
 		if(user_id.length()<1||user_id.length()>8){
-			errorMessage.add("ユーザーIDは1文字以上8文字以内で入力してください。");
+			errorMessage.add("ユーザーIDは「1文字以上8文字以内」で入力してください。");
 			ErrorCount++;
 		}
 		if(password.length()<1||password.length()>16){
-			errorMessage.add("パスワードは1文字以上16文字以内で入力してください。");
+			errorMessage.add("パスワードは「1文字以上16文字以内」で入力してください。");
 			ErrorCount++;
 		}
 
@@ -91,35 +91,35 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			ErrorCount++;
 		}
 		if(family_name.length()<1 || family_name.length()>16){
-			errorMessage.add("姓は1文字以上16文字以下で入力してください。");
+			errorMessage.add("姓は「1文字以上16文字以下」で入力してください。");
 			ErrorCount++;
 		}
 		if(first_name.length()<1 || first_name.length()>16){
-			errorMessage.add("名は1文字以上16文字以下で入力してください。");
+			errorMessage.add("名は「1文字以上16文字以下」で入力してください。");
 			ErrorCount++;
 		}
 		if(family_name_kana.length()<1 || family_name_kana.length()>16){
-			errorMessage.add("姓ふりがなは1文字以上16文字以下で入力してください。");
+			errorMessage.add("姓ふりがなは「1文字以上16文字以下」で入力してください。");
 			ErrorCount++;
 		}
 		if(first_name_kana.length()<1 || first_name_kana.length()>16){
-			errorMessage.add("名ふりがなは1文字以上16文字以下で入力してください。");
+			errorMessage.add("名ふりがなは「1文字以上16文字以下」で入力してください。");
 			ErrorCount++;
 		}
 		if(email.length()<18 || email.length()>32){
-			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
+			errorMessage.add("メールアドレスは「18文字以上32文字以下」で入力してください。");
 			ErrorCount++;
 		}
 		if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
-			errorMessage.add("姓ふりがなはひらがなで入力してください。");
+			errorMessage.add("姓ふりがなは「ひらがな」で入力してください。");
 			ErrorCount++;
 		}
 		if (!(first_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
-			errorMessage.add("名ふりがなはひらがなで入力してください。");
+			errorMessage.add("名ふりがなは「ひらがな」で入力してください。");
 			ErrorCount++;
 		}
 		if (password.matches("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
-			errorMessage.add("パスワードは半角英数字、半角記号で入力してください。");
+			errorMessage.add("パスワードは「半角英数字・半角記号」で入力してください。");
 			ErrorCount++;
 		}
 		if (!(sex.matches("^[0-9]+$"))) {

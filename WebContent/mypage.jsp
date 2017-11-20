@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="header">
-<h1>MyPage</h1>
+<h1>❒　MyPage</h1>
 </div>
 
 <div class="main">
@@ -66,9 +66,9 @@
 		</td>
 	</tr>
 	</table>
-	<br>
+	<br><br>
 	購入履歴は<a href='<s:url action="HistoryAction"/>'>こちら</a>
-
+	<br><br>
 </div>
 
 

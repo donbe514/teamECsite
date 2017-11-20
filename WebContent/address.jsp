@@ -55,13 +55,13 @@
 			text-align:center;
 		}
 
-		.buybutton {
+/* 		.buybutton {
 			font-size:15px;
 			padding: 10px 12px;
 			margin-bottom:15px;
 			width:140px;
 			cursor: pointer;
-		}
+		} */
 
 	</style>
 
@@ -131,16 +131,14 @@
 		</div>
 		</s:iterator>
 		<br>
-			<div class="center"><button class="buybutton" type="submit">決済する</button></div>
-
-
-
+			<div class="center"><button class="submit_bt" type="submit">決済する</button></div>
 	</form>
-
-
-		<div class="center">
-		<p>宛先情報登録は<a href='<s:url action="AddressRegistrationAction" />'>こちら</a></p></div>
-
-
+<div class="center">
+	<p>宛先情報登録は<a href='<s:url action="AddressRegistrationAction" />'>こちら</a></p>
+</div>
+<div class="footer">
+<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>

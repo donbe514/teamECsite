@@ -11,12 +11,15 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <title>ItemIntroduce</title>
 <link rel="stylesheet" type="text/css" href="./css/Item2.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-
+<div class="header">
+<h1>❒　商品一覧</h1>
+</div>
+<div class="main">
   <div class="outer">
     <div class="inner">
-      <h1>商品一覧</h1>
       <!-- TextSearchの中身がitemListに無かったときに、『検索結果はありません』と表示する。 -->
       <s:if test="message!=''">
         <h2>
@@ -62,8 +65,9 @@
                                         </s:elseif>
                     </dt>
                     <dd class="price">
-                      \
-                      <s:property value="price" />
+
+                      <s:property value="price" />円
+
                     </dd>
                   </dl>
                 </div></li>
@@ -86,5 +90,10 @@
       </s:iterator>
     </div>
   </div>
+  </div>
+  <div class="footer">
+	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->
+	<a href='<s:url action="HomeAction" />' target="_parent" >ホームに戻る✔</a>
+</div>
 </body>
 </html>
