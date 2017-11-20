@@ -15,24 +15,36 @@
 	<meta charset="utf-8">
 <title>UserInfo</title>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
+<style type="text/css">
+.main{
+		   height:700px;
+		   width:100%;
+		  }
 
 
-	<style type="text/css">
+		  .t0{
+			  width:100%;
 
-  			table {
+		      text-align:center;
+
+		  }
+
+  			.t1 {
+			border:solid 1px #0000ff;
 			width:700px;
+ 			height:300px;
 			text-align:left;
-			margin:0 auto;
+			margin:10px auto 0px;
 			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
 
 		}
-		.td1 {
 
-		}
 		.EM {
 			color:red;
 			font-size:13px;
-			width:120%;
+
 		}
 
 
@@ -40,15 +52,43 @@
 			text-align:center;
 			}
 
+			label{
+			font-size:16px;
+			font-weight:bold;
+			}
+
+			.c{
+			background-color:white;
+			color:black;
+			font-size:14px;
+}
+
+.c:hover{
+ 			background-color:#fce3e9;
+		}
 
 
-/* 			.button {
+
+			.button {
 			font-size:15px;
 			padding: 10px 12px;
 			margin-bottom:15px;
 			width:140px;
 			cursor: pointer;
-		} */
+			background-color:white;
+			border:silver solid 2px;
+			margin:10px auto 0px;
+			color:#0000ff;
+			transition: background-color 0.5s ease-in;
+	        webkit-transition: background-color 0.5s ease-in;
+		}
+
+		.button:hover{
+					background-color:#0000ff;
+					color:silver;
+			        border: 3px solid silver;
+
+		}
 
 	</style>
 
@@ -61,7 +101,8 @@
 <div class="main">
 
       <form action="UserInfoConfirmAction">
-  <table>
+
+  <table class="t0">
 				<tr>
 					<td>
 						<div class="EM">
@@ -71,32 +112,33 @@
 								</s:iterator>
 							</s:if>
 						</div>
-						<br>
+
 					</td>
 				</tr>
-<!-- </table>
-<table> -->
+				</table>
+
+<table class="t1">
 	<tr>
          <td>
            <label>ユーザーID</label>
          </td>
          <td>
-            <input type="text" name="user_id" value=""  maxlength="16"/>
+         <input type="text" name="user_id" value=""  maxlength="16" class="c"/>
+         </td>
+         <td>
          </td>
       </tr>
-      <tr><td><br></td></tr>
-<!--  </table>
- <table> -->
+
        <tr>
          <td>
            <label>パスワード</label>
          </td>
          <td>
-
-            <input type="text" name="password" value=""  maxlength="16"/>
+            <input type="text" name="password" value=""  maxlength="16" class="c" />
+         </td>
+         <td>
          </td>
       </tr>
-      <tr><td><br></td></tr>
 <!-- </table>
 <table> -->
  			<tr>
@@ -105,12 +147,14 @@
 				</td>
 				<td>
 					<label>姓</label><br>
-					<input type="text" name="family_name" maxlength="16" minlength="1" value="" />
+
+					<input type="text" name="family_name" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 
 				<td>
 					<label>名</label><br>
-					<input type="text" name="first_name" maxlength="16" minlength="1" value="" />
+
+					<input type="text" name="first_name" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 			</tr>
 <!-- </table>
@@ -120,29 +164,29 @@
 					<label>ふりがな</label>
 				</td>
 				<td>
-					<label>姓</label><br>
+					<label>せい</label><br>
 
-					<input type="text" name="family_name_kana" maxlength="16" minlength="1" value="" />
+					<input type="text" name="family_name_kana" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 
 				<td>
-					<label>名</label><br>
+					<label>めい</label><br>
 
-					<input type="text" name="first_name_kana" maxlength="16" minlength="1" value="" />
+					<input type="text" name="first_name_kana" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 			</tr>
-			<tr><td><br></td></tr>
 <!-- </table>
 <table> -->
        <tr>
            <td>
                <label>性別</label>
            <td>
-                &nbsp;<input type="radio" name="sex" value=0 checked="checked">男
-                <input type="radio" name="sex" value=1>女
+                &nbsp;<input type="radio" name="sex" value=0 checked="checked"><label>男</label>
+                <input type="radio" name="sex" value=1><label>女</label>
            </td>
+           <td></td>
+
        </tr>
-       <tr><td><br></td></tr>
 <!-- </table>
 <table> -->
       <tr>
@@ -150,7 +194,7 @@
               <label>メールアドレス</label>
          </td>
           <td>
-              <input type ="text" name="email" value="" maxlength="32"/>
+            <input type ="text" name="email" value="" maxlength="32" class="c"/>
           <td>
        </tr>
   </table>

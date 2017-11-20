@@ -16,29 +16,79 @@
     <title>UserInnfoConfirm</title>
     	<link rel="stylesheet" type="text/css" href="./css/main.css">
     	<style type="text/css">
-
+        .main{
+		   height:700px;
+		   width:100%;
+		  }
  			table {
- 			border:1px; solid black;
+ 			border:solid 1px #000000;
 			width:700px;
-			height;500px;
+ 			height:300px;
 			text-align:left;
-			margin:0 auto;
+			margin:150px auto 0px;
 			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
+		}
+
+		.f{
+
+			color:black;
+		}
+
+		td{
+		border:solid 1px #0000ff;
+
+		}
+
+        th{
+		border:solid 1px #0000ff;
+        }
+
+		.sita{
+		float:left;
+		width:55%;
+		height:5%;
+		margin-top:25px;
+        }
+
+		.st1{
+			text-align:right;
+			font-size:20px;
+			}
+
+		.h{
+			float:left;
+			height:5%;
+			width:5%;
 		}
 
 			.center{
+		float:left;
+		width:40%;
+		height:5%;
 			text-align:center;
 			}
 
-
-
-/* 			.button {
+		.button {
 			font-size:15px;
 			padding: 10px 12px;
-			margin-bottom:15px;
 			width:140px;
 			cursor: pointer;
-		} */
+			background-color:white;
+			border:silver solid 2px;
+			margin:10px auto 0px;
+			color:silver;
+			transition: background-color 0.5s ease-in;
+	        webkit-transition: background-color 0.5s ease-in;
+		}
+
+		.button:hover{
+		           background-color:#0000ff;
+					color:silver;
+			        border: 3px solid silver;
+
+		}
 
 
 	</style>
@@ -52,47 +102,55 @@
          <form action="UserInfoComplateAction">
          <table style="text-align:center;">
              <tr id="land">
-                 <td>ユーザーID</td>
+                 <th><font class="f">ユーザーID</font></th>
                  <td><s:property value="user_id" escape="false" /></td>
              </tr>
              <tr id="land">
-                 <td>パスワード</td>
+                 <th><font class="f">パスワード</font></th>
                  <td><s:property value="password" escape="false" /></td>
              </tr>
 
 
              <tr id="land">
-                 <td>姓</td>
+                 <th><font class="f">姓</font></th>
                  <td><s:property value="family_name" escape="false" /></td>
              </tr>
             <tr id="land">
-               <td>名前</td>
+               <th><font class="f">名前</font></th>
                <td><s:property value="first_name" escape="false" /></td>
             </tr>
 
 
              <tr id="land">
-                 <td>せい</td>
+                 <th><font class="f">せい</font></th>
                  <td><s:property value="family_name_kana" escape="false" /></td>
              </tr>
             <tr id="land">
-               <td>めい</td>
+               <th><font class="f">めい</font></th>
                <td><s:property value="first_name_kana" escape="false" /></td>
              </tr>
 
 
             <tr id="land">
-              <td>性別</td>
+              <th><font class="f">性別</font></th>
                <td><s:if test="sex==0">男</s:if>
                     <s:else>女</s:else></td>
             </tr>
 
             <tr id="land">
-               <td>メールアドレス</td>
+               <th><font class="f">メールアドレス</font></th>
                <td><s:property value="email" escape="false" /></td>
             </tr>
 
             </table>
+
+     <div class="sita">
+     <div class="st1"><a href='<s:url action="LoginAction" />'>キャンセル</a></div>
+     </div>
+
+     <div class="h">
+     </div>
+
             <div class="center">
 <br>
 <button class="submit_bt" type="submit">登録</button></div>
