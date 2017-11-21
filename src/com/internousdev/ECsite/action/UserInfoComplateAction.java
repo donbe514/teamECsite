@@ -45,7 +45,7 @@ public class UserInfoComplateAction extends ActionSupport implements SessionAwar
 		int ErrorCount = 0;
 		String result= ERROR;
 
-		if((userIdDAO.user_count(user_id)>0)){
+		if((userIdDAO.user_count(user.getUser_id())>0)){
 			errorMessage.add("ユーザーIDがすでに登録されています。");
 			ErrorCount++;
 		}
