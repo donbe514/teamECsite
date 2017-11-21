@@ -184,9 +184,11 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	}
 
 	public String Logout(){
-		String now_user = session.get("user_id").toString();
-		LoginDAO loginDAO = new LoginDAO();
-		loginDAO.loginFlg(now_user, 0);
+		if(session.get("user_id")!=null){
+			String now_user = session.get("user_id").toString();
+			LoginDAO loginDAO = new LoginDAO();
+			loginDAO.loginFlg(now_user, 0);
+		}
 
 		session.clear();
 

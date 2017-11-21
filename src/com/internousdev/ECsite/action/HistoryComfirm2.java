@@ -27,8 +27,11 @@ public class HistoryComfirm2 extends ActionSupport implements SessionAware{
 			result = ERROR;
 
 			HistoryActionDAO historyAction = new HistoryActionDAO();
-			String user_id = session.get("user_id").toString();
-			historyList = historyAction.getMyPageUserInfo(user_id);
+			if(session.get("user_id")!=null){
+
+				String user_id = session.get("user_id").toString();
+				historyList = historyAction.getMyPageUserInfo(user_id);
+			}
 		}
 		else{
 		session.put("del_id",del_id);

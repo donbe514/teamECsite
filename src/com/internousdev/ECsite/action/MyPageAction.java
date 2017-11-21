@@ -46,26 +46,29 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 
 
 	public String execute(){
-		userDTO = mypageDAO.getUserInfo((String) Session.get("user_id"));
+		result=ERROR;
+		if(Session.get("user_id")!=null){
+			userDTO = mypageDAO.getUserInfo((String) Session.get("user_id"));
 
-		logined = userDTO.getLogined();
-		//logined =1;
-
-
-		if(logined == 0){
-			result = ERROR;
-		}
-
-		else{
-			first_name = userDTO.getFirst_name();
-			family_name = userDTO.getFamily_name();
-			first_name_kana = userDTO.getFirst_name_kana();
-			family_name_kana = userDTO.getFamily_name_kana();
-			sex = userDTO.getSex();
-			email = userDTO.getEmail();
+			logined = userDTO.getLogined();
+			//logined =1;
 
 
-			result =SUCCESS;
+			if(logined == 0){
+				result = ERROR;
+			}
+
+			else{
+				first_name = userDTO.getFirst_name();
+				family_name = userDTO.getFamily_name();
+				first_name_kana = userDTO.getFirst_name_kana();
+				family_name_kana = userDTO.getFamily_name_kana();
+				sex = userDTO.getSex();
+				email = userDTO.getEmail();
+
+
+				result =SUCCESS;
+			}
 		}
 	return result;
 	}

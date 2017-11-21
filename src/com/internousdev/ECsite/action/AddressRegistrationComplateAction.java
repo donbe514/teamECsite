@@ -24,6 +24,9 @@ public class AddressRegistrationComplateAction extends ActionSupport implements 
 
 
 	public String execute() throws SQLException {
+		result = ERROR;
+
+		if(session.get("user_id")!=null){
 
 		addDAO.add(session.get("user_id").toString(),
 				session.get("putFirst_name").toString(),
@@ -34,6 +37,7 @@ public class AddressRegistrationComplateAction extends ActionSupport implements 
 				session.get("putTel_number").toString(),
 				session.get("putEmail").toString());
 		result = SUCCESS;
+		}
 
 		return result ;
 	}

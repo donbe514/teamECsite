@@ -39,15 +39,7 @@ public class AddressAction extends ActionSupport implements SessionAware {
 			addressDTOList = addressDAO.getAddressInfo(user_id);
 
 			result = SUCCESS;
-		/*
-			session.get("putFirst_name").toString(),
-			session.get("putFamily_name").toString(),
-			session.get("putFirst_name_kana").toString(),
-			session.get("putFamily_name_kana").toString(),
-			session.get("putUser_address").toString(),
-			session.get("putTel_number").toString(),
-			session.get("putEmail").toString());
-		*/
+
 		}
 
 		return result;

@@ -23,16 +23,18 @@ public class HistoryAction extends ActionSupport implements SessionAware {
         HistoryActionDAO historyAction = new HistoryActionDAO();
 
         String result = SUCCESS;
+        String user_id ="";
 
-        String user_id = session.get("user_id").toString();
+        if(session.get("user_id")!=null){
+        	user_id = session.get("user_id").toString();
+        }
 
+	    historyList = historyAction.getMyPageUserInfo(user_id);
+	    if(historyList.isEmpty()){
+	    	HistryFlag = true;
+	    }
 
-    historyList = historyAction.getMyPageUserInfo(user_id);
-    if(historyList.isEmpty()){
-    	HistryFlag = true;
-    }
-
-    return result;
+	    return result;
     }
 
     //全削除
@@ -40,7 +42,11 @@ public class HistoryAction extends ActionSupport implements SessionAware {
 
         String result = SUCCESS;
 
-        String user_id = session.get("user_id").toString();
+        String user_id ="";
+
+        if(session.get("user_id")!=null){
+        	user_id = session.get("user_id").toString();
+        }
 
         HistoryActionDAO historyAction = new HistoryActionDAO();
 
@@ -56,31 +62,36 @@ public class HistoryAction extends ActionSupport implements SessionAware {
 
     	String result;
 
-    	String user_id = session.get("user_id").toString();
+    	String user_id ="";
+    	String del_id ="";
 
-    	String del_id = session.get("del_id").toString();
-
-
-    	//１つの文字列をカンマ区切りにして配列化
-		String[] del = del_id.split(",");
-
-		//配列数を変数に代入
-		int delcount = del.length;
+        if(session.get("user_id")!=null){
+        	user_id = session.get("user_id").toString();
+        	del_id = session.get("del_id").toString();
 
 
 
-		for(int i=0;i<delcount;i++){
+	    	//１つの文字列をカンマ区切りにして配列化
+			String[] del = del_id.split(",");
 
-			//配列の中の文字列の先頭にある空白を削除
-			String new_del_id = del[i].trim();
-
-			//文字列を数字に変換
-			int delitem = Integer.parseInt(new_del_id);
+			//配列数を変数に代入
+			int delcount = del.length;
 
 
-			HistoryActionDAO historyAction = new HistoryActionDAO();
-			historyAction.partDel(user_id, delitem);
-		}
+
+			for(int i=0;i<delcount;i++){
+
+				//配列の中の文字列の先頭にある空白を削除
+				String new_del_id = del[i].trim();
+
+				//文字列を数字に変換
+				int delitem = Integer.parseInt(new_del_id);
+
+
+				HistoryActionDAO historyAction = new HistoryActionDAO();
+				historyAction.partDel(user_id, delitem);
+			}
+        }
 
     	result=historyshow();
 

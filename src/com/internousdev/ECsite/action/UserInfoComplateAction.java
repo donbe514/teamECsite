@@ -41,9 +41,14 @@ public class UserInfoComplateAction extends ActionSupport implements SessionAwar
 		UserDTO user = new UserDTO();
 		UserIdDAO userIdDAO = new UserIdDAO();
 		session.put("user_id", null);
-		user = (UserDTO)session.get("new_userdata");
+
 		int ErrorCount = 0;
 		String result= ERROR;
+		if(session.get("new_userdata")!=null){
+			user = (UserDTO)session.get("new_userdata");
+		}else{
+			ErrorCount++;
+		}
 
 		if((userIdDAO.user_count(user.getUser_id())>0)){
 			errorMessage.add("ユーザーIDがすでに登録されています。");

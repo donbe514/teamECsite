@@ -15,10 +15,12 @@ public class ManagementConfilmAction extends ActionSupport implements SessionAwa
 
 	public String execute() {
 
-		//商品在庫数更新
-		dao.updateStock(
-			Integer.parseInt(session.get("stock").toString()),
-			session.get("product_name").toString());
+		if(session.get("stock")!=null){
+			//商品在庫数更新
+			dao.updateStock(
+				Integer.parseInt(session.get("stock").toString()),
+				session.get("product_name").toString());
+		}
 
 		result = SUCCESS;
 		return result;
