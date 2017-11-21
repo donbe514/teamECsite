@@ -2,6 +2,7 @@ package com.internousdev.ECsite.action;
 
 import java.util.ArrayList;
 
+import com.internousdev.ECsite.dao.ItemDAO;
 import com.internousdev.ECsite.dao.ItemDetailDAO;
 import com.internousdev.ECsite.dto.ItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -21,13 +22,14 @@ public class GoItemDetailAction extends ActionSupport {
 	private String image_file_path;
 	private int stock;
 	private int[] buyitemcount={0};
+	private int category_id;
 
 
 	public String execute() {
 		ItemDTO itemDTO = new ItemDTO();
 		ItemDetailDAO itemdao = new ItemDetailDAO();
 		itemDTO = itemdao.detail(product_id);
-
+		ItemDAO searchdao = new ItemDAO();
 		if(itemDTO!=null){
 			product_id = itemDTO.getProduct_id();
 			product_name = itemDTO.getProduct_name();
@@ -48,6 +50,8 @@ public class GoItemDetailAction extends ActionSupport {
 		buyitemcount[i]=i+1;
 		}
 		}
+
+		itemList = searchdao.select(category_id, "", 1, 0);
 
 		return SUCCESS;
 	}
@@ -214,6 +218,24 @@ public class GoItemDetailAction extends ActionSupport {
 
 	public void setBuyitemcount(int[] buyitemcount) {
 		this.buyitemcount = buyitemcount;
+	}
+
+
+
+	/**
+	 * @return category_id
+	 */
+	public int getCategory_id() {
+		return category_id;
+	}
+
+
+
+	/**
+	 * @param category_id セットする category_id
+	 */
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 }

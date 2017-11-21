@@ -43,7 +43,7 @@
 <div class="box1">
 	<ul class="slider" >
 		<s:iterator value="#session.itemList" status="pi">
-			<li><a href="<s:url action='GoDetailAction'><s:param name='product_id' value='#session.itemList[#pi.index].product_id'/></s:url>">
+			<li><a href="<s:url action='GoDetailAction'><s:param name="category_id" value="#session.itemList[#pi.index].category_id"/><s:param name='product_id' value='#session.itemList[#pi.index].product_id'/></s:url>">
 				<img src="<s:property value='image_file_path'/>" width=100% height=200px />
 				<s:property value="product_name"/></a>
 			</li>

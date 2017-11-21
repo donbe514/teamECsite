@@ -21,9 +21,16 @@ public class ManagementAction  extends ActionSupport implements SessionAware{
 	public ArrayList<ManagementDTO> ManagementList = new ArrayList<ManagementDTO>();
 
 	public String execute() {
-		ManagementList = dao.getInfo();
+		result = ERROR;
 
-		result = SUCCESS;
+		if(session.get("user_id")!=null){
+			String user_id = session.get("user_id").toString();
+
+			if(user_id.equals("taro")){
+				ManagementList = dao.getInfo();
+				result = SUCCESS;
+			}
+		}
 		return result;
 	}
 

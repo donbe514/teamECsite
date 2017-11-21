@@ -64,7 +64,7 @@
 		<!-- 登録完了画面遷移 -->
 		<action name="UserInfoComplateAction" class="com.internousdev.ECsite.action.UserInfoComplateAction" method="execute">
 			<result name="success">user_info_complate.jsp</result>
-
+			<result name="error">userinfo.jsp</result>
 		</action>
 
 
@@ -178,6 +178,7 @@
 		<!-- 管理画面遷移 -->
 		<action name = "ManagementAction" class = "com.internousdev.ECsite.action.ManagementAction" method = "execute">
 			<result name ="success">Management.jsp</result>
+			<result name="error">Home.jsp</result>
 		</action>
 
 

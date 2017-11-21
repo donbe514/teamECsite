@@ -1,10 +1,13 @@
 package com.internousdev.ECsite.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ECsite.dao.UserIdDAO;
 import com.internousdev.ECsite.dao.UserInfoComplateDAO;
 import com.internousdev.ECsite.dto.UserDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,20 +33,37 @@ public class UserInfoComplateAction extends ActionSupport implements SessionAwar
 	public Map<String,Object> session;
 
 	public UserInfoComplateDAO userInfoComplateDAO = new UserInfoComplateDAO();
+	public List<String> errorMessage = new ArrayList<>();
 
 
 
 	public String execute() throws SQLException {
 		UserDTO user = new UserDTO();
+		UserIdDAO userIdDAO = new UserIdDAO();
 		session.put("user_id", null);
 		user = (UserDTO)session.get("new_userdata");
+		int ErrorCount = 0;
+		String result= ERROR;
 
+		if((userIdDAO.user_count(user_id)>0)){
+			errorMessage.add("ユーザーIDがすでに登録されています。");
+			ErrorCount++;
+		}
+		if(ErrorCount<1){
 
-		userInfoComplateDAO.createUser(user.getUser_id(),user.getPassword(),
-				user.getFirst_name(),user.getFamily_name(),user.getFirst_name_kana(),user.getFamily_name_kana(),
-				user.getSex(),user.getEmail());
+			userInfoComplateDAO.createUser(
+					user.getUser_id(),
+					user.getPassword(),
+					user.getFirst_name(),
+					user.getFamily_name(),
+					user.getFirst_name_kana(),
+					user.getFamily_name_kana(),
+					user.getSex(),
+					user.getEmail());
+			result= SUCCESS;
 
-		return SUCCESS ;
+		}
+		return result ;
 	}
 
 	/**

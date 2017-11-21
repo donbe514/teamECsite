@@ -61,4 +61,26 @@ public class ManagementDAO {
 		}
 		return dto;
 	}
+
+	public int StockCount(){
+
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		String sql = "SELECT sum(stock) FROM product_info "; //商品名を検索
+
+		int SumStock =0;
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+				SumStock=rs.getInt("sum(stock)");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return SumStock;
+	}
+
 }

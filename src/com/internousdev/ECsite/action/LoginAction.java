@@ -62,7 +62,10 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 
 
-		if(userDTO.getUser_id()==null) {
+		if(userDTO.getUser_id()==null) {//ID存在チェック
+			setErrorMessage("IDが正しくありません。<br>");
+			log++;
+		}else if(!(userDTO.getUser_id().equals(user_id))){//大文字小文字問題解決用
 			setErrorMessage("IDが正しくありません。<br>");
 			log++;
 		}
@@ -111,31 +114,43 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			log++;
 		}
 
-		if(log>0){
+		if(log>0){//エラーチェック1以上ならエラー
 			result=ERROR;
+
 		}else{
-              userDTO = loginDAO.getLoginUserInfo(user_id, password);
-              if(user_id.equals(userDTO.getUser_id())){
-            	  if(password.equals(userDTO.getPassword())){
-                      session.put("user_id", userDTO.getUser_id());
-                      session.put("user_name", userDTO.getFamily_name()+" "+userDTO.getFirst_name());
+              userDTO = loginDAO.getLoginUserInfo(user_id, password);//ログイン認証
+
+              if(user_id.equals(userDTO.getUser_id())){//ログイン認証：ID
+            	  if(password.equals(userDTO.getPassword())){//ログイン認証：パス
+
                       String login_id = userDTO.getUser_id();
+
                       if(login_id!=null) {
-        				boolean flgresult = loginDAO.loginFlg(user_id, 1);
-        				CartActionDAO CADAO = new CartActionDAO();
-        				String tmpID = session.get("tmpID").toString();
-        				CADAO.CartLoginUpdate(tmpID, login_id);
+
+						session.put("user_id", userDTO.getUser_id());//様々な場面で使うため、user_idをセッションに
+						session.put("user_name", userDTO.getFamily_name()+" "+userDTO.getFirst_name());//Home画面で使用するために名前生成
+
+        				boolean flgresult = loginDAO.loginFlg(user_id, 1);//ログインフラグ更新
+
+        				if(session.get("tmpID")!=null){//仮ID保存されているか確認
+
+	        				String tmpID = session.get("tmpID").toString();
+	        				CartActionDAO CADAO = new CartActionDAO();
+	        				CADAO.CartLoginUpdate(tmpID, login_id);//仮IDでカートに入れたものを本IDに更新
+
+        				}
 
         				if(flgresult){
         					result=SUCCESS;
         				}
+
                       }
             	  }
 
               }
 		}
 
-		if(hozon){
+		if(hozon){//ID保存にチェックしていたら、クッキー生成。
 			Cookie cookie = new Cookie("save_user", user_id);
 			cookie.setMaxAge(180);
 

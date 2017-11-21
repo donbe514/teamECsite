@@ -17,22 +17,20 @@
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 <style type="text/css">
 .main{
-		   height:700px;
+		   height:750px;
 		   width:100%;
 		  }
 
 
 		  .t0{
 			  width:100%;
-
-		      text-align:center;
-
-		  }
+			  text-align:center;
+				}
 
   			.t1 {
 			border:solid 1px #0000ff;
 			width:700px;
- 			height:300px;
+ 			height:250px;
 			text-align:left;
 			margin:10px auto 0px;
 			font-size:15px;
