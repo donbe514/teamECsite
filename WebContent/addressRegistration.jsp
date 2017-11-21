@@ -19,32 +19,46 @@
 	<style type="text/css">
 
 
- 			table {
-			width:700px;
-			height;500px;
-			text-align:left;
-			margin:0 auto;
-			font-size:15px;
-		}
+			.table1{
+			text-align:center;
+			width:100%;
+			}
 
-		.EM {
+			.table2 {
+			border:solid 1px #0000ff;
+			width:700px;
+ 			height:300px;
+			text-align:left;
+			margin:10px auto 0px;
+			font-size:15px;
+			table-layout: auto;
+			}
+
+			.EM {
 			color:red;
 			font-size:13px;
-		}
+			}
+			label{
+			font-size:16px;
+			font-weight:bold;
+			}
+
 			.center{
 			text-align:center;
 			}
 
+			.c{
+			background-color:white;
+			color:black;
+			font-size:14px;
+}
 
-/*
-			.button {
-			font-size:15px;
-			padding: 10px 12px;
-			margin-bottom:15px;
-			width:140px;
-			cursor: pointer;
-		}
- */
+			.c:hover{
+ 			background-color:#fce3e9;
+			}
+
+
+
 	</style>
 </head>
 <body>
@@ -53,7 +67,7 @@
 </div>
 <div class="main">
 	<form action="AddressRegistrationConfirmAction">
-		<table>
+		<table class="table1">
 			<tr>
 				<td class="td1">
 					<div class="EM">
@@ -66,6 +80,8 @@
 
 				</td>
 			</tr>
+		</table>
+		<table class="table2">
 			<tr>
 				<td>
 					<label>名前</label>
@@ -73,13 +89,13 @@
 				<td class="td1">
 					<label>姓</label><br>
 
-					<input type="text" name="putFamily_name" value="" />
+					<input type="text" name="putFamily_name" value=""  class="c"/>
 				</td>
 
 				<td class="td1">
 					<label>名</label><br>
 
-					<input type="text" name="putFirst_name" value="" />
+					<input type="text" name="putFirst_name" value=""  class="c"/>
 				</td>
 			</tr>
 			<tr>
@@ -89,13 +105,13 @@
 				<td>
 					<label>姓</label><br>
 
-					<input type="text" name="putFamily_name_kana" value="" />
+					<input type="text" name="putFamily_name_kana" value=""  class="c"/>
 				</td>
 
 				<td>
 					<label>名</label><br>
 
-					<input type="text" name="putFirst_name_kana" value="" />
+					<input type="text" name="putFirst_name_kana" value=""  class="c"/>
 				</td>
 			</tr>
 			<tr><td><br></td></tr>
@@ -104,7 +120,7 @@
 					<label>住所</label>
 				</td>
 				<td>
-					<input type="text" name="putUser_address" value="" />
+					<input type="text" name="putUser_address" value=""  class="c"/>
 				</td>
 			</tr>
 		<tr><td><br></td></tr>
@@ -114,7 +130,7 @@
          </td>
           <td>
 
-              <input type ="text" name="putTel_number" value=""/>
+              <input type ="text" name="putTel_number" value=""  class="c"/>
           <td>
        </tr>
 	<tr><td><br></td></tr>
@@ -124,7 +140,7 @@
          </td>
           <td>
 
-              <input type ="text" name="putEmail" value="" />
+              <input type ="text" name="putEmail" value=""  class="c"/>
           <td>
        </tr>
 
