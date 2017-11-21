@@ -39,31 +39,31 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 
 		System.out.println("email:"+putEmail);
 
-		if(putFamily_name.equals("")){
+		if(putFamily_name.equals("")||putFamily_name.matches("^[ 　]+$")){
 			errorMessage.add("姓を入力してください。");
 			result = ERROR;
 		}
-		if(putFirst_name.equals("")){
+		if(putFirst_name.equals("")||putFirst_name.matches("^[ 　]+$")){
 			errorMessage.add("名を入力してください。");
 			result = ERROR;
 		}
-		if(putFamily_name_kana.equals("")){
+		if(putFamily_name_kana.equals("")||putFamily_name_kana.matches("^[ 　]+$")){
 			errorMessage.add("姓ふりがなを入力してください。");
 			result = ERROR;
 		}
-		if(putFirst_name_kana.equals("")){
+		if(putFirst_name_kana.equals("")||putFirst_name_kana.matches("^[ 　]+$")){
 			errorMessage.add("名ふりがなを入力してください。");
 			result = ERROR;
 		}
-		if(putUser_address.equals("")){
+		if(putUser_address.equals("")||putUser_address.matches("^[ 　]+$")){
 			errorMessage.add("住所を入力してください。");
 			result = ERROR;
 		}
-		if(putTel_number.equals("")){
+		if(putTel_number.equals("")||putTel_number.matches("^[ 　]+$")){
 			errorMessage.add("電話番号を入力してください。");
 			result = ERROR;
 		}
-		if(putEmail.equals("")){
+		if(putEmail.equals("")||putEmail.matches("^[ 　]+$")){
 			errorMessage.add("メールアドレスを入力してください。");
 			result = ERROR;
 		}

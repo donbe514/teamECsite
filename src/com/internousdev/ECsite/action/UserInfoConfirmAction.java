@@ -61,32 +61,32 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			ErrorCount++;
 		}
 
-		if(user_id.equals("")){
+		if(user_id.equals("")||user_id.matches("^[ 　]+$")){
 			errorMessage.add("ユーザーIDを入力してください。");
 			ErrorCount++;
 		}
 
-		if(password.equals("")){
+		if(password.equals("")||password.matches("^[ 　]+$")){
 			errorMessage.add("パスワードを入力してください。");
 			ErrorCount++;
 		}
-		if(family_name.equals("")){
+		if(family_name.equals("")||family_name.matches("^[ 　]+$")){
 			errorMessage.add("姓を入力してください。");
 			ErrorCount++;
 		}
-		if(first_name.equals("")){
+		if(first_name.equals("")||first_name.matches("^[ 　]+$")){
 			errorMessage.add("名を入力してください。");
 			ErrorCount++;
 		}
-		if(family_name_kana.equals("")){
+		if(family_name_kana.equals("")||family_name_kana.matches("^[ 　]+$")){
 			errorMessage.add("姓ふりがなを入力してください。");
 			ErrorCount++;
 		}
-		if(first_name_kana.equals("")){
+		if(first_name_kana.equals("")||first_name_kana.matches("^[ 　]+$")){
 			errorMessage.add("名ふりがなを入力してください。");
 			ErrorCount++;
 		}
-		if(email.equals("")){
+		if(email.equals("")||email.matches("^[ 　]+$")){
 			errorMessage.add("メールアドレスを入力してください。");
 			ErrorCount++;
 		}
