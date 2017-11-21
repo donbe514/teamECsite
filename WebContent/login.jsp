@@ -162,7 +162,7 @@ function open_new() {
 
       <tr>
       <td><label class="f">保存</label></td>
-      <td><input type=checkbox  value="保存" class="s"  /></td>
+      <td><input type=checkbox  name="hozon" value=true class="s"  /></td>
       </tr>
       </table>
 
