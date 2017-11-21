@@ -50,7 +50,10 @@ table{/* 入力欄 */
 		<h2>各商品の在庫数を追加できます。</h2><br>
 		<p>現在の在庫数を確認したい場合は……
 		<p><span class="important">入荷数を空欄のまま</span>在庫入荷ボタンを押してください。</p><br>
-		<b style="color:red">※入荷数は、5桁以内の半角数字（正の数）のみ入力可能です。</b><br><br><br><br>
+		<b style="color:red">※入荷数は、1000以内の半角数字（正の数）のみ入力可能です。<br>全商品総点数1万を越える数の商品は入れれません。</b><br><br><br><br>
+		<s:if test="ErrorCount>0">
+        <p style="color:red; font-size:30px; font-weight:bold;"><s:property value="message" escape="false" /></p>
+      </s:if>
 	</div>
 		<!-- 在庫追加確認ページに飛ばします。 -->
 		<s:form action= "ManagementReferenceAction">

@@ -97,26 +97,26 @@ public class CartAction extends ActionSupport implements SessionAware{
 		int ErrorCount=0;
 
 
-		if(now_user.length()<1){
+		if(now_user.length()<1){//idが不正な値か確認する。
 			message=message+"ユーザーデータエラーが発生しました。<br>";
 			ErrorCount++;
 		}
-		if(!(item_count.matches("^[0-9]+$"))){
+		if(!(item_count.matches("^[0-9]+$"))){//カート投入数が数字でないならエラー
 			message=message+"カート投入数が不正です。<br>";
 			ErrorCount++;
 
-		}else{
+		}else{//数字であることが確認されてからint変換
 			CartInCount =Integer.parseInt(item_count.toString());
 		}
 
-		if(CartInCount==0){
+		if(CartInCount==0){//投入数が0ならエラー
 			message=message+"投入数が0のため、カートに商品が投入されませんでした。<br>";
 			ErrorCount++;
-		}else if(CartInCount<0){
-			message=message+"カートに負の数値が投入されました。<br>";
+		}else if(CartInCount<0){//投入数が負の数値ならエラー
+			message=message+"カートに負の数値が投入されたため、カートに商品が投入されませんでした。<br>";
 			ErrorCount++;
-		}else if(CartInCount>StockDTO.getStock()){
-			message=message+"在庫を越える数値が投入されました。<br>";
+		}else if(CartInCount>StockDTO.getStock()){//投入数が在庫以上ならエラー
+			message=message+"在庫を越える数値が投入されたため、カートに商品が投入されませんでした。<br>";
 			ErrorCount++;
 		}
 
@@ -134,25 +134,33 @@ public class CartAction extends ActionSupport implements SessionAware{
 				CartListDTO = (ItemDTO)itr.next();
 				if(product_id==CartListDTO.getProduct_id()){//カート内容重複確認
 					DapFlag =true;
-					DapItemCount = CartListDTO.getStock();
+					DapItemCount = CartListDTO.getStock();//重複商品のカート内個数記録
 				}
 			}
 
 			if(DapFlag){
 				//重複していたらアップデート
-				CartInCount = CartInCount +DapItemCount;
-				CADAO.CartUpdate(now_user, product_id, CartInCount);
+				CartInCount = CartInCount +DapItemCount;//カート内合計数記録
+				if(CartInCount>StockDTO.getStock()){//カート内合計数が在庫以上ならエラー
+					message=message+"在庫を越える数値が投入されたため、カートに商品が投入されませんでした。<br>";
+					ErrorCount++;
+				}
+				if(ErrorCount>0){
+					//エラーしていたら何もしない。
+				}else{
+					CADAO.CartUpdate(now_user, product_id, CartInCount);
+					ret = SUCCESS;
+				}
 
 			}else{
 				//重複していないならインサート
 				CADAO.CartInsert(now_user, product_id, CartInCount);
-
+				ret = SUCCESS;
 			}
 
-			ret = SUCCESS;
 		}
 
-		CartShow();
+		CartShow();//カート内観覧メソッド
 
 		return ret;
 	}
@@ -169,7 +177,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 			CADAO.CartDell(now_user, dell_id);
 		}
 
-		CartShow();
+		CartShow();//カート内観覧メソッド
 
 		return SUCCESS;
 	}
