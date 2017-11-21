@@ -98,8 +98,17 @@
         </ul>
         </div>
         </div>
+
       </form>
-          </div>
+
+      <s:iterator value="itemList" status="pi" begin="0" end ="3" >
+      <div id ="grid">
+      <a href="<s:url action='GoDetailAction'><s:param name="category_id" value="itemList[#pi.index].category_id"/><s:param name='product_id' value='itemList[#pi.index].product_id'/></s:url>">
+       <img src="<s:property value='image_file_path'/>" width="80px" height="80px"  />
+        <s:property value="product_name"/></a>
+      </div>
+    </s:iterator>
+        </div>
         </div>
         </div>
 <div class="footer">

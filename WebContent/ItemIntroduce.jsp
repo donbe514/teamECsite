@@ -34,7 +34,7 @@
           <div class="itembox">
             <ul class="itemlist">
               <li><a
-                href='<s:url action="GoDetailAction"><s:param name="product_id" value="itemList[#ct.index].product_id"/></s:url>'>
+                href='<s:url action="GoDetailAction"><s:param name="product_id" value="itemList[#ct.index].product_id"/><s:param name="category_id" value="itemList[#ct.index].category_id"/></s:url>'>
                   <img src='<s:property value="image_file_path"/>'
                   width="250" height="250" class="imageleft">
               </a>
