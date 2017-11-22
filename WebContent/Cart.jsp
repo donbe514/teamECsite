@@ -25,7 +25,7 @@
 	</s:iterator> --%>
       </s:if>
       <s:else>
-        <s:property value="message" />
+        <s:property value="message" escape="false"  />
         <ul class="itemlist">
           <s:iterator value="CartAry">
             <form action="CartDellAction">

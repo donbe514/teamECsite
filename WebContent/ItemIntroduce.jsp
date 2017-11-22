@@ -25,9 +25,9 @@
         <h2>
           <s:property value="message" />
         </h2>
-        <form action="HomeAction" target="_parent">
+        <!-- <form action="HomeAction" target="_parent">
           <input type="submit" value="ホームへ戻る">
-        </form>
+        </form> -->
       </s:if>
       <div id="mainbox">
         <s:iterator value="itemList" status="ct">

@@ -157,7 +157,7 @@
          </form>
 <br><br>
      <div id="footer">
-     <div class="center">前画面に戻る場合は<a href='<s:url action="LoginAction" />'>こちら</a></div>
+     <div class="center">前画面に戻る場合は<a href='<s:url action="LoginPageAction" />'>こちら</a></div>
      </div>
   </div>
   <div class="footer">
