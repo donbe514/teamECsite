@@ -111,6 +111,25 @@ body {
 	-moz-box-shadow: 2px 2px 3px 1px #666;
 	-webkit-box-shadow: 2px 2px 3px 1px #666;
 }
+.submit_bt1{
+  font-size:18px;
+/*  font-weight:bold; */
+  background-color:#248;
+  color:white;
+  padding: 8px 20px;
+  border-style: none;
+  border-radius: 25px;
+  width:280px;
+  margin:0px auto;
+  clear:both;
+  font-family:'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+            Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+  cursor: pointer;/* マウスカーソル指マーク */
+  /* 影設定 影の横幅、縦長、ぼかし、広がり、色 */
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+}
 
 /* 送信ボタンのホバーアクション */
 .submit_bt:hover{

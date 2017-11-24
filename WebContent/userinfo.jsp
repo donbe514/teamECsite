@@ -199,9 +199,10 @@
     <br><br>
    <div class="center"><button class="submit_bt" type="submit">確認</button></div><!-- submitボタンCSS統一  -->
 	</form>
-   <%-- <div>
-      <span>ログイン画面へ</span><a href='<s:url action="LoginAction" />'>戻る</a>
-   </div> --%>
+  <br>
+  <form action="LoginPageAction" >
+   <div class="center"><button class="submit_bt1" type="submit">
+     ログイン画面はこちら</button></div></form>
 </div>
 <div class="footer">
 	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->

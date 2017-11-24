@@ -94,7 +94,8 @@
         .cansell{
                  font-size:20px;
         }
-
+a { text-decoration: none;
+  color:white; }
     </style>
 </head>
 <body>
@@ -133,8 +134,9 @@
 
   <table class="t2">
   <tr>
-      <td><div class="cansell"><a href='<s:url action="LoginAction" /> '>キャンセル</a></div></td>
+
       <td><input type="submit" value="登録"  class="r"/></td>
+       <td><div class="r"><a href='<s:url action="LoginPageAction" />' >キャンセル</a></div></td>
   </tr>
   </table>
 </form>

@@ -10,7 +10,7 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<title>ホーム画面</title>
+<title>Komazon!</title>
 <link rel="shortcut icon" href="./favicon/favicon.ico">
 <link rel="stylesheet" type="text/css" href="./css/MainStyle.css">
 <frameset rows="120,*" frameborder="0">
