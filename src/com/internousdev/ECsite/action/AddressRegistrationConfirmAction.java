@@ -26,6 +26,8 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 	public String execute() {
 		result = SUCCESS;
 
+
+
 		if(!(putFamily_name.equals("")) && !(putFirst_name.equals("")) && !(putFamily_name_kana.equals("")) && !(putFirst_name_kana.equals(""))&& !(putUser_address.equals("")) && !(putTel_number.equals("")) && !(putEmail.equals(""))
 			&& !(putFamily_name.length()<1 || putFamily_name.length()>16) && !(putFirst_name.length()<1 || putFirst_name.length()>16) && !(putFamily_name_kana.length()<1 || putFamily_name_kana.length()>16) && !(putFirst_name_kana.length()<1 || putFirst_name_kana.length()>16) && !(putUser_address.length()<15 || putUser_address.length()>50) && !(putTel_number.length()<11 || putTel_number.length()>13) && !(putEmail.length()<18 || putEmail.length()>32)){
 			session.put("putFamily_name", putFamily_name);
@@ -37,7 +39,7 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			session.put("putEmail", putEmail);
 		}
 
-		System.out.println("email:"+putEmail);
+		/*未入力時または指定された桁数･文字種以外の時errorMessageにエラーメッセージを追加する。*/
 
 		if(putFamily_name.equals("")||putFamily_name.matches("^[ 　]+$")){
 			errorMessage.add("姓を入力してください。");
@@ -68,7 +70,6 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			result = ERROR;
 		}
 
-
 		if(putFamily_name.length()<1 || putFamily_name.length()>16){
 			errorMessage.add("姓は1文字以上16文字以下で入力してください。");
 			result = ERROR;
@@ -97,6 +98,18 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
 			result = ERROR;
 		}
+
+		if(!putFamily_name.matches("^[a-zA-Z]+$") && !putFamily_name.matches("^[ぁ-ゞ]+$") && !putFamily_name.matches("^[一-龠]*$")){
+			errorMessage.add("姓は半角英語･ひらがな･漢字で入力してください。");
+			result = ERROR;
+		}
+
+		if(!putFirst_name.matches("^[a-zA-Z]+$") && !putFirst_name.matches("^[ぁ-ゞ]+$") && !putFirst_name.matches("^[一-龠]*$")){
+			errorMessage.add("名は半角英語･ひらがな･漢字で入力してください。");
+			result = ERROR;
+		}
+
+
 		if (!(putFamily_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
 			errorMessage.add("姓ふりがなはひらがなで入力してください。");
 			result = ERROR;
@@ -110,6 +123,12 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			result = ERROR;
 
 		}
+		if(!putUser_address.matches("^[-_.,/@+*;:#$%&A-Za-z0-9]+$") && !putUser_address.matches("^[ぁ-ゞ]+$") && !putUser_address.matches("^[一-龠]*$")&& !putUser_address.matches("^[ァ-ヶ]+$")&& !putUser_address.matches("^[｡-ﾟ+]+$")){
+			errorMessage.add("住所は半角英数字･ひらがな･漢字・カタカナ・半角記号で入力してください。");
+			result = ERROR;
+		}
+
+
 //		if (!putEmail.matches("^[a-zA-Z0-9 -/:-@\[-\`\{-\~]+$")) {
 		if (!putEmail.matches("^[a-zA-Z0-9#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+(\\.[a-zA-Z0-9!#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+)*+(.*)@[a-zA-Z0-9][a-zA-Z0-9\\-]*(\\.[a-zA-Z0-9\\-]+)+$")) {
 			errorMessage.add("正しいメールアドレスの形式で入力してください。");

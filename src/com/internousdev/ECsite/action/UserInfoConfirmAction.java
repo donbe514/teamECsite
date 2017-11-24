@@ -110,11 +110,28 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
 			ErrorCount++;
 		}
-
-		if (!password.matches("^[-_.,/@+*;:#$%&A-Za-z0-9]+$")) {
-			errorMessage.add("パスワードは半角英数字、半角記号で入力してください。");
+		if (!user_id.matches("^[A-Za-z0-9]+$")) {
+			errorMessage.add("ユーザーIDは半角英数字で入力してください。");
 			ErrorCount++;
 		}
+
+		if (!password.matches("^[A-Za-z0-9]+$")) {
+			errorMessage.add("パスワードは半角英数字で入力してください。");
+			ErrorCount++;
+		}
+
+		if(!family_name.matches("^[a-zA-Z]+$") && !family_name.matches("^[ぁ-ゞ]+$") && !family_name.matches("^[一-龠]*$")){
+			errorMessage.add("姓は半角英語･ひらがな･漢字で入力してください。");
+			ErrorCount++;
+		}
+
+		if(!first_name.matches("^[a-zA-Z]+$") && !first_name.matches("^[ぁ-ゞ]+$") && !first_name.matches("^[一-龠]*$")){
+			errorMessage.add("名は半角英語･ひらがな･漢字で入力してください。");
+			ErrorCount++;
+		}
+
+
+
 		if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
 			errorMessage.add("姓ふりがなはひらがなで入力してください。");
 			ErrorCount++;

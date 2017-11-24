@@ -72,9 +72,14 @@
 	</div>
 
 	<form action="BuyItemConfilmAction">
+
+	<!-- 登録した宛先を表示 -->
+
 		<s:iterator value="addressDTOList">
 
 		<div class="main">
+
+	<!-- 宛先選択チェックボックス -->
 
 			<div class="check">
 				<input type="radio" name="address" value='<s:property value="id" />' checked="checked">

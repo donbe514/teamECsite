@@ -70,6 +70,7 @@
 		<table class="table1">
 			<tr>
 				<td class="td1">
+			<!-- エラーメッセージを表示する -->
 					<div class="EM">
 						<s:if test="errorMessage != null">
 							<s:iterator value="errorMessage" status="count">

@@ -31,7 +31,7 @@ public class AddressAction extends ActionSupport implements SessionAware {
 
 
 	public String execute() throws SQLException{
-	//session.put("user_id", "taro");		//後で消す テスト用
+
 		String result = ERROR;
 
 		if(session.get("user_id")!=null){//ユーザーログインしていなかったら、ログイン画面に飛ばす用　*駒村
