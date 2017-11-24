@@ -27,6 +27,7 @@ public class AddressAction extends ActionSupport implements SessionAware {
 	public AddressDAO addressDAO = new AddressDAO();
 
 	public List<AddressDTO> addressDTOList = new ArrayList<AddressDTO>();
+	public boolean AddCheck = false;
 
 
 
@@ -37,6 +38,9 @@ public class AddressAction extends ActionSupport implements SessionAware {
 		if(session.get("user_id")!=null){//ユーザーログインしていなかったら、ログイン画面に飛ばす用　*駒村
 			String user_id = session.get("user_id").toString();
 			addressDTOList = addressDAO.getAddressInfo(user_id);
+			if(!(addressDTOList.isEmpty())){
+				AddCheck =true;
+			}
 
 			result = SUCCESS;
 

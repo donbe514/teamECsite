@@ -41,81 +41,79 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 
 		/*未入力時または指定された桁数･文字種以外の時errorMessageにエラーメッセージを追加する。*/
 
+/*　　　　姓　　　　*/
 		if(putFamily_name.equals("")||putFamily_name.matches("^[ 　]+$")){
 			errorMessage.add("姓を入力してください。");
 			result = ERROR;
 		}
-		if(putFirst_name.equals("")||putFirst_name.matches("^[ 　]+$")){
-			errorMessage.add("名を入力してください。");
-			result = ERROR;
-		}
-		if(putFamily_name_kana.equals("")||putFamily_name_kana.matches("^[ 　]+$")){
-			errorMessage.add("姓ふりがなを入力してください。");
-			result = ERROR;
-		}
-		if(putFirst_name_kana.equals("")||putFirst_name_kana.matches("^[ 　]+$")){
-			errorMessage.add("名ふりがなを入力してください。");
-			result = ERROR;
-		}
-		if(putUser_address.equals("")||putUser_address.matches("^[ 　]+$")){
-			errorMessage.add("住所を入力してください。");
-			result = ERROR;
-		}
-		if(putTel_number.equals("")||putTel_number.matches("^[ 　]+$")){
-			errorMessage.add("電話番号を入力してください。");
-			result = ERROR;
-		}
-		if(putEmail.equals("")||putEmail.matches("^[ 　]+$")){
-			errorMessage.add("メールアドレスを入力してください。");
-			result = ERROR;
-		}
-
 		if(putFamily_name.length()<1 || putFamily_name.length()>16){
 			errorMessage.add("姓は1文字以上16文字以下で入力してください。");
+			result = ERROR;
+		}
+		if(!putFamily_name.matches("^[a-zA-Zぁ-ゞ一-龠]+$")){
+			errorMessage.add("姓は半角英語･ひらがな･漢字で入力してください。");
+			result = ERROR;
+		}
+/*　　　　名　　　　*/
+		if(putFirst_name.equals("")||putFirst_name.matches("^[ 　]+$")){
+			errorMessage.add("名を入力してください。");
 			result = ERROR;
 		}
 		if(putFirst_name.length()<1 || putFirst_name.length()>16){
 			errorMessage.add("名は1文字以上16文字以下で入力してください。");
 			result = ERROR;
 		}
+		if(!putFirst_name.matches("^[a-zA-Zぁ-ゞ一-龠]+$")){
+			errorMessage.add("名は半角英語･ひらがな･漢字で入力してください。");
+			result = ERROR;
+		}
+/*　　　　姓ふりがな　　　　*/
+		if(putFamily_name_kana.equals("")||putFamily_name_kana.matches("^[ 　]+$")){
+			errorMessage.add("姓ふりがなを入力してください。");
+			result = ERROR;
+		}
 		if(putFamily_name_kana.length()<1 || putFamily_name_kana.length()>16){
 			errorMessage.add("姓ふりがなは1文字以上16文字以下で入力してください。");
+			result = ERROR;
+		}
+		if (!(putFamily_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
+			errorMessage.add("姓ふりがなはひらがなで入力してください。");
+			result = ERROR;
+		}
+/*　　　　名ふりがな　　　　*/
+		if(putFirst_name_kana.equals("")||putFirst_name_kana.matches("^[ 　]+$")){
+			errorMessage.add("名ふりがなを入力してください。");
 			result = ERROR;
 		}
 		if(putFirst_name_kana.length()<1 || putFirst_name_kana.length()>16){
 			errorMessage.add("名ふりがなは1文字以上16文字以下で入力してください。");
 			result = ERROR;
 		}
+		if (!(putFirst_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
+			errorMessage.add("名ふりがなはひらがなで入力してください。");
+			result = ERROR;
+		}
+/*　　　　住所　　　　*/
+		if(putUser_address.equals("")||putUser_address.matches("^[ 　]+$")){
+			errorMessage.add("住所を入力してください。");
+			result = ERROR;
+		}
 		if(putUser_address.length()<15 || putUser_address.length()>50){
 			errorMessage.add("住所は15文字以上50文字以下で入力してください。");
 			result = ERROR;
 		}
+		if(!putUser_address.matches("^[-_.,/@+*;:#$%&A-Za-z0-9ぁ-ゞ一-龠ァ-ヶ｡-ﾟ+]+$")){
+			errorMessage.add("住所は半角英数字･ひらがな･漢字・カタカナ・半角記号で入力してください。");
+			result = ERROR;
+		}
+
+/*　　　　電話番号　　　　*/
+		if(putTel_number.equals("")||putTel_number.matches("^[ 　]+$")){
+			errorMessage.add("電話番号を入力してください。");
+			result = ERROR;
+		}
 		if(putTel_number.length()<11 || putTel_number.length()>13){
 			errorMessage.add("電話番号は11文字以上13文字以下で入力してください。");
-			result = ERROR;
-		}
-		if(putEmail.length()<18 || putEmail.length()>32){
-			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
-			result = ERROR;
-		}
-
-		if(!putFamily_name.matches("^[a-zA-Z]+$") && !putFamily_name.matches("^[ぁ-ゞ]+$") && !putFamily_name.matches("^[一-龠]*$")){
-			errorMessage.add("姓は半角英語･ひらがな･漢字で入力してください。");
-			result = ERROR;
-		}
-
-		if(!putFirst_name.matches("^[a-zA-Z]+$") && !putFirst_name.matches("^[ぁ-ゞ]+$") && !putFirst_name.matches("^[一-龠]*$")){
-			errorMessage.add("名は半角英語･ひらがな･漢字で入力してください。");
-			result = ERROR;
-		}
-
-
-		if (!(putFamily_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
-			errorMessage.add("姓ふりがなはひらがなで入力してください。");
-			result = ERROR;
-		}
-		if (!(putFirst_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
-			errorMessage.add("名ふりがなはひらがなで入力してください。");
 			result = ERROR;
 		}
 		if (!putTel_number.matches("^[0-9]+$")) {
@@ -123,26 +121,19 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			result = ERROR;
 
 		}
-		if(!putUser_address.matches("^[-_.,/@+*;:#$%&A-Za-z0-9]+$") && !putUser_address.matches("^[ぁ-ゞ]+$") && !putUser_address.matches("^[一-龠]*$")&& !putUser_address.matches("^[ァ-ヶ]+$")&& !putUser_address.matches("^[｡-ﾟ+]+$")){
-			errorMessage.add("住所は半角英数字･ひらがな･漢字・カタカナ・半角記号で入力してください。");
+/*　　　　メールアドレス　　　　*/
+		if(putEmail.equals("")||putEmail.matches("^[ 　]+$")){
+			errorMessage.add("メールアドレスを入力してください。");
 			result = ERROR;
 		}
-
-
-//		if (!putEmail.matches("^[a-zA-Z0-9 -/:-@\[-\`\{-\~]+$")) {
+		if(putEmail.length()<18 || putEmail.length()>32){
+			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
+			result = ERROR;
+		}
 		if (!putEmail.matches("^[a-zA-Z0-9#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+(\\.[a-zA-Z0-9!#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+)*+(.*)@[a-zA-Z0-9][a-zA-Z0-9\\-]*(\\.[a-zA-Z0-9\\-]+)+$")) {
 			errorMessage.add("正しいメールアドレスの形式で入力してください。");
 			result = ERROR;
 		}
-
-//		String pattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$" ;
-//		　
-//		Pattern p = Pattern.compile(pattern);
-//		if(p.matcher(str).find()){
-//		    System.out.println(str + "はメールアドレスの形式です");
-//		}else{
-//		    System.out.println(str + "はメールアドレスの形式ではありません");
-//		}
 
 		return result;
 

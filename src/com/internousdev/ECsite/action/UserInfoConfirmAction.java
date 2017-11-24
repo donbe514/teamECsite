@@ -48,6 +48,7 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 
 		session.put("user_id", null);
 
+/*　　　　ユーザーID　　　　*/
 		if((userIdDAO.user_count(user_id)>0)){
 			errorMessage.add("ユーザーIDがすでに登録されています。");
 			ErrorCount++;
@@ -56,84 +57,78 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			errorMessage.add("ユーザーIDは1文字以上8文字以内で入力してください。");
 			ErrorCount++;
 		}
-		if(password.length()<1||password.length()>16){
-			errorMessage.add("パスワードは1文字以上16文字以内で入力してください。");
-			ErrorCount++;
-		}
-
 		if(user_id.equals("")||user_id.matches("^[ 　]+$")){
 			errorMessage.add("ユーザーIDを入力してください。");
 			ErrorCount++;
 		}
+		if (!user_id.matches("^[a-zA-Z0-9]+$")) {
+			errorMessage.add("ユーザーIDは半角英数字で入力してください。");
+			ErrorCount++;
+		}
 
+/*　　　　パスワード　　　　*/
+		if(password.length()<1||password.length()>16){
+			errorMessage.add("パスワードは1文字以上16文字以内で入力してください。");
+			ErrorCount++;
+		}
 		if(password.equals("")||password.matches("^[ 　]+$")){
 			errorMessage.add("パスワードを入力してください。");
 			ErrorCount++;
 		}
+		if (!password.matches("^[a-zA-Z0-9]+$")) {
+			errorMessage.add("パスワードは半角英数字で入力してください。");
+			ErrorCount++;
+		}
+
+/*　　　　姓　　　　*/
 		if(family_name.equals("")||family_name.matches("^[ 　]+$")){
 			errorMessage.add("姓を入力してください。");
-			ErrorCount++;
-		}
-		if(first_name.equals("")||first_name.matches("^[ 　]+$")){
-			errorMessage.add("名を入力してください。");
-			ErrorCount++;
-		}
-		if(family_name_kana.equals("")||family_name_kana.matches("^[ 　]+$")){
-			errorMessage.add("姓ふりがなを入力してください。");
-			ErrorCount++;
-		}
-		if(first_name_kana.equals("")||first_name_kana.matches("^[ 　]+$")){
-			errorMessage.add("名ふりがなを入力してください。");
-			ErrorCount++;
-		}
-		if(email.equals("")||email.matches("^[ 　]+$")){
-			errorMessage.add("メールアドレスを入力してください。");
 			ErrorCount++;
 		}
 		if(family_name.length()<1 || family_name.length()>16){
 			errorMessage.add("姓は1文字以上16文字以下で入力してください。");
 			ErrorCount++;
 		}
+		if(!family_name.matches("^[a-zA-Zぁ-ゞ一-龠]+$") ){
+			errorMessage.add("姓は半角英語･ひらがな･漢字で入力してください。");
+			ErrorCount++;
+		}
+
+/*　　　　名　　　　*/
+		if(first_name.equals("")||first_name.matches("^[ 　]+$")){
+			errorMessage.add("名を入力してください。");
+			ErrorCount++;
+		}
 		if(first_name.length()<1 || first_name.length()>16){
 			errorMessage.add("名は1文字以上16文字以下で入力してください。");
+			ErrorCount++;
+		}
+		if(!first_name.matches("^[a-zA-Zぁ-ゞ一-龠]+$")){
+			errorMessage.add("名は半角英語･ひらがな･漢字で入力してください。");
+			ErrorCount++;
+		}
+
+/*　　　　姓ふりがな　　　　*/
+		if(family_name_kana.equals("")||family_name_kana.matches("^[ 　]+$")){
+			errorMessage.add("姓ふりがなを入力してください。");
 			ErrorCount++;
 		}
 		if(family_name_kana.length()<1 || family_name_kana.length()>16){
 			errorMessage.add("姓ふりがなは1文字以上16文字以下で入力してください。");
 			ErrorCount++;
 		}
-		if(first_name_kana.length()<1 || first_name_kana.length()>16){
-			errorMessage.add("名ふりがなは1文字以上16文字以下で入力してください。");
-			ErrorCount++;
-		}
-		if(email.length()<18 || email.length()>32){
-			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
-			ErrorCount++;
-		}
-		if (!user_id.matches("^[A-Za-z0-9]+$")) {
-			errorMessage.add("ユーザーIDは半角英数字で入力してください。");
-			ErrorCount++;
-		}
-
-		if (!password.matches("^[A-Za-z0-9]+$")) {
-			errorMessage.add("パスワードは半角英数字で入力してください。");
-			ErrorCount++;
-		}
-
-		if(!family_name.matches("^[a-zA-Z]+$") && !family_name.matches("^[ぁ-ゞ]+$") && !family_name.matches("^[一-龠]*$")){
-			errorMessage.add("姓は半角英語･ひらがな･漢字で入力してください。");
-			ErrorCount++;
-		}
-
-		if(!first_name.matches("^[a-zA-Z]+$") && !first_name.matches("^[ぁ-ゞ]+$") && !first_name.matches("^[一-龠]*$")){
-			errorMessage.add("名は半角英語･ひらがな･漢字で入力してください。");
-			ErrorCount++;
-		}
-
-
-
 		if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
 			errorMessage.add("姓ふりがなはひらがなで入力してください。");
+			ErrorCount++;
+		}
+
+/*　　　　名ふりがな　　　　*/
+		if(first_name_kana.equals("")||first_name_kana.matches("^[ 　]+$")){
+			errorMessage.add("名ふりがなを入力してください。");
+			ErrorCount++;
+		}
+		if(first_name_kana.length()<1 || first_name_kana.length()>16){
+			errorMessage.add("名ふりがなは1文字以上16文字以下で入力してください。");
 			ErrorCount++;
 		}
 		if (!(first_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
@@ -141,10 +136,22 @@ public class UserInfoConfirmAction extends ActionSupport implements SessionAware
 			ErrorCount++;
 		}
 
+/*　　　　メールアドレス　　　　*/
+		if(email.equals("")||email.matches("^[ 　]+$")){
+			errorMessage.add("メールアドレスを入力してください。");
+			ErrorCount++;
+		}
+		if(email.length()<18 || email.length()>32){
+			errorMessage.add("メールアドレスは18文字以上32文字以下で入力してください。");
+			ErrorCount++;
+		}
 		if (!email.matches("^[a-zA-Z0-9#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+(\\.[a-zA-Z0-9!#$%&'_`/=~\\*\\+\\-\\?\\^\\{\\|\\}]+)*+(.*)@[a-zA-Z0-9][a-zA-Z0-9\\-]*(\\.[a-zA-Z0-9\\-]+)+$")) {
 			errorMessage.add("正しいメールアドレスの形式で入力してください。");
 			ErrorCount++;
 		}
+
+/*　　　　性別　　　　*/
+
 		if (!(sex.matches("^[0-9]+$"))) {
 			errorMessage.add("性別の値が不正です。");
 			ErrorCount++;

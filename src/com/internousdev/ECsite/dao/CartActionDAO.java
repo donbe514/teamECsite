@@ -235,6 +235,11 @@ public class CartActionDAO {
 
 	}
 
+	/**
+	 * ユーザーIDのカート投入数を検索する。
+	 * @param user_id
+	 * @return
+	 */
 	public int CartCount(String user_id){
 		int result = 0;
 
@@ -257,6 +262,50 @@ public class CartActionDAO {
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()){
 				result = rs.getInt("count(*)");
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	/**
+	 * ユーザーIDのカート内にある特定の商品のカート投入数を引き出す。
+	 * @param user_id
+	 * @param product_id
+	 * @return
+	 */
+	public int CartSearch_PId_ItemCount(String user_id,int product_id){
+		int result = 0;
+
+		DBConnector db =new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql = "SELECT * FROM cart_info WHERE user_id = ? AND product_id = ?;";
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, user_id);
+			ps.setInt(2, product_id);
+			/*id int primary key not null,ID*/
+			/*user_id varchar(16) not null,ユーザーID*/
+			 /*foreign key(user_id) references user_info(user_id),user_info.user_idとfk*/
+			/*product_id int not null,商品ID*/
+			/*foreign key(product_id) references product_info(product_id), product_info.product_idとfk*/
+			/*insert_date datetime not null,登録日*/
+			/*update_date datetime 更新日*/
+
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				result = rs.getInt("item_count");
 			}
 
 		}catch(SQLException e){

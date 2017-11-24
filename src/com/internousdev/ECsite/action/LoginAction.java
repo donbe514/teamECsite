@@ -1,5 +1,7 @@
 package com.internousdev.ECsite.action;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -10,7 +12,9 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.ECsite.dao.CartActionDAO;
+import com.internousdev.ECsite.dao.ItemDetailDAO;
 import com.internousdev.ECsite.dao.LoginDAO;
+import com.internousdev.ECsite.dto.ItemDTO;
 import com.internousdev.ECsite.dto.UserDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -57,10 +61,11 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		String result = SUCCESS;
 		int log = 0;
+		String login_id="";
+		boolean LoginResult = false;
+
 
 		userDTO =loginDAO.userSearch(user_id);
-
-
 
 		if(userDTO.getUser_id()==null) {//ID存在チェック
 			setErrorMessage("IDが正しくありません。<br>");
@@ -123,32 +128,30 @@ public class LoginAction extends ActionSupport implements SessionAware{
               if(user_id.equals(userDTO.getUser_id())){//ログイン認証：ID
             	  if(password.equals(userDTO.getPassword())){//ログイン認証：パス
 
-                      String login_id = userDTO.getUser_id();
+                      login_id = userDTO.getUser_id();
+                      LoginResult = true;
 
-                      if(login_id!=null) {
-
-						session.put("user_id", userDTO.getUser_id());//様々な場面で使うため、user_idをセッションに
-						session.put("user_name", userDTO.getFamily_name()+" "+userDTO.getFirst_name());//Home画面で使用するために名前生成
-
-        				boolean flgresult = loginDAO.loginFlg(user_id, 1);//ログインフラグ更新
-
-        				if(session.get("tmpID")!=null){//仮ID保存されているか確認
-
-	        				String tmpID = session.get("tmpID").toString();
-	        				CartActionDAO CADAO = new CartActionDAO();
-	        				CADAO.CartLoginUpdate(tmpID, login_id);//仮IDでカートに入れたものを本IDに更新
-
-        				}
-
-        				if(flgresult){
-        					result=SUCCESS;
-        				}
-
-                      }
             	  }
-
               }
 		}
+
+        if(login_id.length()>0) {//DTO内容確認
+
+			session.put("user_id", userDTO.getUser_id());//様々な場面で使うため、user_idをセッションに
+			session.put("user_name", userDTO.getFamily_name()+" "+userDTO.getFirst_name());//Home画面で使用するために名前生成
+
+			loginDAO.loginFlg(user_id, 1);//ログインフラグ更新
+			result=SUCCESS;
+
+         }
+
+        if(LoginResult){//ログイン成功後、カート更新処理
+			if(session.get("tmpID")!=null){//仮ID保存されているか確認
+
+				String tmpID = session.get("tmpID").toString();
+				LoginCartUpdate(login_id,tmpID);//カート更新メソッド
+			}
+        }
 
 		if(hozon){//ID保存にチェックしていたら、クッキー生成。
 			Cookie cookie = new Cookie("save_user", user_id);
@@ -193,6 +196,74 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		session.clear();
 
 		return SUCCESS;
+	}
+
+
+	public void LoginCartUpdate(String user_id,String tmpID){
+
+		CartActionDAO CADAO = new CartActionDAO();
+		ItemDetailDAO ItemDAO = new ItemDetailDAO();
+
+
+		int tmpIDCartcount = CADAO.CartCount(tmpID);//仮IDカート投入種類数検索
+		int userIDCartcount =CADAO.CartCount(user_id);//本IDカート投入種類数検索
+
+		if(tmpIDCartcount>0){//仮IDカート投入数無ければ無視
+			if(userIDCartcount>0){//本IDカート投入数無ければID変換のみ
+
+				ArrayList<ItemDTO> tmpIDCartList = new ArrayList<ItemDTO>();
+				ArrayList<ItemDTO> userIDCartList = new ArrayList<ItemDTO>();
+				tmpIDCartList = CADAO.CartShow(tmpID);
+				userIDCartList = CADAO.CartShow(user_id);
+
+				Iterator<ItemDTO> tmpIDArray = tmpIDCartList.iterator();
+				Iterator<ItemDTO> userIDArray = userIDCartList.iterator();
+				int CheckCount = 0;
+				int[][] CheckList;
+
+				if(tmpIDCartcount>userIDCartcount){
+					CheckList = new int[tmpIDCartcount][2];
+				}else{
+					CheckList = new int[userIDCartcount][2];
+				}
+
+				while(tmpIDArray.hasNext()){//仮IDListの回転軸
+					ItemDTO tmpDTO = tmpIDArray.next();
+					userIDArray = userIDCartList.iterator();
+
+					while(userIDArray.hasNext()){//本IDListの回転軸
+						ItemDTO userDTO = userIDArray.next();
+
+						if(tmpDTO.getProduct_id()==userDTO.getProduct_id()){//仮IDと本IDの商品IDが一致したら記録
+							CheckList[CheckCount][0] = tmpDTO.getProduct_id();
+							CheckList[CheckCount][1] = tmpDTO.getId();
+							CheckCount++;
+						}
+
+					}
+				}
+
+				if(CheckCount>0){
+					for(int i=0;i<CheckCount;i++){
+						int Pid = CheckList[i][0];
+						int total_item_count = CADAO.CartSearch_PId_ItemCount(user_id, Pid)+CADAO.CartSearch_PId_ItemCount(tmpID, Pid);
+						ItemDTO Item = new ItemDTO();
+						Item = ItemDAO.detail(Pid);
+
+						if(total_item_count>Item.getStock()){//重複合計値、在庫以下ならそのまま、在庫より多ければ在庫上限
+							total_item_count = Item.getStock();
+						}
+
+						CADAO.CartUpdate(user_id, Pid, total_item_count);//重複部分の合計値更新
+						CADAO.CartDell(tmpID, CheckList[i][1]);//仮IDの重複部分削除
+					}
+
+				}
+			}//本IDカート投入数無ければID変換のみ
+
+			CADAO.CartLoginUpdate(tmpID, user_id);//仮IDでカートに入れたものを本IDに更新
+		}//仮IDカート投入数無ければ無視
+
 	}
 
 

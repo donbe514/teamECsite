@@ -82,7 +82,7 @@
 	<!-- 宛先選択チェックボックス -->
 
 			<div class="check">
-				<input type="radio" name="address" value='<s:property value="id" />' checked="checked">
+				<input type="radio" name="id" value='<s:property value="id" />' checked="checked">
 			</div>
 
 		<table>
@@ -136,7 +136,12 @@
 		</div>
 		</s:iterator>
 		<br>
+		<s:if test="AddCheck">
 			<div class="center"><button class="submit_bt" type="submit">決済する</button></div>
+		</s:if>
+		<s:else>
+			<div class="center">宛先登録をお願いします。</div>
+		</s:else>
 	</form>
 <div class="center">
 	<p>宛先情報登録は<a href='<s:url action="AddressRegistrationAction" />'>こちら</a></p>

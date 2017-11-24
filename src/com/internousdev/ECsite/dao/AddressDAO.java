@@ -30,7 +30,7 @@ public class AddressDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				AddressDTO dto = new AddressDTO();
-
+				dto.setId(resultSet.getString("id"));
 				dto.setPutFirst_name(resultSet.getString("first_name"));
 				dto.setPutFamily_name(resultSet.getString("family_name"));
 				dto.setPutFirst_name_kana(resultSet.getString("first_name_kana"));
