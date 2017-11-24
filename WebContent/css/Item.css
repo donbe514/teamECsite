@@ -22,6 +22,10 @@ padding:0;
   float:left;
 }
 
+#abox{
+  width:600px;
+  height:600px;
+}
 
 
 .boxclear{

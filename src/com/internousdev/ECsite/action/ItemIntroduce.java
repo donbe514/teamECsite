@@ -1,10 +1,12 @@
 package com.internousdev.ECsite.action;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import com.internousdev.ECsite.dao.ItemDAO;
 import com.internousdev.ECsite.dto.ItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
+
 
 public class ItemIntroduce extends ActionSupport {
 
@@ -21,6 +23,14 @@ public class ItemIntroduce extends ActionSupport {
 	public String execute() {
 		int tmppage = 1;
 		ItemDAO itemdao = new ItemDAO();
+
+		String[] RepTxt ={".","!","#","$","%","&","\'","*","+","/","=","?","^","_","\"","{","|","}","~","-","\\",",",")","(","<",">","[","]",":",";"};
+
+		int RepCount =RepTxt.length;
+
+		for(int i=0;i<RepCount;i++){
+			SearchText= SearchText.replaceAll(Pattern.quote(RepTxt[i]), "");
+		}
 
 		count =itemdao.SearchCount(category_id,SearchText);
 		tmppage = (count+6-1)/6;
