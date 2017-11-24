@@ -41,7 +41,7 @@
 
 		.EM {
 			color:red;
-			font-size:13px;
+			font-size:12px;
 
 		}
 
