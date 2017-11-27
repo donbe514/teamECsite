@@ -39,8 +39,8 @@ p{/* 文全体 */
 	<s:if test ="BuyFalseList != null">
 	<s:iterator value="BuyFalseList">
 	<p style="text:center; color:red;"><s:property value="product_name" />は在庫が不足しており、購入できませんでした。</p>
-	<p style="text:center;">申し訳ございません。</p>
 	</s:iterator>
+	<p style="text:center; color:red;">申し訳ございません。</p>
 	</s:if>
 	<br><br>
 </div>
