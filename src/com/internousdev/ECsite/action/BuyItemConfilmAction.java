@@ -18,6 +18,7 @@ public class BuyItemConfilmAction extends ActionSupport implements SessionAware{
 
 	private String message = "";
 	public ArrayList<ItemDTO> BuyFalseList = new ArrayList<ItemDTO>();
+	private boolean BuyFalseFlag = false;
 	private boolean CartEnptyFlag=false;
 	private int id =0;
 
@@ -76,6 +77,10 @@ public class BuyItemConfilmAction extends ActionSupport implements SessionAware{
 
 				}
 
+				if(!(BuyFalseList.isEmpty())){
+					BuyFalseFlag =true;
+				}
+
 				if(BuySuccsessCount<1){//購入成功回数が0以下ならカート画面へ
 
 					result = "cart";
@@ -132,6 +137,16 @@ public class BuyItemConfilmAction extends ActionSupport implements SessionAware{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public boolean isBuyFalseFlag() {
+		return BuyFalseFlag;
+	}
+
+
+	public void setBuyFalseFlag(boolean buyFalseFlag) {
+		BuyFalseFlag = buyFalseFlag;
 	}
 
 

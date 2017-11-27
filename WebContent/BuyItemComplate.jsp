@@ -36,11 +36,11 @@ p{/* 文全体 */
 <div class="main">
 	<p class="animated rubberBand"><span class="thank">ご購入ありがとうございます！</span></p>
 	<br><br>
-	<s:if test ="BuyFalseList != null">
-	<s:iterator value="BuyFalseList">
-	<p style="text:center; color:red;"><s:property value="product_name" />は在庫が不足しており、購入できませんでした。</p>
-	</s:iterator>
-	<p style="text:center; color:red;">申し訳ございません。</p>
+	<s:if test ="BuyFalseFlag">
+		<s:iterator value="BuyFalseList">
+		<p style="text:center; color:red;"><s:property value="product_name" />は在庫が不足しており、購入できませんでした。</p>
+		</s:iterator>
+		<p style="text:center; color:red;">申し訳ございません。</p>
 	</s:if>
 	<br><br>
 </div>
