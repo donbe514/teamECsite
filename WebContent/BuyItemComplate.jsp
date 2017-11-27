@@ -43,7 +43,6 @@ p{/* 文全体 */
 	</s:iterator>
 	</s:if>
 	<br><br>
-	<p>ホームへ戻る場合は<a href='<s:url action="BuyItemComplateAction" />' target="_parent">こちら</a></p>
 </div>
 
 <div class="footer">

@@ -145,7 +145,7 @@
             </table>
 
      <div class="sita">
-     <div class="st1"><a href='<s:url action="LoginAction" />'>キャンセル</a></div>
+     <div class="st1"><a href='<s:url action="LoginPageAction" />'>キャンセル</a></div>
      </div>
 
      <div class="h">
@@ -156,9 +156,6 @@
 <button class="submit_bt" type="submit">登録</button></div>
          </form>
 <br><br>
-     <div id="footer">
-     <div class="center">前画面に戻る場合は<a href='<s:url action="LoginPageAction" />'>こちら</a></div>
-     </div>
   </div>
   <div class="footer">
 	<!-- target="_parent" <frameset>を定義したウインドウにリンク先のページを表示する -->

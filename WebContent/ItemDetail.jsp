@@ -90,7 +90,7 @@
         <s:else>
       <p style="color:red">売り切れです。</p>
     </s:else>
-        <input type="button" value="前のページ（商品一覧）へ戻る"
+        <input type="button" value="前のページへ戻る"
           onclick="history.back()" class="submit">
         <div class="boxclear">
         </div>

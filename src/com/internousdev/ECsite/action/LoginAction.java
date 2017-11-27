@@ -155,7 +155,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		if(hozon){//ID保存にチェックしていたら、クッキー生成。
 			Cookie cookie = new Cookie("save_user", user_id);
-			cookie.setMaxAge(180);
+			cookie.setMaxAge(36000);
 
 	        //httpsで稼働している環境であればCookieが暗号化されるようSecure属性をつける
 	        if ("https".equals(request.getScheme())) {
