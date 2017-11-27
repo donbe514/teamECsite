@@ -20,30 +20,48 @@
 		   height:700px;
 		   width:100%;
 		  }
- 			table {
- 			border:solid 1px #000000;
+
+
+		  .t0{
+			  width:100%;
+			  text-align:center;
+				}
+
+  			.t1 {
+			border:solid 2px #0000ff;
 			width:700px;
- 			height:300px;
+ 			height:250px;
 			text-align:left;
-			margin:150px auto 0px;
+			margin:10px auto 0px;
 			font-size:15px;
 			border-collapse: collapse;
 			table-layout: auto;
+
 		}
+
 
 		.f{
 
 			color:black;
 		}
 
-		td{
-		border:solid 1px #0000ff;
+        .tableborder_right{
+        width:200px;
+background-color:#b0e0e6;
+border-right: double 5px #0000ff;
 
-		}
+}
 
-        th{
-		border:solid 1px #0000ff;
-        }
+.tableborder{
+padding-bottom:5px ;
+    padding-top:5px ;
+border-bottom: solid 1px #0000ff;
+
+}
+.table_left{
+
+padding-left: 5px;
+}
 
 		.sita{
 		float:left;
@@ -99,51 +117,85 @@
 </div>
 <div class="main" style="text-align:center;">
 
-         <form action="UserInfoComplateAction">
-         <table style="text-align:center;">
-             <tr id="land">
-                 <th><font class="f">ユーザーID</font></th>
-                 <td><s:property value="user_id" escape="false" /></td>
-             </tr>
-             <tr id="land">
-                 <th><font class="f">パスワード</font></th>
-                 <td><s:property value="password" escape="false" /></td>
-             </tr>
+ <form action="UserInfoComplateAction">
+<table class="t1">
+	<tr class="tableborder">
+         <td class="tableborder_right">
+           <label>ユーザーID</label>
+         </td>
+         <td colspan="2" class="table_left">
+         <input type="hidden" name="user_id" value="<s:property value="user_id" escape="false" />"  size="40" maxlength="16" class="c"/>
+         <s:property value="user_id" escape="false" />
+         </td>
 
+      </tr>
 
-             <tr id="land">
-                 <th><font class="f">姓</font></th>
-                 <td><s:property value="family_name" escape="false" /></td>
-             </tr>
-            <tr id="land">
-               <th><font class="f">名前</font></th>
-               <td><s:property value="first_name" escape="false" /></td>
-            </tr>
+       <tr class="tableborder">
+          <td class="tableborder_right">
+           <label>パスワード</label>
+         </td>
+         <td colspan="2" class="table_left">
+            <input type="hidden" name="password" value="<s:property value="password" escape="false" />" size="40"  maxlength="16" class="c" />
+            <s:property value="password" escape="false" />
+         </td>
 
+      </tr>
+ 			<tr class="tableborder">
+				<td class="tableborder_right">
+					<label>名前</label>
+				</td>
+				<td class="table_left">
+					<label>姓</label><br>
 
-             <tr id="land">
-                 <th><font class="f">せい</font></th>
-                 <td><s:property value="family_name_kana" escape="false" /></td>
-             </tr>
-            <tr id="land">
-               <th><font class="f">めい</font></th>
-               <td><s:property value="first_name_kana" escape="false" /></td>
-             </tr>
+					<input type="hidden" name="family_name" maxlength="16" minlength="1" value="<s:property value="family_name" escape="false" />" class="c" />
+					<s:property value="family_name" escape="false" />
+				</td>
 
+				<td>
+					<label>名</label><br>
 
-            <tr id="land">
-              <th><font class="f">性別</font></th>
-               <td><s:if test="sex==0">男</s:if>
-                    <s:else>女</s:else></td>
-            </tr>
+					<input type="hidden" name="first_name" maxlength="16" minlength="1" value="<s:property value="first_name" escape="false" />" class="c" />
+					<s:property value="first_name" escape="false" />
+				</td>
+			</tr>
+			<tr class="tableborder">
+				<td class="tableborder_right">
+					<label>ふりがな</label>
+				</td>
+				<td class="table_left">
+					<label>せい</label><br>
 
-            <tr id="land">
-               <th><font class="f">メールアドレス</font></th>
-               <td><s:property value="email" escape="false" /></td>
-            </tr>
+					<input type="hidden" name="family_name_kana" maxlength="16" minlength="1" value="<s:property value="family_name_kana" escape="false" />" class="c" />
+					<s:property value="family_name_kana" escape="false" />
+				</td>
 
-            </table>
+				<td>
+					<label>めい</label><br>
 
+					<input type="hidden" name="first_name_kana" maxlength="16" minlength="1" value="<s:property value="first_name_kana" escape="false" />" class="c" />
+					<s:property value="first_name_kana" escape="false" />
+				</td>
+			</tr>
+       <tr class="tableborder">
+           <td class="tableborder_right">
+               <label>性別</label>
+            <td colspan="2" class="table_left">
+             <input type="hidden" name="sex" value="<s:property value="sex" escape="false" />"  size="40" maxlength="16" class="c"/>
+                <s:if test="sex==0">男</s:if>
+                    <s:else>女</s:else>
+           </td>
+       </tr>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>メールアドレス</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="hidden" name="email" value="<s:property value="email" escape="false" />" size="60" maxlength="32" class="c"/>
+			<s:property value="email" escape="false" />
+		</td>
+	</tr>
+
+  </table>
      <div class="sita">
      <div class="st1"><a href='<s:url action="LoginPageAction" />'>キャンセル</a></div>
      </div>

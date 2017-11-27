@@ -18,7 +18,7 @@
     <style type ="text/css">
 .er{
        width:100%;
-       height:20%;
+       height:30%;
        color:#e2041b;
 }
     .t1{
@@ -84,6 +84,35 @@
 				margin:0px auto;
 				clear:both;
         }
+        .tableborder_right{
+
+background-color:#b0e0e6;
+border-right: double 5px #0000ff;
+width:200px;
+
+}
+
+.tableborder{
+padding-bottom:5px ;
+    padding-top:5px ;
+border-bottom: solid 1px #0000ff;
+
+}
+.table_left{
+padding-left: 5px;
+}
+
+          			.t1 {
+			border:solid 2px #0000ff;
+			width:500px;
+ 			height:200px;
+			text-align:left;
+			margin:10px auto 0px;
+			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
+
+		}
 
         .r:hover{
                  background-color:#248;
@@ -113,24 +142,38 @@ a { text-decoration: none;
 
 
  <form action="SaipassComplateAction">
-  <table class="t1">
 
-    <tr>
-    <td><label class="t">ログインID</label></td>
-    <td><input type="text" name="user_id" value="" class="f" /></td>
-    </tr>
+ <table class="t1">
+	<tr class="tableborder">
+         <td class="tableborder_right">
+           <label>ログインID</label>
+         </td>
+         <td class="table_left">
+         <input type="text" name="user_id" value=""  size="30" maxlength="16" class="c"/>
+         </td>
 
+      </tr>
 
-    <tr>
-       <td><label class="t">新しいパスワード</label></td>
-       <td><input type="password" name="saipassword" value=""  class="f"/></td>
-    </tr>
+       <tr class="tableborder">
+          <td class="tableborder_right">
+           <label>新しいパスワード</label>
+         </td>
+         <td class="table_left">
+            <input  type="password" name="saipassword" value="" size="30"  maxlength="16" class="c" />
+         </td>
 
-    <tr>
-     <td><label class="t">もう一度入力して下さい。</label></td>
-     <td><input type="password" name="resaipassword" value=""   class="f"/></td>
-   </tr>
-   </table>
+      </tr>
+       <tr class="tableborder">
+          <td class="tableborder_right">
+           <label>もう一度入力して下さい。</label>
+         </td>
+         <td  class="table_left">
+            <input type="password" name="resaipassword" value="" size="30"  maxlength="16" class="c" />
+         </td>
+
+      </tr>
+
+  </table>
 
   <table class="t2">
   <tr>

@@ -34,6 +34,18 @@
 			table-layout: auto;
 			}
 
+			 .t1 {
+			border:solid 2px #0000ff;
+			width:700px;
+ 			height:250px;
+			text-align:left;
+			margin:10px auto 0px;
+			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
+
+		}
+
 			.EM {
 			color:red;
 			font-size:13px;
@@ -57,7 +69,23 @@
  			background-color:#fce3e9;
 			}
 
+.tableborder_right{
 
+background-color:#b0e0e6;
+border-right: double 5px #0000ff;
+width:200px;
+
+}
+
+.tableborder{
+padding-bottom:5px ;
+    padding-top:5px ;
+border-bottom: solid 1px #0000ff;
+
+}
+.table_left{
+padding-left: 5px;
+}
 
 	</style>
 </head>
@@ -82,71 +110,66 @@
 				</td>
 			</tr>
 		</table>
-		<table class="table2">
-			<tr>
-				<td>
+		<table class="t1">
+ 			<tr class="tableborder">
+				<td class="tableborder_right">
 					<label>名前</label>
 				</td>
-				<td class="td1">
+				<td class="table_left">
 					<label>姓</label><br>
 
-					<input type="text" name="putFamily_name" value=""  class="c"/>
+					<input type="text" name="putFamily_name" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 
-				<td class="td1">
+				<td>
 					<label>名</label><br>
 
-					<input type="text" name="putFirst_name" value=""  class="c"/>
+					<input type="text" name="putFirst_name" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr class="tableborder">
+				<td class="tableborder_right">
 					<label>ふりがな</label>
 				</td>
-				<td>
-					<label>姓</label><br>
+				<td class="table_left">
+					<label>せい</label><br>
 
-					<input type="text" name="putFamily_name_kana" value=""  class="c"/>
+					<input type="text" name="putFamily_name_kana" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 
 				<td>
-					<label>名</label><br>
+					<label>めい</label><br>
 
-					<input type="text" name="putFirst_name_kana" value=""  class="c"/>
-				</td>
-			</tr>
-			<tr><td><br></td></tr>
-			<tr>
-				<td>
-					<label>住所</label>
-				</td>
-				<td>
-					<input type="text" name="putUser_address" value=""  class="c"/>
+					<input type="text" name="putFirst_name_kana" maxlength="16" minlength="1" value="" class="c" />
 				</td>
 			</tr>
-		<tr><td><br></td></tr>
-		<tr>
-          <td>
-              <label>電話番号</label>
-         </td>
-          <td>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>住所</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="text" name="putUser_address" value="" size="60" maxlength="32" class="c"/>
+		</td>
+	</tr>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>電話番号</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="text" name="putTel_number" value="" size="60" maxlength="32" class="c"/>
+		</td>
+	</tr>
 
-              <input type ="text" name="putTel_number" value=""  class="c"/>
-          <td>
-       </tr>
-	<tr><td><br></td></tr>
-      <tr>
-          <td>
-              <label>メールアドレス</label>
-         </td>
-          <td>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>メールアドレス</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="text" name="putEmail" value="" size="60" maxlength="32" class="c"/>
+		</td>
+	</tr>
 
-              <input type ="text" name="putEmail" value=""  class="c"/>
-          <td>
-       </tr>
-
-		</table>
-
+  </table>
 		<br>
 
 		<div class="center"><button class="submit_bt" type="submit">確認</button></div>

@@ -17,19 +17,40 @@
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<style type="text/css">
 
- 			table {
- 			border:1px; solid black;
-			/* width:700px; */
-			heigh:500px;
+			 .t1 {
+			border:solid 2px #0000ff;
+			width:700px;
+ 			height:250px;
 			text-align:left;
-			margin:0 auto;
+			margin:10px auto 0px;
 			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
+
 		}
 
 			.center{
 			text-align:center;
 			}
 
+
+.tableborder_right{
+
+background-color:#b0e0e6;
+border-right: double 5px #0000ff;
+width:200px;
+
+}
+
+.tableborder{
+padding-bottom:5px ;
+    padding-top:5px ;
+border-bottom: solid 1px #0000ff;
+
+}
+.table_left{
+padding-left: 5px;
+}
 
 /* 			.button {
 			font-size:15px;
@@ -49,71 +70,77 @@
 <div class="main">
 			<!-- <table> -->
 				<s:form action="AddressRegistrationComplateAction">
-				<table>
-					<tr>
-						<td>
-							<label>姓:</label>
-						</td>
-						<td>
-							<s:property value="putFamily_name" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>名:</label>
-						</td>
-						<td>
-							<s:property value="putFirst_name" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>姓ふりがな:</label>
-						</td>
-						<td>
-							<s:property value="putFamily_name_kana" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>名ふりがな:</label>
-						</td>
-						<td>
-							<s:property value="putFirst_name_kana" />
-						</td>
-					</tr>
 
-					<tr>
-						<td>
-							<label>住所:</label>
-						</td>
-						<td>
-							<s:property value="putUser_address" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>電話番号:</label>
-						</td>
-						<td>
-							<s:property value="putTel_number" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>メールアドレス:</label>
-						</td>
-						<td>
-							<s:property value="putEmail" />
-						</td>
-					</tr>
-<!-- 					<tr><td><br></td></tr>
-					<tr>
-						<td>
-							<div class="center"><button class="submit_bt" type="submit">登録</button></div>
-						</td>
-					</tr> -->
-				</table>
+<!--
+		</table> -->
+		<table class="t1">
+ 			<tr class="tableborder">
+				<td class="tableborder_right">
+					<label>名前</label>
+				</td>
+				<td class="table_left">
+					<label>姓</label><br>
+
+					<input type="hidden" name="putFamily_name" maxlength="16" minlength="1" value="" class="c" />
+					<s:property value="putFamily_name" />
+				</td>
+
+				<td>
+					<label>名</label><br>
+
+					<input type="hidden" name="putFirst_name" maxlength="16" minlength="1" value="" class="c" />
+					<s:property value="putFirst_name" />
+				</td>
+			</tr>
+			<tr class="tableborder">
+				<td class="tableborder_right">
+					<label>ふりがな</label>
+				</td>
+				<td class="table_left">
+					<label>せい</label><br>
+
+					<input type="hidden" name="putFamily_name_kana" maxlength="16" minlength="1" value="" class="c" />
+					<s:property value="putFamily_name_kana" />
+				</td>
+
+				<td>
+					<label>めい</label><br>
+
+					<input type="hidden" name="putFirst_name_kana" maxlength="16" minlength="1" value="" class="c" />
+					<s:property value="putFirst_name_kana" />
+				</td>
+			</tr>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>住所</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="hidden" name="putUser_address" value="" size="60" maxlength="32" class="c"/>
+			<s:property value="putUser_address" />
+		</td>
+	</tr>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>電話番号</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="hidden" name="putTel_number" value="" size="60" maxlength="32" class="c"/>
+			<s:property value="putTel_number" />
+		</td>
+	</tr>
+
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>メールアドレス</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<input type ="hidden" name="putEmail" value="" size="60" maxlength="32" class="c"/>
+			<s:property value="putEmail" />
+		</td>
+	</tr>
+
+  </table>
+
 				<br><br>
 				<div class="center"><button class="submit_bt" type="submit">登録</button></div>
 				</s:form>

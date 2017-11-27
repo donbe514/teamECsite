@@ -119,7 +119,36 @@ body {
 	        font-style: italic;
 }
 
+        .tableborder_right{
 
+background-color:#b0e0e6;
+border-right: double 5px #0000ff;
+width:200px;
+
+}
+
+.tableborder{
+padding-bottom:5px ;
+    padding-top:5px ;
+border-bottom: solid 1px #0000ff;
+
+}
+.table_left{
+padding-left: 5px;
+text-align: center;
+}
+
+          			.t1 {
+			border:solid 2px #0000ff;
+			width:500px;
+ 			height:200px;
+			text-align:left;
+			margin:10px auto 0px;
+			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
+
+		}
 
 </style>
 <script type="text/javascript">
@@ -150,21 +179,37 @@ function open_new() {
      <s:property value="errorMessage" escape="false" />
      </s:if>
      </div>
-     <table class="t1">
 
-   <tr>
-   <td ><label class="f">ログインID</label></td><td><input type= text name="user_id" value="<s:property value="save_user"/>" class="c"  /></td>
+      <table class="t1">
+	<tr class="tableborder">
+         <td class="tableborder_right">
+           <label>ログインID</label>
+         </td>
+         <td class="table_left">
+         <input type="text" name="user_id" value="<s:property value="save_user"/>"  size="30" maxlength="16" class="c"/>
+         </td>
+
       </tr>
 
-   <tr>
-      <td><label class="f">パスワード</label></td><td><input type=password name="password" value=""  class="c" /></td>
+       <tr class="tableborder">
+          <td class="tableborder_right">
+           <label>新しいパスワード</label>
+         </td>
+         <td class="table_left">
+            <input  type="password" name="password" value="" size="30"  maxlength="16" class="c" />
+         </td>
+
+      </tr>
+       <tr class="tableborder">
+          <td class="tableborder_right">
+           <label>IDを保存する</</label>
+         </td>
+         <td  class="table_left">
+            <input type="checkbox" name="hozon" value=true  maxlength="16" class="s" />
+         </td>
+
       </tr>
 
-      <tr>
-      <td><label class="f">保存</label></td>
-      <td><input type=checkbox  name="hozon" value=true class="s"  /></td>
-      </tr>
-      </table>
 
        <table class="t2">
    <tr>

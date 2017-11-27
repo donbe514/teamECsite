@@ -44,6 +44,18 @@
 			margin:0 auto;
 			font-size:15px;
 		}
+
+					 .t1 {
+			border:solid 2px #0000ff;
+			width:700px;
+ 			height:250px;
+			text-align:left;
+			margin:10px auto 0px;
+			font-size:15px;
+			border-collapse: collapse;
+			table-layout: auto;
+
+		}
 		.center{
 			text-align:center;
 		}
@@ -55,6 +67,23 @@
 			text-align:center;
 		}
 
+.tableborder_right{
+
+background-color:#b0e0e6;
+border-right: double 5px #0000ff;
+width:200px;
+
+}
+
+.tableborder{
+padding-bottom:5px ;
+    padding-top:5px ;
+border-bottom: solid 1px #0000ff;
+
+}
+.table_left{
+padding-left: 5px;
+}
 /* 		.buybutton {
 			font-size:15px;
 			padding: 10px 12px;
@@ -84,55 +113,62 @@
 			<div class="check">
 				<input type="radio" name="id" value='<s:property value="id" />' checked="checked">
 			</div>
-
-		<table>
-
-			<tr>
-				<td class=td1>姓</td>
-				<td class=td2>
+		<table class="t1">
+ 			<tr class="tableborder">
+				<td class="tableborder_right">
+					<label>名前</label>
+				</td>
+				<td class="table_left">
+					<label>姓</label><br>
 					<s:property value="putFamily_name" />
 				</td>
-			</tr>
-			<tr>
-				<td class=td1>名</td>
-				<td class=td2>
+
+				<td>
+					<label>名</label><br>
 					<s:property value="putFirst_name" />
 				</td>
 			</tr>
-			<tr>
-				<td class=td1>姓ふりがな</td>
-				<td class=td2>
+			<tr class="tableborder">
+				<td class="tableborder_right">
+					<label>ふりがな</label>
+				</td>
+				<td class="table_left">
+					<label>せい</label><br>
 					<s:property value="putFamily_name_kana" />
-
 				</td>
-			</tr>
-			<tr>
-				<td class=td1>名ふりがな</td>
-				<td class=td2>
+
+				<td>
+					<label>めい</label><br>
 					<s:property value="putFirst_name_kana" />
+				</td>
+			</tr>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>住所</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<s:property value="putUser_address" />
+		</td>
+	</tr>
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>電話番号</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<s:property value="putTel_number" />
+		</td>
+	</tr>
 
-			</td>
-			</tr>
-			<tr>
-				<td class=td1>電話番号</td>
-				<td class=td2>
-					<s:property value="putTel_number" />
+	<tr class="tableborder">
+		<td class="tableborder_right">
+			<label>メールアドレス</label>
+		</td>
+		<td colspan="2" class="table_left">
+			<s:property value="putEmail" />
+		</td>
+	</tr>
 
-				</td>
-			</tr>
-			<tr>
-				<td class=td1>住所</td>
-				<td class=td2>
-					<s:property value="putUser_address" />
-				</td>
-			</tr>
-			<tr>
-				<td class=td1>メールアドレス</td>
-				<td class=td2>
-					<s:property value="putEmail" />
-				</td>
-			</tr>
-		</table>
+  </table>
 		</div>
 		</s:iterator>
 		<br>

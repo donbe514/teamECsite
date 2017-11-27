@@ -112,12 +112,12 @@ public class AddressRegistrationConfirmAction extends ActionSupport implements S
 			errorMessage.add("電話番号を入力してください。");
 			result = ERROR;
 		}
-		if(putTel_number.length()<11 || putTel_number.length()>13){
-			errorMessage.add("電話番号は11文字以上13文字以下で入力してください。");
+		if(putTel_number.length()<10 || putTel_number.length()>13){
+			errorMessage.add("電話番号はハイフン抜き10文字以上13文字以下で入力してください。");
 			result = ERROR;
 		}
 		if (!putTel_number.matches("^[0-9]+$")) {
-			errorMessage.add("電話番号は半角数字で入力してください。");
+			errorMessage.add("電話番号はハイフン抜き半角数字で入力してください。");
 			result = ERROR;
 
 		}
