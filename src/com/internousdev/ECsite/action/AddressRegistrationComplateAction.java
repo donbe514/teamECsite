@@ -28,14 +28,8 @@ public class AddressRegistrationComplateAction extends ActionSupport implements 
 
 		if(session.get("user_id")!=null){
 
-		addDAO.add(session.get("user_id").toString(),
-				session.get("putFirst_name").toString(),
-				session.get("putFamily_name").toString(),
-				session.get("putFirst_name_kana").toString(),
-				session.get("putFamily_name_kana").toString(),
-				session.get("putUser_address").toString(),
-				session.get("putTel_number").toString(),
-				session.get("putEmail").toString());
+		addDAO.add(session.get("user_id").toString(),putFirst_name,putFamily_name,
+				putFirst_name_kana,putFamily_name_kana,putUser_address,putTel_number,putEmail);
 		result = SUCCESS;
 		}
 

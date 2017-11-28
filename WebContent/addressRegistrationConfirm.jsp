@@ -81,14 +81,14 @@ padding-left: 5px;
 				<td class="table_left">
 					<label>姓</label><br>
 
-					<input type="hidden" name="putFamily_name" maxlength="16" minlength="1" value="" class="c" />
+					<input type="hidden" name="putFamily_name" maxlength="16" minlength="1" value="<s:property value="putFamily_name" />" class="c" />
 					<s:property value="putFamily_name" />
 				</td>
 
 				<td>
 					<label>名</label><br>
 
-					<input type="hidden" name="putFirst_name" maxlength="16" minlength="1" value="" class="c" />
+					<input type="hidden" name="putFirst_name" maxlength="16" minlength="1" value="<s:property value="putFirst_name" />" class="c" />
 					<s:property value="putFirst_name" />
 				</td>
 			</tr>
@@ -99,14 +99,14 @@ padding-left: 5px;
 				<td class="table_left">
 					<label>せい</label><br>
 
-					<input type="hidden" name="putFamily_name_kana" maxlength="16" minlength="1" value="" class="c" />
+					<input type="hidden" name="putFamily_name_kana" maxlength="16" minlength="1" value="<s:property value="putFamily_name_kana" />" class="c" />
 					<s:property value="putFamily_name_kana" />
 				</td>
 
 				<td>
 					<label>めい</label><br>
 
-					<input type="hidden" name="putFirst_name_kana" maxlength="16" minlength="1" value="" class="c" />
+					<input type="hidden" name="putFirst_name_kana" maxlength="16" minlength="1" value="<s:property value="putFirst_name_kana" />" class="c" />
 					<s:property value="putFirst_name_kana" />
 				</td>
 			</tr>
@@ -115,7 +115,7 @@ padding-left: 5px;
 			<label>住所</label>
 		</td>
 		<td colspan="2" class="table_left">
-			<input type ="hidden" name="putUser_address" value="" size="60" maxlength="32" class="c"/>
+			<input type ="hidden" name="putUser_address" value="<s:property value="putUser_address" />" size="60" maxlength="32" class="c"/>
 			<s:property value="putUser_address" />
 		</td>
 	</tr>
@@ -124,7 +124,7 @@ padding-left: 5px;
 			<label>電話番号</label>
 		</td>
 		<td colspan="2" class="table_left">
-			<input type ="hidden" name="putTel_number" value="" size="60" maxlength="32" class="c"/>
+			<input type ="hidden" name="putTel_number" value="<s:property value="putTel_number" />" size="60" maxlength="32" class="c"/>
 			<s:property value="putTel_number" />
 		</td>
 	</tr>
@@ -134,7 +134,7 @@ padding-left: 5px;
 			<label>メールアドレス</label>
 		</td>
 		<td colspan="2" class="table_left">
-			<input type ="hidden" name="putEmail" value="" size="60" maxlength="32" class="c"/>
+			<input type ="hidden" name="putEmail" value="<s:property value="putEmail" />" size="60" maxlength="32" class="c"/>
 			<s:property value="putEmail" />
 		</td>
 	</tr>
